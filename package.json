@@ -1,0 +1,42 @@
+{
+  "name": "dmm-history",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cd chrome && webpack --mode development --watch --hide-modules",
+    "build": "cd chrome && webpack --mode production --progress --hide-modules",
+    "zip": "zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
+    "release": "node release.js && yarn run build && yarn run zip",
+    "lint": "eslint chrome/src --fix --ext=js,vue"
+  },
+  "author": "soarflat",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-date-fns": "^0.1.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.4.0",
+    "node-sass": "^4.9.0",
+    "pug": "^2.0.0-rc.3",
+    "pug-loader": "^2.3.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.1.3"
+  },
+  "dependencies": {
+    "bulma": "^0.7.0",
+    "date-fns": "^1.29.0",
+    "lodash.findkey": "^4.6.0",
+    "lodash.orderby": "^4.6.0",
+    "throttle-debounce": "^1.0.1",
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1"
+  }
+}
