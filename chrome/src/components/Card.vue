@@ -128,9 +128,9 @@ export default {
     }
     .tag:not(body) {
       font-size: 10px;
-      padding-left: 0.5em;
-      padding-right: 0.5em;
-      margin-left: 0.5em;
+      padding-left: 0.3em;
+      padding-right: 0.3em;
+      margin-left: 0.3em;
       height: 1.5em;
       background: #c00;
     }
