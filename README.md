@@ -2,7 +2,7 @@
 DMM.R18の商品閲覧履歴を保存・表示する拡張機能
 
 ## インストール方法
-DMM Historyの実行ファイルである[chrome.crx](https://github.com/hira777/dmm-history/releases/download/v1.0.0/chrome.crx)をダウンロード。
+DMM Historyの実行ファイルである[chrome.crx](https://github.com/hira777/dmm-history/releases/download/v1.0.1/chrome.crx)をダウンロード。
 
 バージョンのアップデート情報は[こちら](https://github.com/hira777/dmm-history/releases)。
 
