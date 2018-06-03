@@ -7,9 +7,9 @@ export default {
     });
   },
 
-  removeItem({ commit }, itemIndex) {
+  removeItem({ commit }, itemId) {
     commit(types.REMOVE_ITEM, {
-      itemIndex,
+      itemId,
     });
   },
 

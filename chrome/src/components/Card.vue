@@ -1,7 +1,7 @@
 <template lang="pug">
   .card.card-equal-height
     .card-image
-      button.delete.card-delete-button(@click="removeItem(itemIndex)")
+      button.delete.card-delete-button(@click="removeItem(item.id)")
       figure.image
         a(:href="item.href", target="_blank")
           img(:src="item.imageUrl")

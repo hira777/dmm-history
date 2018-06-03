@@ -5,8 +5,8 @@ export default {
     state.items = items;
   },
 
-  [types.REMOVE_ITEM](state, { itemIndex }) {
-    state.items.splice(itemIndex, 1);
+  [types.REMOVE_ITEM](state, { itemId }) {
+    state.items = state.items.filter(item => item.id !== itemId);
     chrome.storage.local.set({ dmmItems: state.items });
   },
 
