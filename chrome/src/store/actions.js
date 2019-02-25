@@ -10,7 +10,7 @@ export default {
           ? obj[ROOT_KEY][HISTORIES_KEY]
           : [];
 
-      if (items.length > 0) commit(types.SET_ITEMS, { items });
+      if (items) commit(types.SET_ITEMS, { items });
     });
   },
 
@@ -23,7 +23,9 @@ export default {
   },
 
   setKeywords({ commit }, keywords) {
-    commit(types.SET_KEYWORDS, { keywords: keywords.split(' ') });
+    commit(types.SET_KEYWORDS, {
+      keywords: keywords ? keywords.split(' ') : [],
+    });
   },
 
   setSortType({ commit }, sortType) {

@@ -15,7 +15,7 @@ export default {
   name: 'HistoriesNav',
 
   computed: {
-    ...mapGetters(['allItems', 'itemsExits', 'numberOfItems']),
+    ...mapGetters(['allItems', 'numberOfItems']),
 
     keywords() {
       // ["作品1", "作品2"] -> "作品1" "作品2"
