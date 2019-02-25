@@ -12,18 +12,18 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'HistoriesNavVue',
+  name: 'HistoriesNav',
 
   computed: {
-    ...mapGetters(['allItems', 'numberOfItems']),
+    ...mapGetters(['allItems', 'itemsExits', 'numberOfItems']),
 
     keywords() {
-      // 作品1,作品2 => 作品1 作品2
+      // ["作品1", "作品2"] -> "作品1" "作品2"
       return this.$store.state.keywords.join(',').replace(',', ' ');
     },
 
     itemsExits() {
-      return this.allItems.length > 0;
+      return this.$store.state.items.length > 0;
     },
   },
 };

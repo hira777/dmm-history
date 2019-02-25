@@ -6,7 +6,7 @@
 
 <script>
 import NavBar from './components/NavBar.vue';
-import Histories from './components/Histories.vue';
+import Histories from './components/Histories/index.vue';
 
 export default {
   name: 'App',
