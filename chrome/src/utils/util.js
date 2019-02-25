@@ -1,4 +1,4 @@
-import { every } from 'lodash';
+import { every } from 'lodash-es';
 
 /**
  * 全てのキーワードが検索対象に含まれているかどうか（and検索）

@@ -15,10 +15,11 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { head, last } from 'lodash-es';
 import isAfter from 'date-fns/is_after';
 
 export default {
-  name: 'Card',
+  name: 'HistoriesCard',
 
   props: {
     item: {
@@ -34,24 +35,26 @@ export default {
   computed: {
     percent() {
       return this.isSale
-        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
+        ? Math.floor(
+            (1 - head(this.item.salePrices) / head(this.item.prices)) * 100
+          )
         : 0;
     },
     price() {
+      return this.formattedPrices.length > 1
+        ? `¥${head(this.formattedPrices)}〜¥${last(this.formattedPrices)}`
+        : `¥${head(this.formattedPrices)}`;
+    },
+    formattedPrices() {
       const prices = this.isSale ? this.item.salePrices : this.item.prices;
       // 価格に3桁ずつカンマをつける
-      const formattedPrices = prices.map(price => this.formatWithComma(price));
-      const maxIndex = formattedPrices.length - 1;
-
-      return formattedPrices.length > 1
-        ? `¥${formattedPrices[0]}〜¥${formattedPrices[maxIndex]}`
-        : `¥${formattedPrices[0]}`;
+      return prices.map(this.formatWithComma);
     },
     isSale() {
       return (
         this.item.salePrices &&
         this.item.saleLimitTime &&
-        // 現在日時がセール期間を過ぎているかどうかをチェック
+        // 現在日時がセール期間を過ぎているかどうか
         !isAfter(new Date().toString(), this.item.saleLimitTime)
       );
     },
@@ -59,9 +62,8 @@ export default {
 
   methods: {
     ...mapActions(['removeItem']),
-    formatWithComma(number) {
-      return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-    },
+    formatWithComma: number =>
+      number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'),
   },
 };
 </script>

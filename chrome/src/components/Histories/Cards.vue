@@ -8,7 +8,7 @@
 import Card from './Card.vue';
 
 export default {
-  name: 'Cards',
+  name: 'HistoriesCards',
 
   components: { Card },
 

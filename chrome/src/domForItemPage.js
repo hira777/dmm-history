@@ -1,5 +1,5 @@
 // DMMの商品ページのDOMに対する処理要求に応じるメソッド群
-import orderBy from 'lodash.orderby';
+import { orderBy } from 'lodash-es';
 
 import * as Dom from './utils/dom';
 

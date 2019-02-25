@@ -33,8 +33,7 @@
   "dependencies": {
     "bulma": "^0.7.0",
     "date-fns": "^1.29.0",
-    "lodash.findkey": "^4.6.0",
-    "lodash.orderby": "^4.6.0",
+    "lodash-es": "^4.17.11",
     "throttle-debounce": "^1.0.1",
     "vue": "^2.5.16",
     "vuex": "^3.0.1"
