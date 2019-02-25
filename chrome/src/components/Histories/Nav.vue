@@ -23,7 +23,7 @@ export default {
     },
 
     itemsExits() {
-      return this.$store.state.items.length > 0;
+      return this.allItems.length > 0;
     },
   },
 };

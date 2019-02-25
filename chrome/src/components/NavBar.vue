@@ -25,10 +25,6 @@ export default {
   components: {
     SearchInput,
   },
-
-  computed: {
-    ...mapGetters(['numberOfItems', 'sortType']),
-  },
 };
 </script>
 
