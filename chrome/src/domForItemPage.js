@@ -7,17 +7,14 @@ import * as Dom from './utils/dom';
  * 商品タイトルを取得
  * @return {String}
  */
-const getTitle = () => {
-  return document.getElementById('title').innerText.trim();
-};
+const getTitle = () => document.getElementById('title').innerText.trim();
 
 /**
  * 商品画像のURLを取得
  * @return {String}
  */
-const getImageUrl = () => {
-  return document.getElementById('sample-video').querySelectorAll('img')[0].src;
-};
+const getImageUrl = () =>
+  document.getElementById('sample-video').querySelectorAll('img')[0].src;
 
 /**
  * 商品のシリーズを取得
@@ -63,11 +60,10 @@ const getActresses = () => {
  * 商品のお気に入り数を取得
  * @return {Number}
  */
-const getFavoriteCount = () => {
-  return Number(
+const getFavoriteCount = () =>
+  Number(
     document.querySelectorAll('.box-rank .tx-count > span')[0].innerText.trim()
   );
-};
 
 /**
  * 商品の価格情報を取得
@@ -79,18 +75,14 @@ const getPrices = () => {
   // 商品がセール時のみに存在する要素。セール時はこの要素の中に価格（テキスト）が存在する。
   // セール時は.priceから価格を取得できないため、こちらから取得する。
   const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
-  const prices = [];
-
-  [].forEach.call(isSale() ? txLtElement : priceElement, element => {
-    prices.push(
-      Number(
-        element.innerText
-          .trim()
-          .replace('円', '')
-          .replace(',', '')
-      )
-    );
-  });
+  const prices = [...(isSale() ? txLtElement : priceElement)].map(element =>
+    Number(
+      element.innerText
+        .trim()
+        .replace('円', '')
+        .replace(',', '')
+    )
+  );
 
   // 価格を昇順（[100, 50, 30] => [30, 50, 100]）にして返す
   return orderBy(prices);
@@ -105,19 +97,16 @@ const getSalePrices = () => {
   const salePriceElement = basketContentsElement.querySelectorAll(
     '.tx-hangaku'
   );
-  const salePrices = [];
 
   if (salePriceElement.length > 0) {
-    [].forEach.call(salePriceElement, element => {
-      salePrices.push(
-        Number(
-          element.innerText
-            .trim()
-            .replace('円', '')
-            .replace(',', '')
-        )
-      );
-    });
+    const salePrices = [...salePriceElement].map(element =>
+      Number(
+        element.innerText
+          .trim()
+          .replace('円', '')
+          .replace(',', '')
+      )
+    );
 
     // 価格を昇順（[100, 50, 30] => [30, 50, 100]）にして返す
     return orderBy(salePrices);
