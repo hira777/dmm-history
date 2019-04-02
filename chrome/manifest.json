@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://www.dmm.co.jp/digital/videoa/-/detail/=/*"
+        "https://www.dmm.co.jp/digital/videoa/-/detail/=/*"
       ],
       "js": [
         "build/historySaver.js"
