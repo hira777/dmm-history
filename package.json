@@ -11,10 +11,6 @@
   "author": "soarflat",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-date-fns": "^0.1.0",
-    "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
