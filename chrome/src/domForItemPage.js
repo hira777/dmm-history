@@ -55,7 +55,7 @@ const getActresses = () => {
   )[5];
   return Dom.getTexts({
     element,
-    selectors: 'a',
+    selectors: 'a'
   });
 };
 
@@ -168,5 +168,5 @@ export default {
   getPrices,
   // getIsSale,
   getSalePrices,
-  getSaleLimitTime,
+  getSaleLimitTime
 };

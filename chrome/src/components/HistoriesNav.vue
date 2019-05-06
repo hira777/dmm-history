@@ -24,7 +24,7 @@ export default {
 
     itemsExits() {
       return this.allItems.length > 0;
-    },
-  },
+    }
+  }
 };
 </script>

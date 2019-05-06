@@ -12,8 +12,8 @@ export default {
   name: 'App',
   components: {
     NavBar,
-    Histories,
-  },
+    Histories
+  }
 };
 </script>
 

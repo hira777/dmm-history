@@ -13,7 +13,7 @@ const saveNewHistory = () => {
     imageUrl: dom.getImageUrl(),
     prices: dom.getPrices(),
     salePrices: dom.getSalePrices(),
-    saleLimitTime: dom.getSaleLimitTime(),
+    saleLimitTime: dom.getSaleLimitTime()
   };
 
   chromeStorage.get({ keys: ROOT_KEY }).then(obj => {

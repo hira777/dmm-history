@@ -5,12 +5,12 @@ module.exports = {
   entry: {
     historySaver: './src/historySaver.js',
     histories: './src/histories.js',
-    popup: './src/popup.js',
+    popup: './src/popup.js'
   },
 
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].js',
+    filename: '[name].js'
   },
 
   module: {
@@ -21,17 +21,17 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader',
-          },
-        },
-      },
-    ],
+            scss: 'vue-style-loader!css-loader!sass-loader'
+          }
+        }
+      }
+    ]
   },
 
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
-    },
+      vue$: 'vue/dist/vue.esm.js'
+    }
   },
 
   optimization: {
@@ -39,12 +39,12 @@ module.exports = {
       new UglifyJSPlugin({
         uglifyOptions: {
           compress: {
-            drop_console: true,
-          },
-        },
-      }),
-    ],
+            drop_console: true
+          }
+        }
+      })
+    ]
   },
 
-  devtool: 'source-map',
+  devtool: 'source-map'
 };

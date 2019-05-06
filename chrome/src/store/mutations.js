@@ -33,5 +33,5 @@ export default {
     if (index > -1) {
       state.tags.splice(index, 1);
     }
-  },
+  }
 };

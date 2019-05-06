@@ -23,12 +23,12 @@ export default {
   name: 'NavBar',
 
   components: {
-    SearchInput,
+    SearchInput
   },
 
   computed: {
-    ...mapGetters(['numberOfItems', 'sortType']),
-  },
+    ...mapGetters(['numberOfItems', 'sortType'])
+  }
 };
 </script>
 

@@ -36,12 +36,12 @@ export default {
   matchKeyword: state => item =>
     Util.matchAllKeywordsFromTarget({
       keywords: state.keywords,
-      target: item.title,
+      target: item.title
     }),
 
   /**
    * 検索中のキーワードが存在するかどうか
    */
   keywordsExists: state =>
-    typeof state.keywords[0] !== 'undefined' && state.keywords[0] !== '',
+    typeof state.keywords[0] !== 'undefined' && state.keywords[0] !== ''
 };

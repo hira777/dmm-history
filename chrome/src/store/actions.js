@@ -3,38 +3,38 @@ import * as types from './mutation-types';
 export default {
   setItems({ commit }, items) {
     commit(types.SET_ITEMS, {
-      items,
+      items
     });
   },
 
   removeItem({ commit }, itemId) {
     commit(types.REMOVE_ITEM, {
-      itemId,
+      itemId
     });
   },
 
   setKeywords({ commit }, keywords) {
     keywords = keywords.split(' ');
     commit(types.SET_KEYWORDS, {
-      keywords,
+      keywords
     });
   },
 
   setSortType({ commit }, sortType) {
     commit(types.UPDATE_SORT_TYPE, {
-      sortType,
+      sortType
     });
   },
 
   addTag({ commit }, tag) {
     commit(types.ADD_TAG, {
-      tag,
+      tag
     });
   },
 
   removeTag({ commit }, tag) {
     commit(types.REMOVE_TAG, {
-      tag,
+      tag
     });
-  },
+  }
 };

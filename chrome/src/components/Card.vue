@@ -23,12 +23,12 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     itemIndex: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
 
   computed: {
@@ -54,15 +54,15 @@ export default {
         // 現在日時がセール期間を過ぎているかどうかをチェック
         !isAfter(new Date().toString(), this.item.saleLimitTime)
       );
-    },
+    }
   },
 
   methods: {
     ...mapActions(['removeItem']),
     formatWithComma(number) {
       return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-    },
-  },
+    }
+  }
 };
 </script>
 

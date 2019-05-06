@@ -15,7 +15,7 @@ export default {
 
   data() {
     return {
-      currentValue: '',
+      currentValue: ''
     };
   },
 
@@ -42,7 +42,7 @@ export default {
     setCurrentValue(value) {
       if (value === this.currentValue) return;
       this.currentValue = value;
-    },
-  },
+    }
+  }
 };
 </script>

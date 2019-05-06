@@ -14,11 +14,11 @@ export default new Vuex.Store({
     keywords: [],
     sortType: {
       recent: true,
-      favoriteCount: false,
+      favoriteCount: false
     },
-    tags: [],
+    tags: []
   },
   getters,
   mutations,
-  actions,
+  actions
 });

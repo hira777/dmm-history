@@ -16,5 +16,5 @@ const clear = ({ storageArea = 'local' }) =>
 export default {
   get,
   set,
-  clear,
+  clear
 };

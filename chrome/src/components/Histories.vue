@@ -19,13 +19,13 @@ export default {
   components: { Cards, HistoriesNav },
 
   computed: {
-    ...mapGetters(['items']),
+    ...mapGetters(['items'])
   },
 
   created() {
     this.update();
     this.$store.watch(state => state.items, this.onUpdatedItems, {
-      deep: true,
+      deep: true
     });
   },
 
@@ -51,7 +51,7 @@ export default {
           this.setItems(items);
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
