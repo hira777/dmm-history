@@ -6,16 +6,21 @@
     "build": "cd chrome && webpack --mode production --progress --hide-modules",
     "zip": "zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
     "release": "node release.js && yarn run build && yarn run zip",
-    "lint": "eslint chrome/src --fix --ext=js,vue"
+    "lint": "eslint chrome/src --fix --ext=js,vue",
+    "test": "jest"
   },
   "author": "soarflat",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.4.0",
+    "jest": "^24.8.0",
     "node-sass": "^4.9.0",
     "pug": "^2.0.0-rc.3",
     "pug-loader": "^2.3.0",
