@@ -3,7 +3,7 @@ import history from './utils/history';
 import chromeStorage from './utils/chromeStorage';
 import dom from './domForItemPage';
 
-const saveNewHistory = () => {
+async function saveNewHistory() {
   const newHistory = {
     id: location.href.match(/cid=(\d|[a-z])+/g)[0].replace('cid=', ''),
     title: dom.getTitle(),
@@ -15,14 +15,12 @@ const saveNewHistory = () => {
     salePrices: dom.getSalePrices(),
     saleLimitTime: dom.getSaleLimitTime()
   };
-
-  chromeStorage.get({ keys: KEYS.DMM_HISTORY }).then(obj => {
-    const histories = history.add(history.get(obj), newHistory).slice(0, 120);
-    const entity = { ...obj };
-    entity[KEYS.DMM_HISTORY] = entity[KEYS.DMM_HISTORY] || {};
-    entity[KEYS.DMM_HISTORY][KEYS.HISTORIES] = histories;
-    chromeStorage.set({ obj: entity });
-  });
-};
+  const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
+  const histories = history.add(history.get(obj), newHistory).slice(0, 120);
+  const entity = { ...obj };
+  entity[KEYS.DMM_HISTORY] = entity[KEYS.DMM_HISTORY] || {};
+  entity[KEYS.DMM_HISTORY][KEYS.HISTORIES] = histories;
+  chromeStorage.set({ obj: entity });
+}
 
 saveNewHistory();
