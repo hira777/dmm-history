@@ -1,19 +1,19 @@
 import { KEYS, AFFILIATE_ID } from './enums';
 import history from './utils/history';
 import chromeStorage from './utils/chromeStorage';
-import dom from './domForItemPage';
+import itemPage from './utils/itemPage';
 
 async function saveNewHistory() {
   const newHistory = {
     id: location.href.match(/cid=(\d|[a-z])+/g)[0].replace('cid=', ''),
-    title: dom.getTitle(),
+    title: itemPage.getTitle(),
     href: `${location.protocol}//${location.host}${
       location.pathname
     }${AFFILIATE_ID}`,
-    imageUrl: dom.getImageUrl(),
-    prices: dom.getPrices(),
-    salePrices: dom.getSalePrices(),
-    saleLimitTime: dom.getSaleLimitTime()
+    imageUrl: itemPage.getImageUrl(),
+    prices: itemPage.getPrices(),
+    salePrices: itemPage.getSalePrices(),
+    saleLimitTime: itemPage.getSaleLimitTime()
   };
   const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
   const histories = history.add(history.get(obj), newHistory).slice(0, 120);

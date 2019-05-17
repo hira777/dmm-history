@@ -1,7 +1,19 @@
-// DMMの商品ページのDOMに対する処理要求に応じるメソッド群
+/**
+ * @file DMMの商品ページのデータを取得するメソッド群
+ */
+
 import orderBy from 'lodash.orderby';
 
-import * as Dom from './utils/dom';
+/**
+ * セレクタから取得した複数のテキストを配列に格納して返す
+ * @param element
+ * @param selectors
+ * @returns {Array}
+ */
+const getTexts = ({ element = document, selectors }) => {
+  const texts = element.querySelectorAll(selectors);
+  return [...texts].map(text => text.innerText.trim());
+};
 
 /**
  * 商品タイトルを取得
@@ -53,7 +65,7 @@ const getActresses = () => {
   const element = document.querySelectorAll(
     '.box-rank + table > tbody > tr'
   )[5];
-  return Dom.getTexts({
+  return getTexts({
     element,
     selectors: 'a'
   });
@@ -161,12 +173,12 @@ const getSaleLimitTime = () => {
 export default {
   getTitle,
   getImageUrl,
-  // getSeries,
-  // getMaker,
-  // getActresses,
-  // getFavoriteCount,
+  getSeries,
+  getMaker,
+  getActresses,
+  getFavoriteCount,
   getPrices,
-  // getIsSale,
+  getIsSale,
   getSalePrices,
   getSaleLimitTime
 };
