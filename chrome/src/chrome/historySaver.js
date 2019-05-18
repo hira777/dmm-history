@@ -1,7 +1,7 @@
-import { KEYS, AFFILIATE_ID } from './enums';
-import history from './utils/history';
-import chromeStorage from './utils/chromeStorage';
-import itemPage from './utils/itemPage';
+import { KEYS, AFFILIATE_ID } from '@/enums';
+import history from '@/utils/history';
+import chromeStorage from '@/utils/chromeStorage';
+import itemPage from '@/utils/itemPage';
 
 async function saveNewHistory() {
   const newHistory = {

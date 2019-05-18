@@ -9,7 +9,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { ROOT_KEY, HISTORIES_KEY } from '../config';
+import { ROOT_KEY, HISTORIES_KEY } from '@/config';
 import HistoriesNav from './HistoriesNav.vue';
 import Cards from './Cards.vue';
 

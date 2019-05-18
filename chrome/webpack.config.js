@@ -3,9 +3,9 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
-    historySaver: './src/historySaver.js',
-    histories: './src/histories.js',
-    popup: './src/popup.js'
+    historySaver: './src/chrome/historySaver.js',
+    histories: './src/vue/histories.js',
+    popup: './src/chrome/popup.js'
   },
 
   output: {

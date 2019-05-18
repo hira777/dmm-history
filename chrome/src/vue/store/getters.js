@@ -1,4 +1,4 @@
-import * as Util from '../utils/util';
+import * as Util from '@/utils/util';
 
 export default {
   /**
