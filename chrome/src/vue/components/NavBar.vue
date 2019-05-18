@@ -17,7 +17,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import SearchInput from './SearchInput.vue';
+import SearchInput from '@/vue/components/SearchInput.vue';
 
 export default {
   name: 'NavBar',

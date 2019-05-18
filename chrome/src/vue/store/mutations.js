@@ -1,4 +1,4 @@
-import * as types from './mutation-types';
+import * as types from '@/vue/store/mutation-types';
 
 export default {
   [types.SET_ITEMS](state, { items }) {
@@ -7,7 +7,6 @@ export default {
 
   [types.REMOVE_ITEM](state, { itemId }) {
     state.items = state.items.filter(item => item.id !== itemId);
-    chrome.storage.local.set({ dmmItems: state.items });
   },
 
   [types.UPDATE_SORT_TYPE](state, { sortType }) {

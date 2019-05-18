@@ -1,7 +1,19 @@
-// DMMの商品ページのDOMに対する処理要求に応じるメソッド群
+/**
+ * @file DMMの商品ページのデータを取得するメソッド群
+ */
+
 import orderBy from 'lodash.orderby';
 
-import * as Dom from './utils/dom';
+/**
+ * セレクタから取得した複数のテキストを配列に格納して返す
+ * @param element
+ * @param selectors
+ * @returns {Array}
+ */
+const getTexts = ({ element = document, selectors }) => {
+  const texts = element.querySelectorAll(selectors);
+  return [...texts].map(text => text.innerText.trim());
+};
 
 /**
  * 商品タイトルを取得
@@ -23,51 +35,51 @@ const getImageUrl = () => {
  * 商品のシリーズを取得
  * @return {String}
  */
-const getSeries = () => {
-  const element = document.querySelectorAll(
-    '.box-rank + table > tbody > tr'
-  )[7];
-  return element.querySelectorAll('a')[0]
-    ? element.querySelectorAll('a')[0].innerText.trim()
-    : undefined;
-};
+// const getSeries = () => {
+//   const element = document.querySelectorAll(
+//     '.box-rank + table > tbody > tr'
+//   )[7];
+//   return element.querySelectorAll('a')[0]
+//     ? element.querySelectorAll('a')[0].innerText.trim()
+//     : undefined;
+// };
 
 /**
  * 商品のメーカーを取得
  * @return {String}
  */
-const getMaker = () => {
-  const element = document.querySelectorAll(
-    '.box-rank + table > tbody > tr'
-  )[8];
-  return element.querySelectorAll('a')[0]
-    ? element.querySelectorAll('a')[0].innerText.trim()
-    : undefined;
-};
+// const getMaker = () => {
+//   const element = document.querySelectorAll(
+//     '.box-rank + table > tbody > tr'
+//   )[8];
+//   return element.querySelectorAll('a')[0]
+//     ? element.querySelectorAll('a')[0].innerText.trim()
+//     : undefined;
+// };
 
 /**
  * 出演女優を取得
  * @return {Array}
  */
-const getActresses = () => {
-  const element = document.querySelectorAll(
-    '.box-rank + table > tbody > tr'
-  )[5];
-  return Dom.getTexts({
-    element,
-    selectors: 'a'
-  });
-};
+// const getActresses = () => {
+//   const element = document.querySelectorAll(
+//     '.box-rank + table > tbody > tr'
+//   )[5];
+//   return getTexts({
+//     element,
+//     selectors: 'a'
+//   });
+// };
 
 /**
  * 商品のお気に入り数を取得
  * @return {Number}
  */
-const getFavoriteCount = () => {
-  return Number(
-    document.querySelectorAll('.box-rank .tx-count > span')[0].innerText.trim()
-  );
-};
+// const getFavoriteCount = () => {
+//   return Number(
+//     document.querySelectorAll('.box-rank .tx-count > span')[0].innerText.trim()
+//   );
+// };
 
 /**
  * 商品の価格情報を取得
@@ -166,7 +178,6 @@ export default {
   // getActresses,
   // getFavoriteCount,
   getPrices,
-  // getIsSale,
   getSalePrices,
   getSaleLimitTime
 };
