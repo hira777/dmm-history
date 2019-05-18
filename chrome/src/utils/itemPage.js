@@ -10,10 +10,10 @@ import orderBy from 'lodash.orderby';
  * @param selectors
  * @returns {Array}
  */
-const getTexts = ({ element = document, selectors }) => {
-  const texts = element.querySelectorAll(selectors);
-  return [...texts].map(text => text.innerText.trim());
-};
+// const getTexts = ({ element = document, selectors }) => {
+//   const texts = element.querySelectorAll(selectors);
+//   return [...texts].map(text => text.innerText.trim());
+// };
 
 /**
  * 商品タイトルを取得
