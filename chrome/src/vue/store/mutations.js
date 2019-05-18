@@ -7,7 +7,6 @@ export default {
 
   [types.REMOVE_ITEM](state, { itemId }) {
     state.items = state.items.filter(item => item.id !== itemId);
-    chrome.storage.local.set({ dmmItems: state.items });
   },
 
   [types.UPDATE_SORT_TYPE](state, { sortType }) {
