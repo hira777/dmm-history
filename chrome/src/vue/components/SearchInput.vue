@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
   name: 'SearchInput',
 
@@ -32,11 +30,9 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setKeywords']),
-
     handleInput(value) {
       this.setCurrentValue(value);
-      this.setKeywords(value);
+      this.$store.dispatch('setKeywords', value);
     },
 
     setCurrentValue(value) {

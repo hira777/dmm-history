@@ -1,7 +1,7 @@
 <template lang="pug">
   .card.card-equal-height
     .card-image
-      button.delete.card-delete-button(@click="removeItem(item.id)")
+      button.delete.card-delete-button(@click="handleDeleteClick(item.id)")
       figure.image
         a(:href="item.href", target="_blank")
           img(:src="item.imageUrl")
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import isAfter from 'date-fns/is_after';
 
 export default {
@@ -58,9 +57,11 @@ export default {
   },
 
   methods: {
-    ...mapActions(['removeItem']),
     formatWithComma(number) {
       return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    },
+    handleDeleteClick(itemId) {
+      this.$store.dispatch('removeItem', itemId);
     }
   }
 };

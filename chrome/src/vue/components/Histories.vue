@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import { ROOT_KEY, HISTORIES_KEY } from '@/config';
 import HistoriesNav from '@/vue/components/HistoriesNav.vue';
 import Cards from '@/vue/components/Cards.vue';
@@ -30,8 +30,6 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setItems']),
-
     onUpdatedItems(items) {
       const entity = {};
 
@@ -48,7 +46,7 @@ export default {
             : [];
 
         if (items.length > 0) {
-          this.setItems(items);
+          this.$store.dispatch('setItems', items);
         }
       });
     }
