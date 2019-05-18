@@ -1,4 +1,4 @@
-import * as types from './mutation-types';
+import * as types from '@/vue/store/mutation-types';
 
 export default {
   [types.SET_ITEMS](state, { items }) {

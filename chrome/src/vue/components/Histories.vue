@@ -10,8 +10,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { ROOT_KEY, HISTORIES_KEY } from '@/config';
-import HistoriesNav from './HistoriesNav.vue';
-import Cards from './Cards.vue';
+import HistoriesNav from '@/vue/components/HistoriesNav.vue';
+import Cards from '@/vue/components/Cards.vue';
 
 export default {
   name: 'Histories',

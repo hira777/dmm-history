@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue';
-import Histories from './components/Histories.vue';
+import NavBar from '@/vue/components/NavBar.vue';
+import Histories from '@/vue/components/Histories.vue';
 
 export default {
   name: 'App',
