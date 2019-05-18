@@ -1,4 +1,4 @@
-import { KEYS, AFFILIATE_ID } from '@/enums';
+import { KEYS, AFFILIATE_ID, MAX_HISTORIES } from '@/enums';
 import history from '@/utils/history';
 import chromeStorage from '@/utils/chromeStorage';
 import itemPage from '@/utils/itemPage';
@@ -16,7 +16,9 @@ async function saveNewHistory() {
     saleLimitTime: itemPage.getSaleLimitTime()
   };
   const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
-  const histories = history.add(history.get(obj), newHistory).slice(0, 120);
+  const histories = history
+    .add(history.get(obj), newHistory)
+    .slice(0, MAX_HISTORIES);
   const entity = { ...obj };
   entity[KEYS.DMM_HISTORY] = entity[KEYS.DMM_HISTORY] || {};
   entity[KEYS.DMM_HISTORY][KEYS.HISTORIES] = histories;
