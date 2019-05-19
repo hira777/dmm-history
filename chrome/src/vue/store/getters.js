@@ -12,9 +12,7 @@ export default {
   searchedItems: (state, getters) => {
     if (!getters.keywordsExists) return undefined;
 
-    return state.items.filter(item => {
-      return getters.matchKeyword(item);
-    });
+    return state.items.filter(item => getters.matchKeyword(item));
   },
 
   /**
