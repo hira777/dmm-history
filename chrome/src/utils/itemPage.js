@@ -5,6 +5,14 @@
 import orderBy from 'lodash.orderby';
 
 /**
+ * URLから商品IDを取得
+ * @return {String}
+ */
+const getCid = url => {
+  return url.match(/cid=.+(?=\/)/g)[0].replace('cid=', '');
+};
+
+/**
  * 商品タイトルを取得
  * @return {String}
  */
@@ -110,6 +118,7 @@ const getSaleLimitTime = () => {
 };
 
 export default {
+  getCid,
   getTitle,
   getImageUrl,
   getPrices,
