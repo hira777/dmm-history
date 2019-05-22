@@ -5,7 +5,7 @@ import itemPage from '@/utils/itemPage';
 
 async function saveNewHistory() {
   const newHistory = {
-    id: location.href.match(/cid=(\d|[a-z])+/g)[0].replace('cid=', ''),
+    id: itemPage.getCid(location.href),
     title: itemPage.getTitle(),
     href: `${location.protocol}//${location.host}${
       location.pathname
