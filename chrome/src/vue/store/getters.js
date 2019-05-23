@@ -1,4 +1,4 @@
-import * as Util from '@/utils/util';
+import matchAllKeywords from '@/utils/matchAllKeywords';
 
 export default {
   /**
@@ -32,7 +32,7 @@ export default {
    * キーワードにマッチする商品ががあるかどうか
    */
   matchKeyword: state => item =>
-    Util.matchAllKeywordsFromTarget({
+    matchAllKeywords({
       keywords: state.keywords,
       target: item.title
     }),
