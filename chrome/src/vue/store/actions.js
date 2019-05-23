@@ -12,7 +12,7 @@ export default {
   },
 
   setKeywords({ commit }, keywords) {
-    keywords = keywords.split(' ');
+    keywords = keywords.split(' ').filter(keyword => keyword !== '');
     commit(types.SET_KEYWORDS, { keywords });
   },
 
