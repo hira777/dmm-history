@@ -12,20 +12,8 @@ export default {
   },
 
   setKeywords({ commit }, keywords) {
-    keywords = keywords.split(' ');
+    keywords = keywords.split(' ').filter(keyword => keyword !== '');
     commit(types.SET_KEYWORDS, { keywords });
-  },
-
-  setSortType({ commit }, sortType) {
-    commit(types.UPDATE_SORT_TYPE, { sortType });
-  },
-
-  addTag({ commit }, tag) {
-    commit(types.ADD_TAG, { tag });
-  },
-
-  removeTag({ commit }, tag) {
-    commit(types.REMOVE_TAG, { tag });
   },
 
   async restore({ commit }) {
@@ -38,12 +26,14 @@ export default {
     if (items.length > 0) commit(types.SET_ITEMS, { items });
   },
 
-  save({ state }) {
+  // eslint-disable-next-line no-empty-pattern
+  save({}, { items }) {
     const entity = {
       [KEYS.DMM_HISTORY]: {
-        [KEYS.HISTORIES]: state.items
+        [KEYS.HISTORIES]: items
       }
     };
+
     chromeStorage.set({ obj: entity });
   }
 };

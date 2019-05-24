@@ -8,25 +8,28 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import HistoriesNav from '@/vue/components/HistoriesNav.vue';
 import Cards from '@/vue/components/Cards.vue';
 
 export default {
   name: 'Histories',
 
-  components: { Cards, HistoriesNav },
+  components: {
+    Cards,
+    HistoriesNav
+  },
 
   computed: {
-    items() {
-      return this.$store.getters.items;
-    }
+    ...mapGetters(['items', 'allItems'])
   },
 
   watch: {
-    items: {
+    allItems: {
       deep: true,
       handler(value) {
-        this.$store.dispatch('save', value);
+        this.$store.dispatch('save', { items: value });
       }
     }
   },

@@ -3,8 +3,9 @@
     .control
       input.input.is-small(
       placeholder="検索",
-      :value="currentValue",
-      @input="handleInput($event.target.value)")
+      ref="input"
+      :value="searchInput",
+      @input="handleInput")
 </template>
 
 <script>
@@ -13,31 +14,19 @@ export default {
 
   data() {
     return {
-      currentValue: ''
+      searchInput: ''
     };
   },
 
-  created() {
-    this.$store.watch(
-      state => state.keywords,
-      keywords => {
-        const value = keywords.join(' ');
-        if (this.currentValue === value) return;
-        this.setCurrentValue(value);
-      },
-      { deep: true }
-    );
-  },
-
   methods: {
-    handleInput(value) {
-      this.setCurrentValue(value);
-      this.$store.dispatch('setKeywords', value);
+    handleInput($event) {
+      this.searchInput = $event.target.value.replace(/\u3000/g, ' ');
+      this.$store.dispatch('setKeywords', this.searchInput);
+      this.setSearchInput();
     },
-
-    setCurrentValue(value) {
-      if (value === this.currentValue) return;
-      this.currentValue = value;
+    setSearchInput() {
+      if (this.$refs.input.value === this.searchInput) return;
+      this.$refs.input.value = this.searchInput;
     }
   }
 };
