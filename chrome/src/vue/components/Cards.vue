@@ -28,12 +28,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.column {
-  padding: 1rem 0.6rem 0.6rem 0.6rem;
-}
-
-.column.is-one-eighth {
-  flex: none;
-  width: 12.5%;
-}
 </style>

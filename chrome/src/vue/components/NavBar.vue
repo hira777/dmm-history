@@ -33,23 +33,4 @@ export default {
 </script>
 
 <style lang="scss">
-.navbar {
-  box-shadow: none;
-}
-
-.is-fullwidth {
-  width: 100%;
-}
-
-.is-flex {
-  display: flex;
-}
-
-.is-align-items-center {
-  align-items: center;
-}
-
-.is-grow-1 {
-  flex-grow: 1;
-}
 </style>
