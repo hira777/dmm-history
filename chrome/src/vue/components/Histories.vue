@@ -16,9 +16,14 @@ import Cards from '@/vue/components/Cards.vue';
 export default {
   name: 'Histories',
 
-  components: { Cards, HistoriesNav },
+  components: {
+    Cards,
+    HistoriesNav
+  },
 
-  computed: { ...mapGetters(['items', 'allItems']) },
+  computed: {
+    ...mapGetters(['items', 'allItems'])
+  },
 
   watch: {
     allItems: {

@@ -27,7 +27,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['numberOfItems', 'sortType'])
+    ...mapGetters(['numberOfItems'])
   }
 };
 </script>

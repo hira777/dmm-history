@@ -10,7 +10,9 @@ import Card from '@/vue/components/Card.vue';
 export default {
   name: 'Cards',
 
-  components: { Card },
+  components: {
+    Card
+  },
 
   props: {
     items: {
