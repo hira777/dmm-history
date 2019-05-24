@@ -26,12 +26,14 @@ export default {
     if (items.length > 0) commit(types.SET_ITEMS, { items });
   },
 
-  save({ state }) {
+  // eslint-disable-next-line no-empty-pattern
+  save({}, { items }) {
     const entity = {
       [KEYS.DMM_HISTORY]: {
-        [KEYS.HISTORIES]: state.items
+        [KEYS.HISTORIES]: items
       }
     };
+
     chromeStorage.set({ obj: entity });
   }
 };
