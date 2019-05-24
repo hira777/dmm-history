@@ -11,12 +11,7 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     items: [],
-    keywords: [],
-    sortType: {
-      recent: true,
-      favoriteCount: false
-    },
-    tags: []
+    keywords: []
   },
   getters,
   mutations,

@@ -16,18 +16,6 @@ export default {
     commit(types.SET_KEYWORDS, { keywords });
   },
 
-  setSortType({ commit }, sortType) {
-    commit(types.UPDATE_SORT_TYPE, { sortType });
-  },
-
-  addTag({ commit }, tag) {
-    commit(types.ADD_TAG, { tag });
-  },
-
-  removeTag({ commit }, tag) {
-    commit(types.REMOVE_TAG, { tag });
-  },
-
   async restore({ commit }) {
     const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
     const items =
