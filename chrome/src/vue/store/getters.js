@@ -1,10 +1,13 @@
 import matchAllKeywords from '@/utils/matchAllKeywords';
 
 export default {
-  // 全ての商品
+  // 全ての商品履歴
   allItems: state => state.items,
 
-  // 検索に該当した商品
+  // 商品履歴が存在するかどうか
+  itemsExits: state => state.items.length > 0,
+
+  // 検索に該当した商品履歴
   searchedItems: (state, getters) => {
     if (!getters.keywordsExists) return undefined;
 
@@ -16,13 +19,13 @@ export default {
     );
   },
 
-  // 表示させる商品
+  // 表示させる商品履歴
   items: (state, getters) =>
     getters.searchedItems !== undefined
       ? getters.searchedItems
       : getters.allItems,
 
-  // 表示させる商品数
+  // 表示させる商品履歴数
   numberOfItems: (state, getters) => getters.items.length,
 
   // 検索中のキーワードが存在するかどうか

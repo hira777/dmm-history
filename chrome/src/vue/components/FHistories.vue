@@ -1,8 +1,8 @@
 <template lang="pug">
   section.section
     #histories.container
-      histories-nav
-      cards(
+      f-histories-nav
+      f-cards(
       :items="items",
       :cardSize="'is-2'")
 </template>
@@ -10,15 +10,15 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import HistoriesNav from '@/vue/components/HistoriesNav.vue';
-import Cards from '@/vue/components/Cards.vue';
+import FHistoriesNav from '@/vue/components/FHistoriesNav.vue';
+import FCards from '@/vue/components/FCards.vue';
 
 export default {
-  name: 'Histories',
+  name: 'FHistories',
 
   components: {
-    Cards,
-    HistoriesNav
+    FCards,
+    FHistoriesNav
   },
 
   computed: {
