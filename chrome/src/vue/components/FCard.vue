@@ -17,7 +17,7 @@
 import isAfter from 'date-fns/is_after';
 
 export default {
-  name: 'Card',
+  name: 'FCard',
 
   props: {
     item: {
