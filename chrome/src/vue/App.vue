@@ -54,6 +54,7 @@ $input-disabled-border-color: $grey-darker;
 @import '~bulma/sass/components/level';
 @import '~bulma/sass/elements/container';
 @import '~bulma/sass/elements/form';
+@import '~bulma/sass/elements/tag';
 @import '~bulma/sass/elements/title';
 @import '~bulma/sass/elements/other';
 </style>
