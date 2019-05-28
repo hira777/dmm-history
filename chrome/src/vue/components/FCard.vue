@@ -113,6 +113,9 @@ export default {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        &:hover {
+          text-decoration: underline;
+        }
       }
       &:not(:last-child) {
         margin-bottom: 0.6rem;
