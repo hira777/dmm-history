@@ -10,8 +10,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import FHistoriesNav from '@/vue/components/FHistoriesNav.vue';
 import FCards from '@/vue/components/FCards.vue';
+import FHistoriesNav from '@/vue/components/FHistoriesNav.vue';
 
 export default {
   name: 'FHistories',
@@ -22,7 +22,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['items', 'allItems'])
+    ...mapGetters(['allItems', 'items'])
   },
 
   watch: {

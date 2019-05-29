@@ -31,10 +31,13 @@ export default {
   },
 
   computed: {
-    salePercent() {
-      return this.isSale
-        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
-        : 0;
+    isSale() {
+      return (
+        this.item.salePrices &&
+        this.item.saleLimitTime &&
+        // 現在日時がセール期間を過ぎているかどうかをチェック
+        !isAfter(new Date().toString(), this.item.saleLimitTime)
+      );
     },
     price() {
       const prices = this.isSale ? this.item.salePrices : this.item.prices;
@@ -46,13 +49,10 @@ export default {
         ? `¥${formattedPrices[0]}〜¥${formattedPrices[maxIndex]}`
         : `¥${formattedPrices[0]}`;
     },
-    isSale() {
-      return (
-        this.item.salePrices &&
-        this.item.saleLimitTime &&
-        // 現在日時がセール期間を過ぎているかどうかをチェック
-        !isAfter(new Date().toString(), this.item.saleLimitTime)
-      );
+    salePercent() {
+      return this.isSale
+        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
+        : 0;
     }
   },
 

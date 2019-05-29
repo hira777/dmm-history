@@ -15,13 +15,13 @@ export default {
   },
 
   props: {
-    items: {
-      type: Array,
-      default: () => []
-    },
     cardSize: {
       type: String,
       default: ''
+    },
+    items: {
+      type: Array,
+      default: () => []
     }
   }
 };
