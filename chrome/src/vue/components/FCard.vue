@@ -10,7 +10,7 @@
       p.card-content-title
         a(:href="item.href", target="_blank") {{ item.title }}
       p.card-content-price(:class="{ 'is-sale': isSale }") {{ price }}
-        span.tag.is-danger(v-if="isSale") {{ percent }}%OFF
+        span.tag.is-danger(v-if="isSale") {{ salePercent }}%OFF
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
   },
 
   computed: {
-    percent() {
+    salePercent() {
       return this.isSale
         ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
         : 0;
