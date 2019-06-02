@@ -22,7 +22,9 @@ export default {
 @import '~bulma/sass/utilities/functions';
 
 // リンクの色を変更
-$blue: #005fc0;
+$link: #005fc0;
+$link-hover: #e20;
+
 $family-sans-serif: -apple-system, Segoe UI, Helvetica Neue,
   Hiragino Kaku Gothic ProN, 'メイリオ', meiryo, sans-serif;
 
@@ -54,6 +56,7 @@ $input-disabled-border-color: $grey-darker;
 @import '~bulma/sass/components/level';
 @import '~bulma/sass/elements/container';
 @import '~bulma/sass/elements/form';
+@import '~bulma/sass/elements/tag';
 @import '~bulma/sass/elements/title';
 @import '~bulma/sass/elements/other';
 </style>

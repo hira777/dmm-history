@@ -1,6 +1,6 @@
 {
   "name": "dmm-history",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "scripts": {
     "dev": "cd chrome && webpack --mode development --watch --hide-modules",
     "build": "cd chrome && webpack --mode production --progress --hide-modules",

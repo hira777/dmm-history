@@ -10,7 +10,7 @@
       p.card-content-title
         a(:href="item.href", target="_blank") {{ item.title }}
       p.card-content-price(:class="{ 'is-sale': isSale }") {{ price }}
-        span.tag.is-danger(v-if="isSale") {{ percent }}%OFF
+        span.tag.is-danger(v-if="isSale") {{ salePercent }}%OFF
 </template>
 
 <script>
@@ -31,10 +31,13 @@ export default {
   },
 
   computed: {
-    percent() {
-      return this.isSale
-        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
-        : 0;
+    isSale() {
+      return (
+        this.item.salePrices &&
+        this.item.saleLimitTime &&
+        // 現在日時がセール期間を過ぎているかどうかをチェック
+        !isAfter(new Date().toString(), this.item.saleLimitTime)
+      );
     },
     price() {
       const prices = this.isSale ? this.item.salePrices : this.item.prices;
@@ -46,13 +49,10 @@ export default {
         ? `¥${formattedPrices[0]}〜¥${formattedPrices[maxIndex]}`
         : `¥${formattedPrices[0]}`;
     },
-    isSale() {
-      return (
-        this.item.salePrices &&
-        this.item.saleLimitTime &&
-        // 現在日時がセール期間を過ぎているかどうかをチェック
-        !isAfter(new Date().toString(), this.item.saleLimitTime)
-      );
+    salePercent() {
+      return this.isSale
+        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
+        : 0;
     }
   },
 
@@ -113,6 +113,9 @@ export default {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        &:hover {
+          text-decoration: underline;
+        }
       }
       &:not(:last-child) {
         margin-bottom: 0.6rem;
