@@ -3,9 +3,9 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
-    historySaver: './src/chrome/historySaver.js',
-    histories: './src/vue/histories.js',
-    popup: './src/chrome/popup.js'
+    historySaver: './src/chrome/historySaver.ts',
+    histories: './src/vue/histories.ts',
+    popup: './src/chrome/popup.ts'
   },
 
   output: {
@@ -41,7 +41,8 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
       vue$: 'vue/dist/vue.esm.js'
-    }
+    },
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   optimization: {
