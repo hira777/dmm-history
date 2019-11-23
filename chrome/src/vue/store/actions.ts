@@ -1,4 +1,4 @@
-import { KEYS } from '@/enums/';
+import { KEYS } from '@/enums';
 import chromeStorage from '@/utils/chromeStorage';
 import * as types from '@/vue/store/mutation-types';
 

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import store from './store/index.ts';
+import store from './store/index';
 import App from './App.vue';
 
 new Vue({
