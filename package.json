@@ -2,6 +2,7 @@
   "name": "dmm-history",
   "version": "1.0.10",
   "scripts": {
+    "check-types": "tsc -p ./chrome/tsconfig.json --noEmit",
     "dev": "cd chrome && webpack --mode development --watch --hide-modules",
     "build": "cd chrome && webpack --mode production --progress --hide-modules",
     "zip": "zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
@@ -27,6 +28,8 @@
     "pug-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16",

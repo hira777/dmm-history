@@ -24,6 +24,15 @@ module.exports = {
             scss: 'vue-style-loader!css-loader!sass-loader'
           }
         }
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true, // 型チェックしない
+          appendTsSuffixTo: [/\.vue$/],
+          configFile: 'tsconfig.json'
+        }
       }
     ]
   },
