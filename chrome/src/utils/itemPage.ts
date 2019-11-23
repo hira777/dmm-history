@@ -6,44 +6,59 @@ import orderBy from 'lodash.orderby';
 
 /**
  * URLから商品IDを取得
- * @return {String}
  */
-const getCid = url => {
-  return url.match(/cid=.+(?=\/)/g)[0].replace('cid=', '');
+const getCid = (url: string): string => {
+  const matched = url.match(/cid=.+(?=\/)/g);
+  return matched ? matched[0].replace('cid=', '') : '';
 };
 
 /**
  * 商品タイトルを取得
- * @return {String}
  */
-const getTitle = () => {
-  return document.getElementById('title').innerText.trim();
+const getTitle = (): string => {
+  return (document.getElementById('title') as HTMLElement).innerText.trim();
 };
 
 /**
  * 商品画像のURLを取得
- * @return {String}
  */
-const getImageUrl = () => {
-  return document.getElementById('sample-video').querySelectorAll('img')[0].src;
+const getImageUrl = (): string => {
+  return (document.getElementById(
+    'sample-video'
+  ) as HTMLElement).querySelectorAll('img')[0].src;
 };
 
 /**
- * 商品の価格情報を取得
- * @return {Array}
+ * 商品がセール中かどうか
  */
-const getPrices = () => {
-  const basketContentsElement = document.getElementById('basket_contents');
+const isSale = (): boolean => {
+  const basketContentsElement = document.getElementById(
+    'basket_contents'
+  ) as HTMLElement;
+  const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
+
+  return txLtElement.length > 0;
+};
+
+type Prices = number[];
+
+/**
+ * 商品の価格情報を取得
+ */
+const getPrices = (): Prices => {
+  const basketContentsElement = document.getElementById(
+    'basket_contents'
+  ) as HTMLElement;
   const priceElement = basketContentsElement.querySelectorAll('.price');
   // 商品がセール時のみに存在する要素。セール時はこの要素の中に価格（テキスト）が存在する。
   // セール時は.priceから価格を取得できないため、こちらから取得する。
   const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
-  const prices = [];
+  const prices: Prices = [];
 
-  [].forEach.call(isSale() ? txLtElement : priceElement, element => {
+  (isSale() ? txLtElement : priceElement).forEach(element => {
     prices.push(
       Number(
-        element.innerText
+        (element as HTMLElement).innerText
           .trim()
           .replace('円', '')
           .replace(',', '')
@@ -57,20 +72,21 @@ const getPrices = () => {
 
 /**
  * 商品のセール価格情報を取得
- * @return {Array}
  */
-const getSalePrices = () => {
-  const basketContentsElement = document.getElementById('basket_contents');
+const getSalePrices = (): Prices | null => {
+  const basketContentsElement = document.getElementById(
+    'basket_contents'
+  ) as HTMLElement;
   const salePriceElement = basketContentsElement.querySelectorAll(
     '.tx-hangaku'
   );
-  const salePrices = [];
+  const salePrices: Prices = [];
 
   if (salePriceElement.length > 0) {
-    [].forEach.call(salePriceElement, element => {
+    salePriceElement.forEach(element => {
       salePrices.push(
         Number(
-          element.innerText
+          (element as HTMLElement).innerText
             .trim()
             .replace('円', '')
             .replace(',', '')
@@ -86,26 +102,19 @@ const getSalePrices = () => {
 };
 
 /**
- * 商品がセール中かどうか
- * @return {Boolean}
- */
-const isSale = () => {
-  const basketContentsElement = document.getElementById('basket_contents');
-  const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
-
-  return txLtElement.length > 0;
-};
-
-/**
  * セール時間を取得
- * @return {String|null}
  */
-const getSaleLimitTime = () => {
-  const saleTimeElement = document.querySelector('.mv-sale > span');
+const getSaleLimitTime = (): string | null => {
+  const saleTimeElement = document.querySelector<HTMLElement>(
+    '.mv-sale > span'
+  );
 
   if (saleTimeElement) {
     const timeText = saleTimeElement.innerText;
     const matched = timeText.match(/(\d+)月(\d+)日\D+(\d+):/);
+
+    if (!matched) return null;
+
     const year = new Date().getFullYear();
     const month = Number(matched[1]);
     const day = Number(matched[2]);
