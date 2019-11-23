@@ -15,6 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.7.4",
     "babel-jest": "^24.8.0",
     "css-loader": "^2.1.1",
     "eslint": "^4.19.1",
@@ -37,6 +38,7 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@types/jest": "^24.0.23",
     "bulma": "^0.7.0",
     "date-fns": "^1.29.0",
     "lodash.orderby": "^4.6.0",
