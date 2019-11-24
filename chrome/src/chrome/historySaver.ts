@@ -1,10 +1,10 @@
 import { KEYS, AFFILIATE_ID, MAX_HISTORIES } from '@/enums';
-import history from '@/utils/history';
+import history, { History } from '@/utils/history';
 import chromeStorage from '@/utils/chromeStorage';
 import itemPage from '@/utils/itemPage';
 
-async function saveNewHistory() {
-  const newHistory = {
+async function saveNewHistory(): Promise<void> {
+  const newHistory: History = {
     id: itemPage.getCid(location.href),
     title: itemPage.getTitle(),
     href: `${location.protocol}//${location.host}${
