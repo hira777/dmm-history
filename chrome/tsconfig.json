@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "module": "es2015", // ESM は webpack が変形する
     "moduleResolution": "node", // node_modules から モジュールをインポートするために必要
     "baseUrl": "./",
