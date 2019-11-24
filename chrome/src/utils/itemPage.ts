@@ -4,6 +4,8 @@
 
 import orderBy from 'lodash.orderby';
 
+import { Prices } from '@/utils/history';
+
 /**
  * URLから商品IDを取得
  */
@@ -39,8 +41,6 @@ const isSale = (): boolean => {
 
   return txLtElement.length > 0;
 };
-
-type Prices = number[];
 
 /**
  * 商品の価格情報を取得
