@@ -1,8 +1,21 @@
 import { KEYS } from '@/enums';
 import chromeStorage from '@/utils/chromeStorage';
-import * as types from '@/vue/store/mutation-types';
+import types from '@/vue/store/mutation-types';
 
-export default {
+import { Actions } from '@/vue/store/types';
+import {
+  StoreState,
+  StoreGetters,
+  StoreActions,
+  StoreMutations
+} from '@/vue/store/storeType';
+
+const actions: Actions<
+  StoreState,
+  StoreActions,
+  StoreGetters,
+  StoreMutations
+> = {
   setItems({ commit }, items) {
     commit(types.SET_ITEMS, { items });
   },
@@ -12,8 +25,8 @@ export default {
   },
 
   setKeywords({ commit }, keywords) {
-    keywords = keywords.split(' ').filter(keyword => keyword !== '');
-    commit(types.SET_KEYWORDS, { keywords });
+    const newKeywords = keywords.split(' ').filter(keyword => keyword !== '');
+    commit(types.SET_KEYWORDS, { keywords: newKeywords });
   },
 
   async restore({ commit }) {
@@ -37,3 +50,5 @@ export default {
     chromeStorage.set({ obj: entity });
   }
 };
+
+export default actions;

@@ -1,6 +1,9 @@
 import matchAllKeywords from '@/utils/matchAllKeywords';
 
-export default {
+import { Getters } from '@/vue/store/types';
+import { StoreState, StoreGetters } from '@/vue/store/storeType';
+
+const getters: Getters<StoreState, StoreGetters> = {
   // 全ての商品履歴
   allItems: state => state.items,
 
@@ -32,3 +35,5 @@ export default {
   keywordsExists: state =>
     state.keywords[0] !== undefined && state.keywords[0] !== ''
 };
+
+export default getters;

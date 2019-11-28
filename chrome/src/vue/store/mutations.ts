@@ -1,6 +1,9 @@
-import * as types from '@/vue/store/mutation-types';
+import types from '@/vue/store/mutation-types';
 
-export default {
+import { Mutations } from '@/vue/store/types';
+import { StoreState, StoreMutations } from '@/vue/store/storeType';
+
+const mutations: Mutations<StoreState, StoreMutations> = {
   [types.SET_ITEMS](state, { items }) {
     state.items = items;
   },
@@ -13,3 +16,5 @@ export default {
     state.keywords = keywords;
   }
 };
+
+export default mutations;
