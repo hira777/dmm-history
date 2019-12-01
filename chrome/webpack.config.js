@@ -1,5 +1,5 @@
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -51,11 +51,10 @@ module.exports = {
 
   optimization: {
     minimizer: [
-      new UglifyJSPlugin({
-        uglifyOptions: {
-          compress: {
-            drop_console: true
-          }
+      new TerserPlugin({
+        terserOptions: {
+          // consoleを削除する設定
+          compress: { drop_console: true }
         }
       })
     ]
