@@ -7,37 +7,39 @@
   @input="handleInput")
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import { history } from '../store/modules/history';
 
-export default {
-  name: 'FSearchInput',
+@Component
+export default class FSearchInput extends Vue {
+  private searchInput = '';
 
-  data() {
-    return {
-      searchInput: ''
-    };
-  },
+  private history = history;
 
-  computed: {
-    ...mapGetters(['itemsExits']),
-    placeholder() {
-      return this.itemsExits ? '検索' : '履歴が存在しません';
-    }
-  },
-
-  methods: {
-    handleInput($event) {
-      this.searchInput = $event.target.value.replace(/\u3000/g, ' ');
-      this.$store.dispatch('setKeywords', this.searchInput);
-      this.setSearchInput();
-    },
-    setSearchInput() {
-      if (this.$refs.input.value === this.searchInput) return;
-      this.$refs.input.value = this.searchInput;
-    }
+  get itemsExits(): boolean {
+    return this.history.itemsExits;
   }
-};
+
+  get placeholder(): string {
+    return this.itemsExits ? '検索' : '履歴が存在しません';
+  }
+
+  handleInput($event: InputEvent): void {
+    this.searchInput = ($event.target as HTMLInputElement).value.replace(
+      /\u3000/g,
+      ' '
+    );
+    history.setKeywords(this.searchInput);
+    this.setSearchInput();
+  }
+
+  setSearchInput(): void {
+    const $input = this.$refs.input as HTMLInputElement;
+    if ($input.value === this.searchInput) return;
+    $input.value = this.searchInput;
+  }
+}
 </script>
 
 <style lang="scss" scoped>

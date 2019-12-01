@@ -1,5 +1,6 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
@@ -16,20 +17,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.vue/,
         exclude: /node_modules/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader'
-          }
-        }
+        loader: 'vue-loader'
       },
       {
         test: /\.ts$/,
         loader: 'ts-loader',
         options: {
-          transpileOnly: true, // 型チェックしない
+          // transpileOnly: true, // 型チェックしない
           appendTsSuffixTo: [/\.vue$/],
           configFile: 'tsconfig.json'
         }
@@ -42,7 +46,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src/'),
       vue$: 'vue/dist/vue.esm.js'
     },
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.js', '.vue']
   },
 
   optimization: {
@@ -57,5 +61,7 @@ module.exports = {
     ]
   },
 
-  devtool: 'source-map'
+  devtool: 'source-map',
+
+  plugins: [new VueLoaderPlugin()]
 };

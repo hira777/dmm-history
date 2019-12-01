@@ -11,20 +11,22 @@
                 f-search-input
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
 
+import { history } from '../store/modules/history';
 import FSearchInput from '@/vue/components/FSearchInput.vue';
 
-export default {
-  name: 'FNavBar',
-
+@Component({
   components: {
     FSearchInput
-  },
-
-  computed: {
-    ...mapGetters(['numberOfItems'])
   }
-};
+})
+export default class FNavBar extends Vue {
+  private history = history;
+
+  get numberOfItems(): number {
+    return this.history.numberOfItems;
+  }
+}
 </script>
