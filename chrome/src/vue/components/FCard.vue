@@ -13,60 +13,59 @@
         span.tag.is-danger(v-if="isSale") {{ salePercent }}%OFF
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import isAfter from 'date-fns/is_after';
 
-export default {
-  name: 'FCard',
+import { History } from '../../models/history';
+import { history } from '../store/modules/history';
 
-  props: {
-    item: {
-      type: Object,
-      default: () => {}
-    },
-    itemIndex: {
-      type: Number,
-      default: 0
-    }
-  },
+@Component
+export default class FCard extends Vue {
+  private history = history;
 
-  computed: {
-    isSale() {
-      return (
-        this.item.salePrices &&
-        this.item.saleLimitTime &&
-        // 現在日時がセール期間を過ぎているかどうかをチェック
-        !isAfter(new Date().toString(), this.item.saleLimitTime)
-      );
-    },
-    price() {
-      const prices = this.isSale ? this.item.salePrices : this.item.prices;
-      // 価格に3桁ずつカンマをつける
-      const formattedPrices = prices.map(price => this.formatWithComma(price));
-      const maxIndex = formattedPrices.length - 1;
+  @Prop({ default: {} }) readonly item!: History;
 
-      return formattedPrices.length > 1
-        ? `¥${formattedPrices[0]}〜¥${formattedPrices[maxIndex]}`
-        : `¥${formattedPrices[0]}`;
-    },
-    salePercent() {
-      return this.isSale
-        ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
-        : 0;
-    }
-  },
+  @Prop({ default: 0 }) readonly itemIndex!: number;
 
-  methods: {
-    formatWithComma(number) {
-      return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-    },
-    handleDeleteClick(itemId) {
-      this.$store.dispatch('removeItem', itemId);
-    }
+  get isSale(): boolean {
+    return (
+      this.item.salePrices !== null &&
+      this.item.saleLimitTime !== null &&
+      // 現在日時がセール期間を過ぎているかどうかをチェック
+      !isAfter(new Date().toString(), this.item.saleLimitTime)
+    );
   }
-};
-</script>
 
+  get price(): string {
+    const prices = this.isSale ? this.item.salePrices : this.item.prices;
+    if (prices === null) return '';
+    // 価格に3桁ずつカンマをつける
+    const formattedPrices = prices.map(price => this.formatWithComma(price));
+    const maxIndex = formattedPrices.length - 1;
+
+    return formattedPrices.length > 1
+      ? `¥${formattedPrices[0]}〜¥${formattedPrices[maxIndex]}`
+      : `¥${formattedPrices[0]}`;
+  }
+
+  get salePercent(): number {
+    if (this.item.salePrices === null) return 0;
+
+    return this.isSale
+      ? Math.floor((1 - this.item.salePrices[0] / this.item.prices[0]) * 100)
+      : 0;
+  }
+
+  formatWithComma(number: number): string {
+    return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+  }
+
+  handleDeleteClick(itemId: string): void {
+    this.history.removeItem(itemId);
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .card {

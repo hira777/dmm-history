@@ -4,17 +4,19 @@
     f-histories
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+
 import FHistories from '@/vue/components/FHistories.vue';
 import FNav from '@/vue/components/FNav.vue';
 
-export default {
-  name: 'App',
+@Component({
   components: {
     FHistories,
     FNav
   }
-};
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">

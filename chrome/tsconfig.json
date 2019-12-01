@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "es2015", // ESM は webpack が変形する
+    "moduleResolution": "node", // node_modules から モジュールをインポートするために必要
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"] // 例: src/utils/history -> @/utils/history
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "experimentalDecorators": true, // vue-property-decorator を利用するのに必要
+  },
+  "include": ["src/**/*"]
+}

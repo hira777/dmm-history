@@ -5,10 +5,19 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    ecmaVersion: 2017
+    // parser を parserOptions 内に記述しないとエラーが発生する
+    // https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module'
   },
-  extends: ['eslint:recommended','plugin:vue/recommended', 'plugin:prettier/recommended'],
-  plugins: ['vue'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended'
+  ],
+  plugins: ['vue', '@typescript-eslint'],
   rules: {
     'prettier/prettier': [
       'error',

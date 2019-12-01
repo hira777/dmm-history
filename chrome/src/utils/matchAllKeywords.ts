@@ -1,10 +1,14 @@
+interface Props {
+  keywords: string[];
+  target: string;
+}
+
 /**
  * 全てのキーワードが検索対象に含まれているかどうか（and検索）
- * @param keywords {String[]} キーワード
- * @param target {String} 検索対象
- * @return {boolean}
+ * @param keywords キーワード
+ * @param target 検索対象
  */
-const matchAllKeywords = ({ keywords, target }) => {
+const matchAllKeywords = ({ keywords, target }: Props): boolean => {
   if (keywords === undefined || keywords.length === 0 || keywords[0] === '')
     return false;
 

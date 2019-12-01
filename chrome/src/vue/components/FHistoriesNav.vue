@@ -8,18 +8,30 @@
           strong(v-show="itemsExits && keywords !== ''") 「{{ keywords }}」に対して{{ numberOfItems }} タイトルが見つかりました
 </template>
 
-<script>
-import { mapGetters, mapState } from 'vuex';
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
 
-export default {
-  name: 'FHistoriesNav',
+import { Histories } from '../../models/history';
+import { history } from '../store/modules/history';
 
-  computed: {
-    ...mapState({
-      // 作品1,作品2 => 作品1 作品2
-      keywords: state => state.keywords.join(',').replace(',', ' ')
-    }),
-    ...mapGetters(['allItems', 'itemsExits', 'numberOfItems'])
+@Component
+export default class FHistoriesNav extends Vue {
+  private history = history;
+
+  get allItems(): Histories {
+    return this.history.allItems;
   }
-};
+
+  get itemsExits(): boolean {
+    return this.history.itemsExits;
+  }
+
+  get numberOfItems(): number {
+    return this.history.numberOfItems;
+  }
+
+  get keywords(): string {
+    return this.history.keywords.join(',').replace(',', ' ');
+  }
+}
 </script>

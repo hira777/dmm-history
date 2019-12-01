@@ -4,27 +4,22 @@
       f-card(:item="item", :itemIndex="itemIndex")
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
+
+import { Histories } from '../../models/history';
 import FCard from '@/vue/components/FCard.vue';
 
-export default {
-  name: 'FCards',
-
+@Component({
   components: {
     FCard
-  },
-
-  props: {
-    cardSize: {
-      type: String,
-      default: ''
-    },
-    items: {
-      type: Array,
-      default: () => []
-    }
   }
-};
+})
+export default class FCards extends Vue {
+  @Prop({ default: '' }) readonly cardSize!: string;
+
+  @Prop({ default: [] }) readonly items!: Histories;
+}
 </script>
 
 <style lang="scss" scoped>
