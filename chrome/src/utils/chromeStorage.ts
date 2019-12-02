@@ -9,10 +9,8 @@ const get = ({
   keys = null
 }: {
   storageArea?: StorageArea;
-  keys: string | string[] | Record<string, any> | null;
-}): Promise<{
-  [key: string]: any;
-}> =>
+  keys: string | string[] | Record<string, unknown> | null;
+}): Promise<{ [key: string]: unknown }> =>
   new Promise(resolve =>
     chrome.storage[storageArea].get(keys, obj => resolve(obj))
   );
@@ -22,7 +20,7 @@ const set = ({
   obj
 }: {
   storageArea?: StorageArea;
-  obj: { [key: string]: any };
+  obj: { [key: string]: unknown };
 }): Promise<void> =>
   new Promise(resolve => chrome.storage[storageArea].set(obj, () => resolve()));
 
