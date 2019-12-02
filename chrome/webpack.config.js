@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = {
   entry: {
@@ -53,8 +55,11 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          // consoleを削除する設定
-          compress: { drop_console: true }
+          compress: {
+            /* eslint-disable @typescript-eslint/camelcase */
+            drop_console: true // consoleを削除する
+            /* eslint-enable @typescript-eslint/camelcase */
+          }
         }
       })
     ]
