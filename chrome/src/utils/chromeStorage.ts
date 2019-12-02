@@ -10,10 +10,11 @@ const get = ({
 }: {
   storageArea?: StorageArea;
   keys: string | string[] | Record<string, unknown> | null;
-}): Promise<{ [key: string]: unknown }> =>
-  new Promise(resolve =>
+}): Promise<{ [key: string]: unknown }> => {
+  return new Promise(resolve =>
     chrome.storage[storageArea].get(keys, obj => resolve(obj))
   );
+};
 
 const set = ({
   storageArea = 'local',
@@ -21,15 +22,21 @@ const set = ({
 }: {
   storageArea?: StorageArea;
   obj: { [key: string]: unknown };
-}): Promise<void> =>
-  new Promise(resolve => chrome.storage[storageArea].set(obj, () => resolve()));
+}): Promise<void> => {
+  return new Promise(resolve =>
+    chrome.storage[storageArea].set(obj, () => resolve())
+  );
+};
 
 const clear = ({
   storageArea = 'local'
 }: {
   storageArea: StorageArea;
-}): Promise<void> =>
-  new Promise(resolve => chrome.storage[storageArea].clear(() => resolve()));
+}): Promise<void> => {
+  return new Promise(resolve =>
+    chrome.storage[storageArea].clear(() => resolve())
+  );
+};
 
 export default {
   get,
