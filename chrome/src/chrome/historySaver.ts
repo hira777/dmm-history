@@ -1,5 +1,6 @@
 import { KEYS, AFFILIATE_ID, MAX_HISTORIES } from '@/enums';
-import history, { History } from '@/utils/history';
+import { History } from '@/models/history';
+import history from '@/utils/history';
 import chromeStorage from '@/utils/chromeStorage';
 import itemPage from '@/utils/itemPage';
 

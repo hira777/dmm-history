@@ -4,7 +4,7 @@
 
 import orderBy from 'lodash.orderby';
 
-import { Prices } from '@/utils/history';
+import { Prices } from '@/models/history';
 
 /**
  * URLから商品IDを取得

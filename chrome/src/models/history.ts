@@ -1,4 +1,4 @@
-type Prices = number[];
+export type Prices = number[];
 export type History = Readonly<{
   id: string;
   title: string;
