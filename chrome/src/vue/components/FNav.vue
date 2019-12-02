@@ -14,7 +14,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
-import { history } from '../store/modules/history';
+import { history } from '@/vue/store/modules/history';
 import FSearchInput from '@/vue/components/FSearchInput.vue';
 
 @Component({

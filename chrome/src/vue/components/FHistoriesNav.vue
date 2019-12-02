@@ -11,8 +11,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
-import { Histories } from '../../models/history';
-import { history } from '../store/modules/history';
+import { Histories } from '@/models/history';
+import { history } from '@/vue/store/modules/history';
 
 @Component
 export default class FHistoriesNav extends Vue {
