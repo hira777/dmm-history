@@ -17,8 +17,8 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import isAfter from 'date-fns/is_after';
 
-import { History } from '../../models/history';
-import { history } from '../store/modules/history';
+import { History } from '@/models/history';
+import { history } from '@/vue/store/modules/history';
 
 @Component
 export default class FCard extends Vue {

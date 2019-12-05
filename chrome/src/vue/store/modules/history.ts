@@ -8,10 +8,12 @@ import {
 
 import store from '@/vue/store';
 import types from '@/vue/store/mutation-types';
+import { ChromeStorageSchema } from '@/models/chromeStorageSchema';
 import { Histories } from '@/models/history';
 import { KEYS } from '@/enums';
-import matchAllKeywords from '@/utils/matchAllKeywords';
 import chromeStorage from '@/utils/chromeStorage';
+import matchAllKeywords from '@/utils/matchAllKeywords';
+import historyManager from '@/utils/history';
 
 @Module({
   name: 'history',
@@ -88,10 +90,7 @@ export default class History extends VuexModule {
   @Action({ commit: types.SET_ITEMS })
   async restore(): Promise<{ items: Histories } | void> {
     const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
-    const items =
-      obj[KEYS.DMM_HISTORY] && obj[KEYS.DMM_HISTORY][KEYS.HISTORIES]
-        ? obj[KEYS.DMM_HISTORY][KEYS.HISTORIES]
-        : [];
+    const items = historyManager.get(obj);
 
     if (items.length > 0) return { items };
   }
@@ -109,7 +108,7 @@ export default class History extends VuexModule {
 
   @Action({})
   save(items: Histories): void {
-    const entity = {
+    const entity: ChromeStorageSchema = {
       [KEYS.DMM_HISTORY]: {
         [KEYS.HISTORIES]: items
       }

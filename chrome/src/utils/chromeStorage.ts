@@ -9,29 +9,34 @@ const get = ({
   keys = null
 }: {
   storageArea?: StorageArea;
-  keys: string | string[] | Record<string, any> | null;
-}): Promise<{
-  [key: string]: any;
-}> =>
-  new Promise(resolve =>
+  keys: string | string[] | Record<string, unknown> | null;
+}): Promise<{ [key: string]: unknown }> => {
+  return new Promise(resolve =>
     chrome.storage[storageArea].get(keys, obj => resolve(obj))
   );
+};
 
 const set = ({
   storageArea = 'local',
   obj
 }: {
   storageArea?: StorageArea;
-  obj: { [key: string]: any };
-}): Promise<void> =>
-  new Promise(resolve => chrome.storage[storageArea].set(obj, () => resolve()));
+  obj: { [key: string]: unknown };
+}): Promise<void> => {
+  return new Promise(resolve =>
+    chrome.storage[storageArea].set(obj, () => resolve())
+  );
+};
 
 const clear = ({
   storageArea = 'local'
 }: {
   storageArea: StorageArea;
-}): Promise<void> =>
-  new Promise(resolve => chrome.storage[storageArea].clear(() => resolve()));
+}): Promise<void> => {
+  return new Promise(resolve =>
+    chrome.storage[storageArea].clear(() => resolve())
+  );
+};
 
 export default {
   get,

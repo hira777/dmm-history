@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-import { Histories } from '../../models/history';
+import { Histories } from '@/models/history';
 import FCard from '@/vue/components/FCard.vue';
 
 @Component({
