@@ -51,6 +51,6 @@ module.exports = (env, argv) => {
     },
 
     devtool:
-      argv.mode === 'development' ? 'cheap-module-eval-source-map' : 'none'
+      argv.mode === 'development' ? 'inline-cheap-module-source-map' : false
   };
 };
