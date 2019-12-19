@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import isAfter from 'date-fns/is_after';
+import { Vue, Component, Prop } from "vue-property-decorator";
+import isAfter from "date-fns/is_after";
 
-import { History } from '@/models/history';
-import { history } from '@/vue/store/modules/history';
+import { History } from "@/models/history";
+import { history } from "@/vue/store/modules/history";
 
 @Component
 export default class FCard extends Vue {
@@ -39,7 +39,7 @@ export default class FCard extends Vue {
 
   get price(): string {
     const prices = this.isSale ? this.item.salePrices : this.item.prices;
-    if (prices === null) return '';
+    if (prices === null) return "";
     // 価格に3桁ずつカンマをつける
     const formattedPrices = prices.map(price => this.formatWithComma(price));
     const maxIndex = formattedPrices.length - 1;
@@ -58,7 +58,7 @@ export default class FCard extends Vue {
   }
 
   formatWithComma(number: number): string {
-    return number.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    return number.toString().replace(/(\d)(?=(\d{3})+$)/g, "$1,");
   }
 
   handleDeleteClick(itemId: string): void {

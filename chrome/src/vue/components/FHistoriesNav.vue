@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component } from "vue-property-decorator";
 
-import { Histories } from '@/models/history';
-import { history } from '@/vue/store/modules/history';
+import { Histories } from "@/models/history";
+import { history } from "@/vue/store/modules/history";
 
 @Component
 export default class FHistoriesNav extends Vue {
@@ -31,7 +31,7 @@ export default class FHistoriesNav extends Vue {
   }
 
   get keywords(): string {
-    return this.history.keywords.join(',').replace(',', ' ');
+    return this.history.keywords.join(",").replace(",", " ");
   }
 }
 </script>

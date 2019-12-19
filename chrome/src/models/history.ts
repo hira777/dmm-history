@@ -8,4 +8,4 @@ export type History = Readonly<{
   salePrices: Prices | null;
   saleLimitTime: string | null;
 }>;
-export type Histories = History[] | [];
+export type Histories = History[];

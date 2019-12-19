@@ -19,10 +19,14 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
+        },
+        {
           test: /\.tsx?$/,
           loader: 'ts-loader',
           options: {
-            transpileOnly: true, // 型チェックしない
+            // transpileOnly: true, // 型チェックしない
             configFile: 'tsconfig.json'
           }
         }
@@ -50,7 +54,6 @@ module.exports = (env, argv) => {
       ]
     },
 
-    devtool:
-      argv.mode === 'development' ? 'inline-cheap-module-source-map' : false
+    devtool: argv.mode === 'development' ? 'source-map' : false
   };
 };

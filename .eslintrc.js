@@ -19,6 +19,7 @@ module.exports = {
   ],
   plugins: ['vue', '@typescript-eslint'],
   rules: {
+    // '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': [
       'error',
       {

@@ -14,5 +14,6 @@
     "strict": true,
     "experimentalDecorators": true, // vue-property-decorator を利用するのに必要
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/vue/*"]
 }
