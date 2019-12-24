@@ -21,7 +21,7 @@ function initialState(injects?: Partial<State>): State {
   };
 }
 
-function reducer(state: State, action: Actions) {
+function reducer(state: State, action: Actions): State {
   switch (action.type) {
     case types.RESTORE_HISTORIES:
       return {
