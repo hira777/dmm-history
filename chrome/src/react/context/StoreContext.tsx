@@ -1,6 +1,6 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useContext } from 'react';
 
-import useContextFactory from '@/react/context/useContextFactory';
+import createUseCtx from '@/react/context/createUseCtx';
 import { State, Actions, initialState, reducer } from '@/react/store/reducer';
 
 const StoreContext = createContext<State>({
@@ -10,8 +10,8 @@ const StoreContext = createContext<State>({
 });
 const StoreDispatchContext = createContext({} as React.Dispatch<Actions>);
 
-export const useStoreContext = useContextFactory('StoreContext', StoreContext);
-export const useStoreDispatchContext = useContextFactory(
+export const useStoreContext = createUseCtx('StoreContext', StoreContext);
+export const useStoreDispatchContext = createUseCtx(
   'StoreDispatchContext',
   StoreDispatchContext
 );

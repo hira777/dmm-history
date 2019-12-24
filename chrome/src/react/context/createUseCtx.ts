@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 
-export default function useContextFactory<T>(
+export default function createUseCtx<T>(
   name: string,
   context: React.Context<T>
-) {
-  return (): T => {
+): () => T {
+  const useCtx = (): T => {
     const ctx = useContext(context);
     // Context Provider の外で Context を利用した場合エラーを出力する
     if (ctx === undefined) {
@@ -12,4 +12,6 @@ export default function useContextFactory<T>(
     }
     return ctx;
   };
+
+  return useCtx;
 }

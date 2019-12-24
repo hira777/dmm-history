@@ -23,7 +23,7 @@ const HistoryList: React.FC = () => {
     if (chromeStorageHistories.length) {
       dispatch(restoreHistories(chromeStorageHistories));
     }
-  }, [chromeStorageHistories]);
+  }, [chromeStorageHistories, dispatch]);
 
   const initialHistories = useRef(true);
   useEffect(() => {
@@ -32,7 +32,7 @@ const HistoryList: React.FC = () => {
       return;
     }
     saveHistories(state.histories);
-  }, [state.histories]);
+  }, [saveHistories, state.histories]);
 
   return useMemo(() => {
     if (!filteredHistories.length) return <></>;

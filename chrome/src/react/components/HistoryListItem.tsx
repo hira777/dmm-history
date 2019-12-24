@@ -36,14 +36,14 @@ const HistoryListItem: React.FC<History> = ({
             }}
           ></button>
           <figure className="image">
-            <a href={href} target="_blank">
+            <a href={href} target="_blank" rel="noopener noreferrer">
               <img src={imageUrl} alt="" />
             </a>
           </figure>
         </div>
         <div className="card-content">
           <p className="card-content-title">
-            <a href={href} target="_blank">
+            <a href={href} target="_blank" rel="noopener noreferrer">
               {title}
             </a>
           </p>

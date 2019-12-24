@@ -36,7 +36,7 @@ export default function usePriceInfo({
       // 現在日時がセール期間を過ぎているかどうかをチェック
       !isAfter(new Date().toString(), saleLimitTime)
     );
-  }, [salePrices, prices]);
+  }, [salePrices, saleLimitTime]);
 
   const price = useMemo(() => {
     const _prices = sale ? salePrices : prices;
