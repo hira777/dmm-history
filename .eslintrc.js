@@ -14,10 +14,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended'
   ],
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['@typescript-eslint'],
   rules: {
     // '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': [
