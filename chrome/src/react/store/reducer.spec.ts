@@ -43,10 +43,10 @@ describe('reducer', () => {
     });
   });
 
-  test(types.KEYWORDS_UPDATE, () => {
+  test(types.SET_KEYWORDS, () => {
     expect(
       reducer(initialState, {
-        type: types.KEYWORDS_UPDATE,
+        type: types.SET_KEYWORDS,
         payload: 'すごい'
       })
     ).toEqual({
@@ -58,7 +58,7 @@ describe('reducer', () => {
 
     expect(
       reducer(initialState, {
-        type: types.KEYWORDS_UPDATE,
+        type: types.SET_KEYWORDS,
         payload: 'すごい 作品'
       })
     ).toEqual({

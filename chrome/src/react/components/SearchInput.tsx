@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-import { keywordsUpdate } from '@/react/store/actionCreators';
+import { setKeywords } from '@/react/store/actionCreators';
 import {
   useStoreContext,
   useStoreDispatchContext
@@ -17,7 +17,7 @@ const SearchInput: React.FC = () => {
   const handleInput = useCallback(
     (newText: string) => {
       setText(newText);
-      dispatch(keywordsUpdate(newText));
+      dispatch(setKeywords(newText));
     },
     [dispatch]
   );

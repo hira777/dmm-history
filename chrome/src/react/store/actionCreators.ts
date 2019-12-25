@@ -17,9 +17,9 @@ export function removeHistory(id: string) {
   } as const;
 }
 
-export function keywordsUpdate(keywords: string) {
+export function setKeywords(keywords: string) {
   return {
-    type: types.KEYWORDS_UPDATE,
+    type: types.SET_KEYWORDS,
     payload: keywords
   } as const;
 }

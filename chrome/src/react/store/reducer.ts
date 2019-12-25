@@ -35,7 +35,7 @@ function reducer(state: State, action: Actions): State {
           )
         }
       };
-    case types.KEYWORDS_UPDATE: {
+    case types.SET_KEYWORDS: {
       return {
         ...state,
         ...{
