@@ -1,5 +1,3 @@
-import { createContext } from 'react';
-
 import { Histories } from '@/models/history';
 import types from '@/react/store/actionTypes';
 import * as creators from '@/react/store/actionCreators';
@@ -50,11 +48,4 @@ function reducer(state: State, action: Actions): State {
   }
 }
 
-type StoreContext = {
-  state: State;
-  dispatch: React.Dispatch<Actions>;
-};
-
-const StoreContext = createContext<StoreContext>({} as StoreContext);
-
-export { initialState, reducer, StoreContext };
+export { initialState, reducer };
