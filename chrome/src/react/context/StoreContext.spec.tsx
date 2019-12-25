@@ -8,7 +8,7 @@ import StoreContextProvider, {
 } from './StoreContext';
 
 test('Consumer に state を渡すべき', () => {
-  const wrapper = ({ children }) => (
+  const wrapper: React.ComponentType = ({ children }) => (
     <StoreContextProvider>{children}</StoreContextProvider>
   );
 
@@ -18,7 +18,7 @@ test('Consumer に state を渡すべき', () => {
 });
 
 test('Consumer に dispatcher を渡すべき', () => {
-  const wrapper = ({ children }) => (
+  const wrapper: React.ComponentType = ({ children }) => (
     <StoreContextProvider>{children}</StoreContextProvider>
   );
 
