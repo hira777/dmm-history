@@ -11,8 +11,8 @@
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/vue/*"]
+  "exclude": ["src/**/*.spec.ts", "src/**/*.spec.tsx"]
 }
