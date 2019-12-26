@@ -1,33 +1,51 @@
-import { Histories } from '@/models/history';
+import { History, Histories } from '@/models/history';
+import { removeExpiredSaleInfo } from '@/utils/history';
 
-const histories: Histories = [
-  {
-    id: '12',
-    title: '良い作品',
-    href: '',
-    imageUrl: '',
-    prices: [100, 200, 300],
-    salePrices: null,
-    saleLimitTime: ''
-  },
-  {
-    id: '25',
-    title: 'すごい作品',
-    href: '',
-    imageUrl: '',
-    prices: [100, 200, 300],
-    salePrices: null,
-    saleLimitTime: ''
-  },
-  {
-    id: '31',
-    title: '超すごい作品',
-    href: '',
-    imageUrl: '',
-    prices: [100, 200, 300],
-    salePrices: null,
-    saleLimitTime: ''
-  }
-];
+export const getHistories = (): Histories => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
 
-export const getHistories = (): Histories => histories;
+  return [
+    {
+      id: '12',
+      title: '良い作品',
+      href: '',
+      imageUrl: '',
+      prices: [100, 200, 300],
+      salePrices: null,
+      saleLimitTime: null
+    },
+    {
+      id: '25',
+      title: 'すごい作品',
+      href: '',
+      imageUrl: '',
+      prices: [100, 200, 300],
+      salePrices: [50, 100, 150],
+      saleLimitTime: tomorrow.toString()
+    },
+    {
+      id: '31',
+      title: '超すごい作品',
+      href: '',
+      imageUrl: '',
+      prices: [100, 200, 300],
+      salePrices: [50, 100, 150],
+      saleLimitTime: yesterday.toString()
+    }
+  ];
+};
+
+export const getHistory = (): History => {
+  return getHistories()[0];
+};
+
+export const getHistoryOnSale = (): History => {
+  return getHistories()[1];
+};
+
+export const getHistoriesRemovedExpiredSaleInfo = (): Histories => {
+  return removeExpiredSaleInfo(getHistories());
+};

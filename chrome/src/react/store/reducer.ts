@@ -2,6 +2,7 @@ import { Histories } from '@/models/history';
 import types from '@/react/store/actionTypes';
 import * as creators from '@/react/store/actionCreators';
 import { CreatorsActions } from '@/react/store/creatorsToActions';
+import { removeExpiredSaleInfo } from '@/utils/history';
 
 export type State = {
   histories: Histories;
@@ -21,11 +22,14 @@ function initialState(injects?: Partial<State>): State {
 
 function reducer(state: State, action: Actions): State {
   switch (action.type) {
-    case types.RESTORE_HISTORIES:
+    case types.RESTORE_HISTORIES: {
+      const newHistories = removeExpiredSaleInfo(action.payload);
+
       return {
         ...state,
-        ...{ histories: action.payload, restoredHistories: true }
+        ...{ histories: newHistories, restoredHistories: true }
       };
+    }
     case types.REMOVE_HISTORY:
       return {
         ...state,

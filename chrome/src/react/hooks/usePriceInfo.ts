@@ -30,12 +30,7 @@ export default function usePriceInfo({
   saleLimitTime
 }: PriceInfoParams): PriceInfo {
   const sale = useMemo(() => {
-    return (
-      salePrices !== null &&
-      saleLimitTime !== null &&
-      // 現在日時がセール期間を過ぎているかどうかをチェック
-      !isAfter(new Date().toString(), saleLimitTime)
-    );
+    return salePrices !== null && saleLimitTime !== null;
   }, [salePrices, saleLimitTime]);
 
   const price = useMemo(() => {

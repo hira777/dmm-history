@@ -1,11 +1,17 @@
-import { getHistories } from '../../../../mock/histories';
+import {
+  getHistories,
+  getHistoriesRemovedExpiredSaleInfo
+} from '../../../../mock/histories';
 import types from './actionTypes';
 import { reducer, initialState as getInitialState } from './reducer';
 
 describe('reducer', () => {
   const initialState = getInitialState();
   const histories = getHistories();
+
   test(types.RESTORE_HISTORIES, () => {
+    const expectedHistories = getHistoriesRemovedExpiredSaleInfo();
+
     expect(
       reducer(initialState, {
         type: types.RESTORE_HISTORIES,
@@ -14,7 +20,7 @@ describe('reducer', () => {
     ).toEqual({
       ...initialState,
       ...{
-        histories,
+        histories: expectedHistories,
         restoredHistories: true
       }
     });
