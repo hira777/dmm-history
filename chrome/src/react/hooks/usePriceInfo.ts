@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import isAfter from 'date-fns/is_after';
 
 import { Prices } from '@/models/history';
 
