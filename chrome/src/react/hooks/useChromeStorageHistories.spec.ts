@@ -13,7 +13,7 @@ describe('useChromeStorageHistories', () => {
     dmmHistory: { histories }
   });
 
-  test('ChromeStorage から履歴を取得すべき', async () => {
+  test('ChromeStorage から履歴を取得する', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
       useChromeStorageHistories()
     );
@@ -23,7 +23,7 @@ describe('useChromeStorageHistories', () => {
     expect(result.current.histories).toEqual(histories);
   });
 
-  test('ChromeStorage に履歴をセットすべき', async () => {
+  test('ChromeStorage に履歴をセットする', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
       useChromeStorageHistories()
     );

@@ -6,7 +6,7 @@ import useFilteredHistories from './useFilteredHistories';
 describe('useFilteredHistories', () => {
   const histories = getHistories();
 
-  test('キーワードにマッチした履歴がない場合、すべての履歴を返すべき', () => {
+  test('キーワードにマッチした履歴がない場合、すべての履歴を返す', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,
@@ -18,7 +18,7 @@ describe('useFilteredHistories', () => {
     expect(result.current.numberOfHistories).toBe(histories.length);
   });
 
-  test('キーワードにマッチした履歴がある場合、マッチした履歴だけを返すべき', () => {
+  test('キーワードにマッチした履歴がある場合、マッチした履歴だけを返す', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,
@@ -33,7 +33,7 @@ describe('useFilteredHistories', () => {
     expect(result.current.numberOfHistories).toBe(2);
   });
 
-  test('キーワードにマッチした履歴がある場合、マッチした履歴だけを返すべき（and 検索）', () => {
+  test('キーワードにマッチした履歴がある場合、マッチした履歴だけを返す（and 検索）', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,

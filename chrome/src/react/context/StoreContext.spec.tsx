@@ -7,7 +7,7 @@ import StoreContextProvider, {
   useStoreDispatchContext
 } from './StoreContext';
 
-test('Consumer に state を渡すべき', () => {
+test('ContextConsumer に state を渡す', () => {
   const wrapper: React.ComponentType = ({ children }) => (
     <StoreContextProvider>{children}</StoreContextProvider>
   );
@@ -17,7 +17,7 @@ test('Consumer に state を渡すべき', () => {
   expect(result.current).toEqual(initialState());
 });
 
-test('Consumer に dispatcher を渡すべき', () => {
+test('ContextConsumer に dispatcher を渡す', () => {
   const wrapper: React.ComponentType = ({ children }) => (
     <StoreContextProvider>{children}</StoreContextProvider>
   );

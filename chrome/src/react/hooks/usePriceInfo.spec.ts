@@ -5,7 +5,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import usePriceInfo from './usePriceInfo';
 
 describe('usePriceInfo', () => {
-  test('履歴が通常商品の時の価格情報を返すべき', () => {
+  test('履歴が通常商品の時の価格情報を返す', () => {
     const history = getHistory();
     const { result } = renderHook(() =>
       usePriceInfo({
@@ -22,7 +22,7 @@ describe('usePriceInfo', () => {
     });
   });
 
-  test('履歴がセール品の時の価格情報を返すべき', () => {
+  test('履歴がセール品の時の価格情報を返す', () => {
     const history = getHistoryOnSale();
 
     const { result } = renderHook(() =>
