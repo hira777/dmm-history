@@ -2,6 +2,7 @@
  * @file DMMの商品ページのデータを取得するメソッド群
  */
 
+import isAfter from 'date-fns/is_after';
 import orderBy from 'lodash.orderby';
 
 import { Prices } from '@/models/history';
@@ -120,7 +121,14 @@ const getSaleLimitTime = (): string | null => {
     const day = Number(matched[2]);
     const hour = Number(matched[3]);
 
-    return new Date(year, month - 1, day, hour).toString();
+    const saleLimitTime = isAfter(
+      new Date(),
+      new Date(year, month - 1, day, hour)
+    )
+      ? new Date(year + 1, month - 1, day, hour).toString()
+      : new Date(year, month - 1, day, hour).toString();
+
+    return saleLimitTime;
   } else {
     return null;
   }
