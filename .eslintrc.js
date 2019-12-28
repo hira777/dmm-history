@@ -5,8 +5,6 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    // parser を parserOptions 内に記述しないとエラーが発生する
-    // https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaFeatures: {
@@ -28,7 +26,8 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'react-hooks'],
   rules: {
-    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off', // 戻り値の推論は TypeScript の型システムに任せたい
+    'react/prop-types': 'off', // コンパイルした JavaScript を外部から利用されるわけではないので不要
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': [
