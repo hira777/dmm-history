@@ -1,22 +1,21 @@
 import React from 'react';
 
-import '@/react/App.scss';
-import Nav from '@/react/components/Nav';
+import './App.scss';
+
+import Container from '@/react/components/Container';
+import Header from '@/react/components/Header';
 import HistoryList from '@/react/components/HistoryList';
-import HistoryNav from '@/react/components/HistoryNav';
-import StoreContextProvider from '@/react/context/StoreContext';
+import SearchResultStats from '@/react/components/SearchResultStats';
 
 const App: React.FC = () => {
   return (
-    <StoreContextProvider>
-      <Nav />
-      <section className="section">
-        <div className="container">
-          <HistoryNav />
-          <HistoryList />
-        </div>
-      </section>
-    </StoreContextProvider>
+    <>
+      <Header />
+      <Container>
+        <SearchResultStats />
+        <HistoryList />
+      </Container>
+    </>
   );
 };
 

@@ -2,9 +2,10 @@ import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { initialState } from '@/react/store/reducer';
-import StoreContextProvider, {
+import {
   useStoreContext,
-  useStoreDispatchContext
+  useStoreDispatchContext,
+  StoreContextProvider
 } from './StoreContext';
 
 test('ContextConsumer に state を渡す', () => {
