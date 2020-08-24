@@ -7,7 +7,7 @@
     "build": "cd chrome && webpack --mode production --progress --hide-modules",
     "zip": "zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
     "release": "node release.js && yarn run build && yarn run zip",
-    "lint": "eslint chrome/src --fix --ext=ts,vue",
+    "lint": "eslint chrome/src --fix --ext=ts",
     "test": "jest"
   },
   "author": "soarflat",
@@ -27,20 +27,12 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-vue": "^6.0.1",
     "jest": "^24.8.0",
     "node-sass": "^4.9.0",
-    "pug": "^2.0.0-rc.3",
-    "pug-loader": "^2.3.0",
-    "pug-plain-loader": "^1.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
-    "vue-loader": "^15.7.2",
-    "vue-property-decorator": "^8.3.0",
-    "vue-template-compiler": "^2.5.16",
-    "vuex-module-decorators": "^0.11.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
@@ -48,8 +40,6 @@
     "@types/jest": "^24.0.23",
     "bulma": "^0.7.0",
     "date-fns": "^1.29.0",
-    "lodash.orderby": "^4.6.0",
-    "vue": "^2.5.16",
-    "vuex": "^3.0.1"
+    "lodash.orderby": "^4.6.0"
   }
 }

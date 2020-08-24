@@ -5,8 +5,6 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    // parser を parserOptions 内に記述しないとエラーが発生する
-    // https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
@@ -14,10 +12,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended'
   ],
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['@typescript-eslint'],
   rules: {
     'prettier/prettier': [
       'error',

@@ -1,6 +1,6 @@
 module.exports = {
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/chrome/src/$1'
+    '^@/(.*)$': '<rootDir>/chrome/src/$1',
   },
-  moduleFileExtensions: ['js', 'ts', 'vue', 'json']
+  moduleFileExtensions: ['js', 'ts', 'json'],
 };
