@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   return {
     entry: {
       historySaver: './src/chrome/historySaver.ts',
-      // histories: '',
+      histories: './src/react/histories.tsx',
       popup: './src/chrome/popup.ts',
     },
 
@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.ts$/,
+          test: /\.tsx?$/,
           loader: 'ts-loader',
           options: {
             // transpileOnly: true, // 型チェックしない
@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
       alias: {
         '@': path.resolve(__dirname, 'src/'),
       },
-      extensions: ['.ts', '.js'],
+      extensions: ['.ts', '.tsx', '.js'],
     },
 
     optimization: {
@@ -41,9 +41,8 @@ module.exports = (env, argv) => {
         new TerserPlugin({
           terserOptions: {
             compress: {
-              /* eslint-disable @typescript-eslint/camelcase */
+              // eslint-disable-next-line @typescript-eslint/camelcase
               drop_console: true, // consoleを削除する
-              /* eslint-enable @typescript-eslint/camelcase */
             },
           },
         }),

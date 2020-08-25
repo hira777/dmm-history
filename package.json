@@ -19,14 +19,19 @@
     "@types/chrome": "0.0.91",
     "@types/lodash.orderby": "^4.6.6",
     "@types/node": "^12.12.14",
+    "@types/react": "^16.9.47",
+    "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
     "babel-jest": "^24.8.0",
     "css-loader": "^2.1.1",
     "eslint": "^6.7.0",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "jest": "^24.8.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^6.0.6",
@@ -40,6 +45,8 @@
     "@types/jest": "^24.0.23",
     "bulma": "^0.7.0",
     "date-fns": "^1.29.0",
-    "lodash.orderby": "^4.6.0"
+    "lodash.orderby": "^4.6.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
