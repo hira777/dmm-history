@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2019",
     "module": "es2015", // ESM は webpack が変形する
     "lib": ["es2018", "dom"],
     "jsx": "react",
