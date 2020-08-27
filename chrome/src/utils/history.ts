@@ -13,5 +13,5 @@ export const get = (obj: ChromeStorageSchema): Histories => {
 
 export default {
   add,
-  get
+  get,
 };

@@ -5,7 +5,7 @@ describe('history', () => {
   const histories = [
     { id: 12, title: '良い作品' },
     { id: 25, title: 'すごい作品' },
-    { id: 31, title: '超すごい作品' }
+    { id: 31, title: '超すごい作品' },
   ];
 
   describe('add', () => {
@@ -15,7 +15,7 @@ describe('history', () => {
         { id: 88, title: 'とんでもない作品' },
         { id: 12, title: '良い作品' },
         { id: 25, title: 'すごい作品' },
-        { id: 31, title: '超すごい作品' }
+        { id: 31, title: '超すごい作品' },
       ]);
     });
 
@@ -24,7 +24,7 @@ describe('history', () => {
       expect(add(histories, newHistory)).toEqual([
         { id: 25, title: 'すごい作品' },
         { id: 12, title: '良い作品' },
-        { id: 31, title: '超すごい作品' }
+        { id: 31, title: '超すごい作品' },
       ]);
     });
   });
@@ -33,15 +33,15 @@ describe('history', () => {
     it('履歴を取得する', () => {
       const chromeStorageObject = {
         [KEYS.DMM_HISTORY]: {
-          [KEYS.HISTORIES]: histories
-        }
+          [KEYS.HISTORIES]: histories,
+        },
       };
       expect(get(chromeStorageObject)).toEqual(histories);
     });
 
     it('履歴が存在しない場合、空の履歴を取得する', () => {
       let chromeStorageObject = {
-        [KEYS.DMM_HISTORY]: {}
+        [KEYS.DMM_HISTORY]: {},
       };
       expect(get(chromeStorageObject)).toEqual([]);
       chromeStorageObject = {};

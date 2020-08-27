@@ -55,7 +55,7 @@ const getPrices = (): Prices => {
   const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
   const prices: Prices = [];
 
-  (isSale() ? txLtElement : priceElement).forEach(element => {
+  (isSale() ? txLtElement : priceElement).forEach((element) => {
     prices.push(
       Number(
         (element as HTMLElement).innerText
@@ -83,7 +83,7 @@ const getSalePrices = (): Prices | null => {
   const salePrices: Prices = [];
 
   if (salePriceElement.length > 0) {
-    salePriceElement.forEach(element => {
+    salePriceElement.forEach((element) => {
       salePrices.push(
         Number(
           (element as HTMLElement).innerText
@@ -132,5 +132,5 @@ export default {
   getImageUrl,
   getPrices,
   getSalePrices,
-  getSaleLimitTime
+  getSaleLimitTime,
 };

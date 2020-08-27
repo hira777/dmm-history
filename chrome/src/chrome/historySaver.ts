@@ -13,7 +13,7 @@ async function saveNewHistory(): Promise<void> {
     imageUrl: itemPage.getImageUrl(),
     prices: itemPage.getPrices(),
     salePrices: itemPage.getSalePrices(),
-    saleLimitTime: itemPage.getSaleLimitTime()
+    saleLimitTime: itemPage.getSaleLimitTime(),
   };
   const obj = await chromeStorage.get({ keys: keys.dmmHistory });
   const histories = history
