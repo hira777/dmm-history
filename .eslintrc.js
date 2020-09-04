@@ -13,6 +13,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    "plugin:jsx-a11y/recommended", // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#difference-between-recommended-and-strict-mode
     'plugin:prettier/recommended',
     'prettier/react'
   ],
