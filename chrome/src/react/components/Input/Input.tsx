@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 export type InputProps = {
   labelText: string;
@@ -14,7 +15,7 @@ export const Input: React.FC<InputProps> = ({
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <input
+    <StyledInput
       type="text"
       aria-label={labelText}
       placeholder={placeholder}
@@ -26,3 +27,21 @@ export const Input: React.FC<InputProps> = ({
     />
   );
 };
+
+const StyledInput = styled.input`
+  width: 100%;
+  max-width: 100%;
+  height: 32px;
+  padding: 10px 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+
+  &:disabled {
+    background: #e9ecef;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
