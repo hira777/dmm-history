@@ -8,7 +8,7 @@ export default {
   component: Input,
 } as Meta;
 
-const Template: Story<InputProps> = args => <Input {...args} />;
+const Template: Story<InputProps> = (args) => <Input {...args} />;
 
 export const Deflaut = Template.bind({});
 Deflaut.args = {
