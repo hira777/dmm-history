@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-type Props = {
+export type InputProps = {
   labelText: string;
   placeholder: string;
   onChange: (value: string) => void;
 };
 
-export const Input: React.FC<Props> = ({
+export const Input: React.FC<InputProps> = ({
   placeholder,
   labelText,
   onChange,
