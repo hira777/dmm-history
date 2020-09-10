@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { getHistories } from '../../../../../mock/histories';
+import { getHistoriesForStory } from '../../../../../mock/histories';
 import { HistoryList, HistoryListProps } from './HistoryList';
 
 export default {
@@ -11,10 +11,9 @@ export default {
 
 const Template: Story<HistoryListProps> = (args) => <HistoryList {...args} />;
 
-const histories = getHistories();
 export const Deflaut = Template.bind({});
 Deflaut.args = {
-  histories: [...histories, ...histories, ...histories],
+  histories: getHistoriesForStory(),
 };
 
 export const NotFound = Template.bind({});
