@@ -64,6 +64,7 @@
     "lodash.orderby": "^4.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "styled-reset": "^4.2.3"
   }
 }
