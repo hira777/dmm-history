@@ -1,0 +1,1 @@
+export { SearchResultStats } from './SearchResultStats';
