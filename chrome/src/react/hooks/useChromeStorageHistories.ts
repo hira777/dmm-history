@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { KEYS } from '@/enums';
 import { ChromeStorageSchema } from '@/models/chromeStorageSchema';
 import { Histories } from '@/models/history';
-import chromeStorage from '@/utils/chromeStorage';
+import chromeStorage from 'chromeStorage';
 import historyManager from '@/utils/history';
 
 type ChromeStorageHistories = {
