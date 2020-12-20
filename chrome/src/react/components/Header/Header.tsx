@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import debounce from 'lodash.debounce';
 
 import { Input } from '../Input';
-import { useStoreDispatchContext } from '@/react/contexts/StoreContext';
-import { setKeywords } from '@/react/store/actionCreators';
 
 type InputProps = {
   onChange: (value: string) => void;
 };
 
-export const Header: React.FC<InputProps> = () => {
-  const dispatch = useStoreDispatchContext();
-  const onChange = debounce((newText: string): void => {
-    dispatch(setKeywords(newText));
-  }, 200);
-
+export const Header: React.FC<InputProps> = ({ onChange }) => {
   return (
     <StyledHeader>
       <StyledHeaderContainer>
