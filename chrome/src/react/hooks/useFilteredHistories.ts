@@ -5,7 +5,7 @@ import matchAllKeywords from '@/utils/matchAllKeywords';
 
 type Params = {
   histories: Histories;
-  keywords: string[];
+  keywords: string;
 };
 type FilteredHistories = {
   // キーワードにマッチする履歴。キーワードが存在しなければ履歴を全て返す。
@@ -22,7 +22,7 @@ export default function useFilteredHistories({
   keywords,
 }: Params): FilteredHistories {
   const filteredHistories = useMemo(() => {
-    if (!keywords.length) {
+    if (!keywords) {
       return histories;
     }
 

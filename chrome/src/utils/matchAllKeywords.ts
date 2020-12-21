@@ -1,5 +1,5 @@
 interface Props {
-  keywords: string[];
+  keywords: string;
   target: string;
 }
 
@@ -9,10 +9,17 @@ interface Props {
  * @param target 検索対象
  */
 const matchAllKeywords = ({ keywords, target }: Props): boolean => {
-  if (keywords === undefined || keywords.length === 0 || keywords[0] === '')
-    return false;
+  const keywordsSplit = keywords.split(' ').filter((keyword) => keyword !== '');
 
-  return keywords.every((keyword) => {
+  if (
+    keywordsSplit === undefined ||
+    keywordsSplit.length === 0 ||
+    keywordsSplit[0] === ''
+  ) {
+    return false;
+  }
+
+  return keywordsSplit.every((keyword) => {
     const re = new RegExp(`.*${keyword}.*`, 'i');
     return re.test(target);
   });

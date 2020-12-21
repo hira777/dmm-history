@@ -10,7 +10,7 @@ describe('useFilteredHistories', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,
-        keywords: [],
+        keywords: '',
       })
     );
 
@@ -22,7 +22,7 @@ describe('useFilteredHistories', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,
-        keywords: ['すごい'],
+        keywords: 'すごい',
       })
     );
 
@@ -37,7 +37,7 @@ describe('useFilteredHistories', () => {
     const { result } = renderHook(() =>
       useFilteredHistories({
         histories,
-        keywords: ['超', 'すごい'],
+        keywords: '超 すごい',
       })
     );
 
