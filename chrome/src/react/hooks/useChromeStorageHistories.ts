@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { KEYS } from '@/enums';
 import { ChromeStorageSchema } from '@/models/chromeStorageSchema';
@@ -13,29 +13,35 @@ type ChromeStorageHistories = {
   saveHistories: (histories: Histories) => void;
 };
 
+function useIsMountedRef() {
+  const isMountedRef = useRef(false);
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  });
+  return isMountedRef;
+}
+
 /**
  * Chrome Storage の履歴の取得、更新をする Hooks
  */
 export default function useChromeStorageHistories(): ChromeStorageHistories {
   const [histories, setStoredHistories] = useState<Histories>([]);
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
-    let mounted = true;
-
     const f = async (): Promise<void> => {
       const obj = await chromeStorage.get({ keys: KEYS.DMM_HISTORY });
       const histories = historyManager.get(obj);
 
-      if (mounted) {
+      if (isMountedRef.current) {
         setStoredHistories(histories);
       }
     };
     f();
-
-    return (): void => {
-      mounted = true;
-    };
-  }, []);
+  }, [isMountedRef]);
 
   const saveHistories = (histories: Histories): void => {
     const entity: ChromeStorageSchema = {
