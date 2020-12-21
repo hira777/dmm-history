@@ -20,9 +20,9 @@ export const HistoryList: React.FC<HistoryListProps> = ({
   return useMemo(() => {
     if (!histories.length)
       return (
-        <NotFount>
+        <NotFound>
           <p>絞り込み条件に一致する商品は見つかりませんでした。</p>
-        </NotFount>
+        </NotFound>
       );
 
     return (
@@ -50,7 +50,7 @@ export const Wrapper = styled.div`
   width: 960px;
 `;
 
-const NotFount = styled(Wrapper)`
+const NotFound = styled(Wrapper)`
   margin: ${pxToRem(40)} auto;
   text-align: center;
 `;

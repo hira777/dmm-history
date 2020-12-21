@@ -5,19 +5,19 @@ function pxToRem(value: number, font = 16) {
   return `${value / font}rem`;
 }
 
-export type SearchResultStatsPtops = {
+export type SearchResultStatsProps = {
   searchResultsCount: number;
   keywords: string;
-  isLoding: boolean;
+  isLoading: boolean;
 };
 
-export const SearchResultStats: React.FC<SearchResultStatsPtops> = ({
+export const SearchResultStats: React.FC<SearchResultStatsProps> = ({
   searchResultsCount,
   keywords,
-  isLoding,
+  isLoading,
 }) => {
   const stats = useMemo(() => {
-    if (isLoding) {
+    if (isLoading) {
       return <>読み込み中</>;
     }
 
@@ -28,7 +28,7 @@ export const SearchResultStats: React.FC<SearchResultStatsPtops> = ({
     return keywords === ''
       ? `${searchResultsCount}件`
       : `${keywords} ${searchResultsCount}件`;
-  }, [searchResultsCount, keywords, isLoding]);
+  }, [searchResultsCount, keywords, isLoading]);
 
   return (
     <Wrapper>
