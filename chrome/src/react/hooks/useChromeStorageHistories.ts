@@ -11,6 +11,8 @@ type ChromeStorageHistories = {
   histories: Histories;
   // Chrome Storage の履歴を更新するメソッド
   saveHistories: (histories: Histories) => void;
+  // 読み込み中どうか
+  isLoading: boolean;
 };
 
 function useIsMountedRef() {
@@ -28,7 +30,8 @@ function useIsMountedRef() {
  * Chrome Storage の履歴の取得、更新をする Hooks
  */
 export default function useChromeStorageHistories(): ChromeStorageHistories {
-  const [histories, setStoredHistories] = useState<Histories>([]);
+  const [histories, setHistories] = useState<Histories>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
@@ -37,7 +40,8 @@ export default function useChromeStorageHistories(): ChromeStorageHistories {
       const histories = historyManager.get(obj);
 
       if (isMountedRef.current) {
-        setStoredHistories(histories);
+        setHistories(histories);
+        setIsLoading(false);
       }
     };
     f();
@@ -49,9 +53,9 @@ export default function useChromeStorageHistories(): ChromeStorageHistories {
         [KEYS.HISTORIES]: histories,
       },
     };
-
     chromeStorage.set({ obj: entity });
+    setHistories(histories);
   };
 
-  return { histories, saveHistories };
+  return { histories, saveHistories, isLoading };
 }

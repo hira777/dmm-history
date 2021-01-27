@@ -46,8 +46,7 @@ export const HistoryList: React.FC<HistoryListProps> = ({
 };
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  width: 960px;
+  margin-top: ${pxToRem(20)};
 `;
 
 const NotFound = styled(Wrapper)`

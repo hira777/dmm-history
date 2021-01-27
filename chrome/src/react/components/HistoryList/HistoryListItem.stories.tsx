@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { getHistory, getHistoryOnSale } from '../../../../../mock/histories';
+import { Container } from '../Container';
 import { Wrapper, Columns, Column } from './HistoryList';
 import { HistoryListItem, HistoryListItemProps } from './HistoryListItem';
 
@@ -10,13 +11,15 @@ export default {
   component: HistoryListItem,
   decorators: [
     (Story) => (
-      <Wrapper>
-        <Columns>
-          <Column>
-            <Story />
-          </Column>
-        </Columns>
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <Columns>
+            <Column>
+              <Story />
+            </Column>
+          </Columns>
+        </Wrapper>
+      </Container>
     ),
   ],
 } as Meta;

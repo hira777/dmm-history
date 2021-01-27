@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { History } from '@/models/history';
 import usePriceInfo from '@/react/hooks/usePriceInfo';
+import * as colors from '@/react/colors/';
 
 function pxToRem(value: number, font = 16) {
   return `${value / font}rem`;
@@ -34,7 +35,7 @@ export const HistoryListItem: React.FC<HistoryListItemProps> = ({
         }}
       />
       <CardImage>
-        <img src={history.imageUrl} alt="" />
+        <img src={history.imageUrl} alt={history.title} />
       </CardImage>
       <CardTitle>{history.title}</CardTitle>
       <CardPriceInfo>
@@ -48,6 +49,7 @@ export const HistoryListItem: React.FC<HistoryListItemProps> = ({
 const Card = styled.a`
   display: block;
   position: relative;
+  color: ${colors.primary};
 `;
 
 const CardImage = styled.figure`
@@ -112,11 +114,14 @@ const CardTitle = styled.p`
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  ${Card}:hover & {
+    text-decoration: underline;
+  }
 `;
 
 const CardPriceInfo = styled.div`
   display: flex;
-  margin-top: ${pxToRem(3)};
+  margin-top: ${pxToRem(5)};
 `;
 
 const CardPrice = styled.span`

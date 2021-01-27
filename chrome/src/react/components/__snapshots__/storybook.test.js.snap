@@ -34,364 +34,368 @@ exports[`Storyshots Header Deflaut 1`] = `
 
 exports[`Storyshots HistoryList Deflaut 1`] = `
 <div
-  className="sc-iqAbSa hLSYkK"
+  className="sc-jSFkmK iTopZR"
 >
   <div
-    className="sc-dIsAE gXeHJS"
+    className="sc-crzoUp mqnQU"
   >
     <div
-      className="sc-bqGHjH iibSUP"
+      className="sc-bqGHjH bDSfqm"
     >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj sale"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥50〜¥150
-          </span>
-          <span
-            className="sc-kEqYlL vIvII"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
           >
-            50
-            %OFF
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe sale"
+            >
+              ¥50〜¥150
+            </span>
+            <span
+              className="sc-iqAbSa fMqlqL"
+            >
+              50
+              %OFF
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj sale"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥50〜¥150
-          </span>
-          <span
-            className="sc-kEqYlL vIvII"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
           >
-            50
-            %OFF
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe sale"
+            >
+              ¥50〜¥150
+            </span>
+            <span
+              className="sc-iqAbSa fMqlqL"
+            >
+              50
+              %OFF
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
-    </div>
-    <div
-      className="sc-bqGHjH iibSUP"
-    >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -399,58 +403,66 @@ exports[`Storyshots HistoryList Deflaut 1`] = `
 
 exports[`Storyshots HistoryList Not Found 1`] = `
 <div
-  className="sc-iqAbSa sc-crzoUp hLSYkK pMMKZ"
+  className="sc-jSFkmK iTopZR"
 >
-  <p>
-    絞り込み条件に一致する商品は見つかりませんでした。
-  </p>
+  <div
+    className="sc-crzoUp sc-dIsAE mqnQU dRbaOy"
+  >
+    <p>
+      絞り込み条件に一致する商品は見つかりませんでした。
+    </p>
+  </div>
 </div>
 `;
 
 exports[`Storyshots HistoryListItem Deflaut 1`] = `
 <div
-  className="sc-iqAbSa hLSYkK"
+  className="sc-jSFkmK iTopZR"
 >
   <div
-    className="sc-dIsAE gXeHJS"
+    className="sc-crzoUp mqnQU"
   >
     <div
-      className="sc-bqGHjH iibSUP"
+      className="sc-bqGHjH bDSfqm"
     >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          良い作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥100〜¥300
-          </span>
-        </div>
-      </a>
+            <img
+              alt="良い作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
+          >
+            良い作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe"
+            >
+              ¥100〜¥300
+            </span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -458,54 +470,58 @@ exports[`Storyshots HistoryListItem Deflaut 1`] = `
 
 exports[`Storyshots HistoryListItem Sale 1`] = `
 <div
-  className="sc-iqAbSa hLSYkK"
+  className="sc-jSFkmK iTopZR"
 >
   <div
-    className="sc-dIsAE gXeHJS"
+    className="sc-crzoUp mqnQU"
   >
     <div
-      className="sc-bqGHjH iibSUP"
+      className="sc-bqGHjH bDSfqm"
     >
-      <a
-        className="sc-jSFkmK bmiOSP"
-        href=""
-        rel="noopener noreferrer"
-        target="_blank"
+      <div
+        className="sc-ksluoS fcdBmI"
       >
-        <button
-          aria-label="削除する"
-          className="sc-iCoHVE gAvwZB"
-          onClick={[Function]}
-        />
-        <figure
-          className="sc-gKAblj bmdswN"
+        <a
+          className="sc-gKAblj UCmly"
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <img
-            alt=""
-            src="https://dummyimage.com/200x300/000/fff"
+          <button
+            aria-label="削除する"
+            className="sc-fujyUd hjizIl"
+            onClick={[Function]}
           />
-        </figure>
-        <p
-          className="sc-fujyUd ldOjxy"
-        >
-          すごい作品
-        </p>
-        <div
-          className="sc-pNWxx VQBmL"
-        >
-          <span
-            className="sc-jrsJCI lbxhhj sale"
+          <figure
+            className="sc-iCoHVE cZDtuO"
           >
-            ¥50〜¥150
-          </span>
-          <span
-            className="sc-kEqYlL vIvII"
+            <img
+              alt="すごい作品"
+              src="https://dummyimage.com/200x300/000/fff"
+            />
+          </figure>
+          <p
+            className="sc-pNWxx hxWMiT"
           >
-            50
-            %OFF
-          </span>
-        </div>
-      </a>
+            すごい作品
+          </p>
+          <div
+            className="sc-jrsJCI hkaAor"
+          >
+            <span
+              className="sc-kEqYlL dzyLPe sale"
+            >
+              ¥50〜¥150
+            </span>
+            <span
+              className="sc-iqAbSa fMqlqL"
+            >
+              50
+              %OFF
+            </span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
