@@ -16,19 +16,10 @@ export const Deflaut = Template.bind({});
 Deflaut.args = {
   searchResultsCount: 100,
   keywords: 'すごい作品',
-  isLoading: false,
 };
 
 export const NotExists = Template.bind({});
 NotExists.args = {
   searchResultsCount: 0,
   keywords: '',
-  isLoading: false,
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  searchResultsCount: 0,
-  keywords: '',
-  isLoading: true,
 };

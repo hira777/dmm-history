@@ -524,7 +524,7 @@ exports[`Storyshots Input Deflaut 1`] = `
 
 exports[`Storyshots SearchResultStats Deflaut 1`] = `
 <div
-  className="sc-ksluoS iNsQWe"
+  className="sc-hBMVcZ dRmHHn"
 >
   <span>
     すごい作品 100件
@@ -532,22 +532,12 @@ exports[`Storyshots SearchResultStats Deflaut 1`] = `
 </div>
 `;
 
-exports[`Storyshots SearchResultStats Loading 1`] = `
-<div
-  className="sc-ksluoS iNsQWe"
->
-  <span>
-    読み込み中
-  </span>
-</div>
-`;
-
 exports[`Storyshots SearchResultStats Not Exists 1`] = `
 <div
-  className="sc-ksluoS iNsQWe"
+  className="sc-hBMVcZ dRmHHn"
 >
   <span>
-    履歴が存在しません
+    0件
   </span>
 </div>
 `;
