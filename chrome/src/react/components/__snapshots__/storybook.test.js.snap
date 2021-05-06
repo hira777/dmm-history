@@ -155,15 +155,9 @@ exports[`Storyshots HistoryList Deflaut 1`] = `
             className="sc-jrsJCI hkaAor"
           >
             <span
-              className="sc-kEqYlL dzyLPe sale"
+              className="sc-kEqYlL dzyLPe"
             >
-              ¥50〜¥150
-            </span>
-            <span
-              className="sc-iqAbSa fMqlqL"
-            >
-              50
-              %OFF
+              ¥100〜¥300
             </span>
           </div>
         </a>

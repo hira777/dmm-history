@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { isAfter } from 'date-fns';
 
 import { Prices } from '@/models/history';
 
@@ -29,7 +30,11 @@ export default function usePriceInfo({
   saleLimitTime,
 }: PriceInfoParams): PriceInfo {
   const sale = useMemo(() => {
-    return salePrices !== null && saleLimitTime !== null;
+    return (
+      salePrices !== null &&
+      saleLimitTime !== null &&
+      !isAfter(new Date().toString(), saleLimitTime)
+    );
   }, [salePrices, saleLimitTime]);
 
   const price = useMemo(() => {
