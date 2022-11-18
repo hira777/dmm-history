@@ -42,7 +42,7 @@
     "vue-template-compiler": "^2.5.16",
     "vuex-module-decorators": "^0.11.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "@types/jest": "^24.0.23",
