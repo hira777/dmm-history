@@ -11,8 +11,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["chrome"],
-    "experimentalDecorators": true // vue-property-decorator を利用するのに必要
+    "types": ["chrome"]
   },
   "include": ["src/**/*"]
 }

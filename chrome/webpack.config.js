@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = (env, argv) => {
   return {
     entry: {
       historySaver: './src/chrome/historySaver.ts',
-      histories: './src/vue/histories.ts',
+      histories: './src/react/histories.tsx',
       popup: './src/chrome/popup.ts'
     },
 
@@ -20,24 +19,13 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.pug$/,
-          loader: 'pug-plain-loader'
-        },
-        {
           test: /\.scss$/,
-          use: ['vue-style-loader', 'css-loader', 'sass-loader']
-        },
-        {
-          test: /\.vue/,
-          exclude: /node_modules/,
-          loader: 'vue-loader'
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.tsx?$/,
           loader: 'ts-loader',
           options: {
-            // transpileOnly: true, // 型チェックしない
-            appendTsSuffixTo: [/\.vue$/],
             configFile: 'tsconfig.json'
           }
         }
@@ -46,10 +34,9 @@ module.exports = (env, argv) => {
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src/'),
-        vue$: 'vue/dist/vue.esm.js'
+        '@': path.resolve(__dirname, 'src/')
       },
-      extensions: ['.tsx', '.ts', '.js', '.vue']
+      extensions: ['.tsx', '.ts', '.js']
     },
 
     optimization: {
@@ -69,6 +56,6 @@ module.exports = (env, argv) => {
     devtool:
       argv.mode === 'development' ? 'inline-cheap-module-source-map' : false,
 
-    plugins: [new VueLoaderPlugin()]
+    plugins: []
   };
 };
