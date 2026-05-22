@@ -2,12 +2,21 @@
   "name": "DMM History",
   "description": "DMM.R18の商品閲覧履歴を保存・表示する拡張機能",
   "version": "1.1.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.dmm.co.jp/digital/videoa/-/detail/=/*"
+  ],
   "content_scripts": [
     {
       "matches": [
@@ -17,11 +26,5 @@
         "build/historySaver.js"
       ]
     }
-  ],
-  "browser_action": {
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "storage"
   ]
 }

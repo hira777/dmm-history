@@ -1,6 +1,9 @@
-(document.getElementById('goToHistory') as HTMLElement).addEventListener(
-  'click',
-  () => {
-    window.open(chrome.runtime.getURL('history.html'));
-  }
-);
+const goToHistoryElement = document.getElementById('goToHistory');
+
+if (goToHistoryElement) {
+  goToHistoryElement.addEventListener('click', () => {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL('history.html')
+    });
+  });
+}
