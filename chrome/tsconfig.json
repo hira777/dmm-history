@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext", // ESM は webpack が変形する
+    "module": "ESNext",
     "jsx": "react-jsx",
-    "moduleResolution": "node", // node_modules から モジュールをインポートするために必要
-    "baseUrl": "./",
+    "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["src/*"] // 例: src/utils/history -> @/utils/history
+      "@/*": ["./src/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
