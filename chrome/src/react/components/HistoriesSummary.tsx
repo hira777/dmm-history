@@ -26,7 +26,8 @@ export default function HistoriesSummary({
             )}
             {itemsExist && searchInput !== '' && (
               <strong>
-                「{searchInput}」に対して{numberOfItems} タイトルが見つかりました
+                「{searchInput}」に対して{numberOfItems}{' '}
+                タイトルが見つかりました
               </strong>
             )}
           </p>

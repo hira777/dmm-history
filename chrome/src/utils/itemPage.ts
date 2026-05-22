@@ -25,9 +25,9 @@ const getTitle = (): string => {
  * 商品画像のURLを取得
  */
 const getImageUrl = (): string => {
-  return (document.getElementById(
-    'sample-video'
-  ) as HTMLElement).querySelectorAll('img')[0].src;
+  return (
+    document.getElementById('sample-video') as HTMLElement
+  ).querySelectorAll('img')[0].src;
 };
 
 /**
@@ -55,7 +55,7 @@ const getPrices = (): Prices => {
   const txLtElement = basketContentsElement.querySelectorAll('.tx-lt');
   const prices: Prices = [];
 
-  (isSale() ? txLtElement : priceElement).forEach(element => {
+  (isSale() ? txLtElement : priceElement).forEach((element) => {
     prices.push(
       Number(
         (element as HTMLElement).innerText
@@ -77,13 +77,12 @@ const getSalePrices = (): Prices | null => {
   const basketContentsElement = document.getElementById(
     'basket_contents'
   ) as HTMLElement;
-  const salePriceElement = basketContentsElement.querySelectorAll(
-    '.tx-hangaku'
-  );
+  const salePriceElement =
+    basketContentsElement.querySelectorAll('.tx-hangaku');
   const salePrices: Prices = [];
 
   if (salePriceElement.length > 0) {
-    salePriceElement.forEach(element => {
+    salePriceElement.forEach((element) => {
       salePrices.push(
         Number(
           (element as HTMLElement).innerText
@@ -105,9 +104,8 @@ const getSalePrices = (): Prices | null => {
  * セール時間を取得
  */
 const getSaleLimitTime = (): string | null => {
-  const saleTimeElement = document.querySelector<HTMLElement>(
-    '.mv-sale > span'
-  );
+  const saleTimeElement =
+    document.querySelector<HTMLElement>('.mv-sale > span');
 
   if (saleTimeElement) {
     const timeText = saleTimeElement.innerText;

@@ -28,14 +28,14 @@ export const useHistories = (): UseHistories => {
       : allItems;
 
   useEffect(() => {
-    restoreHistories().then(items => {
+    restoreHistories().then((items) => {
       setAllItems(items);
     });
   }, []);
 
   const removeItem = (itemId: string): void => {
-    setAllItems(currentItems => {
-      const nextItems = currentItems.filter(item => item.id !== itemId);
+    setAllItems((currentItems) => {
+      const nextItems = currentItems.filter((item) => item.id !== itemId);
       saveHistories(nextItems);
       return nextItems;
     });

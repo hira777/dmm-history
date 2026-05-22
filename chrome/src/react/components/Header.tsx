@@ -27,7 +27,7 @@ export default function Header({
                     placeholder={itemsExist ? '検索' : '履歴が存在しません'}
                     disabled={!itemsExist}
                     value={searchInput}
-                    onChange={event =>
+                    onChange={(event) =>
                       onSearchInputChange(event.currentTarget.value)
                     }
                   />

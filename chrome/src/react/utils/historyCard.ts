@@ -18,7 +18,7 @@ export const getPrice = (item: History): string => {
   const prices = isSale(item) ? item.salePrices : item.prices;
   if (prices === null) return '';
 
-  const formattedPrices = prices.map(price => formatWithComma(price));
+  const formattedPrices = prices.map((price) => formatWithComma(price));
   const maxIndex = formattedPrices.length - 1;
 
   return formattedPrices.length > 1

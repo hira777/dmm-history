@@ -7,13 +7,8 @@ import { useHistories } from './hooks/useHistories';
 import './App.scss';
 
 export default function App(): ReactElement {
-  const {
-    allItems,
-    items,
-    searchInput,
-    setSearchInput,
-    removeItem
-  } = useHistories();
+  const { allItems, items, searchInput, setSearchInput, removeItem } =
+    useHistories();
 
   return (
     <>

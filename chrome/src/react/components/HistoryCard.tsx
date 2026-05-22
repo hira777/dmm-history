@@ -1,11 +1,7 @@
 import type { ReactElement } from 'react';
 
 import type { History } from '@/models/history';
-import {
-  getPrice,
-  getSalePercent,
-  isSale
-} from '@/react/utils/historyCard';
+import { getPrice, getSalePercent, isSale } from '@/react/utils/historyCard';
 
 type HistoryCardProps = Readonly<{
   item: History;
