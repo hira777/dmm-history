@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
           loader: 'vue-loader'
         },
         {
-          test: /\.ts$/,
+          test: /\.tsx?$/,
           loader: 'ts-loader',
           options: {
             // transpileOnly: true, // 型チェックしない
@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
         '@': path.resolve(__dirname, 'src/'),
         vue$: 'vue/dist/vue.esm.js'
       },
-      extensions: ['.ts', '.js', '.vue']
+      extensions: ['.tsx', '.ts', '.js', '.vue']
     },
 
     optimization: {

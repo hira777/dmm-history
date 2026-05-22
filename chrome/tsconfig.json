@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext", // ESM は webpack が変形する
+    "jsx": "react-jsx",
     "moduleResolution": "node", // node_modules から モジュールをインポートするために必要
     "baseUrl": "./",
     "paths": {
