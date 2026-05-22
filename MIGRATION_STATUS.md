@@ -30,7 +30,7 @@
 | ビルド基盤の更新 | 進行中 | pnpm / Webpack 5 / Dart Sass 構成でビルド確認済み |
 | React の土台作成 | 完了 | React / TSX の最小構成を追加し、型チェックとビルド確認済み |
 | Vue の React 置き換え | 完了 | 履歴画面を React に置き換え、型チェックとビルド確認済み |
-| TypeScript 整理 | 未着手 | `.tsx` への整理を含む |
+| TypeScript 整理 | 進行中 | React 履歴画面を component / hook / utils に分割 |
 | テスト追加 | 未着手 | まずは純粋関数から |
 | 依存関係の整理 | 未着手 | `node-sass` 置き換えを含む |
 | README 更新 | 未着手 | MV3 と新構成に合わせる |
@@ -69,6 +69,7 @@
 - Vue 関連のソースと依存を削除
 - `pnpm check-types` が通ることを確認
 - `pnpm build` が通ることを確認
+- React 履歴画面を component / hook / utils に分割
 
 ## メモ
 
