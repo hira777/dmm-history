@@ -32,7 +32,7 @@
 | Vue の React 置き換え | 完了 | 履歴画面を React に置き換え、型チェックとビルド確認済み |
 | TypeScript 整理 | 進行中 | React 履歴画面を component / hook / utils に分割 |
 | テスト追加 | 未着手 | まずは純粋関数から |
-| 依存関係の整理 | 未着手 | `node-sass` 置き換えを含む |
+| 依存関係の整理 | 進行中 | Babel / Jest 関連を削除 |
 | README 更新 | 未着手 | MV3 と新構成に合わせる |
 
 ## 直近でやること
@@ -70,6 +70,7 @@
 - `pnpm check-types` が通ることを確認
 - `pnpm build` が通ることを確認
 - React 履歴画面を component / hook / utils に分割
+- Babel / Jest 関連の依存と設定ファイルを削除
 
 ## メモ
 
