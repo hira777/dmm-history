@@ -7,70 +7,103 @@
 
 ## 現在の全体状況
 
-- 状態: ビルド基盤更新中
-- 優先度が高い作業: TypeScript 整理
+- 状態: React / TypeScript / Manifest V3 への主要移行は完了
+- 優先度が高い作業: テスト追加と README 更新
 - 現在の大きな課題: Bulma と Sass まわりで非推奨警告が出ている
 
 ## 進行ルール
 
-- 状態は `未着手` `進行中` `完了` `保留` で管理する
-- 大きな作業はできるだけ小さな単位に分ける
+- 作業はフェーズごとのチェックリストで管理する
 - 完了したら、確認内容も短く残す
 - 保留した場合は、理由を書く
 
 ## 作業一覧
 
-| 作業 | 状態 | メモ |
-| --- | --- | --- |
-| 現状の構成確認 | 完了 | Vue 2 / Webpack 4 / Manifest V2 / TypeScript 3 系を確認 |
-| 移行計画の作成 | 完了 | `docs/migration-plan.md` を追加済み |
-| 作業ルールの作成 | 完了 | `AGENTS.md` を追加済み |
-| 現状のビルド確認 | 保留 | 旧構成では `node-sass` が Node.js 24.7.0 で扱いにくいため、移行後に確認する |
-| Manifest V3 対応 | 完了 | `manifest_version: 3` へ更新し、拡張の読み込みと起動確認済み |
-| ビルド基盤の更新 | 進行中 | pnpm / Webpack 5 / Dart Sass 構成でビルド確認済み |
-| React の土台作成 | 完了 | React / TSX の最小構成を追加し、型チェックとビルド確認済み |
-| Vue の React 置き換え | 完了 | 履歴画面を React に置き換え、型チェックとビルド確認済み |
-| TypeScript 整理 | 進行中 | React 履歴画面を component / hook / utils に分割 |
-| テスト追加 | 未着手 | まずは純粋関数から |
-| 依存関係の整理 | 進行中 | Babel / Jest 関連を削除 |
-| README 更新 | 未着手 | MV3 と新構成に合わせる |
+- フェーズ 1: **移行準備** — 現状確認から作業ルール作成まで
+  - [x] 現状の構成を確認する。
+    - [x] Vue 2 / Webpack 4 / Manifest V2 / TypeScript 3 系であることを確認する。
+    - [x] 旧構成では `node-sass` が Node.js 24.7.0 で扱いにくいことを確認する。
+  - [x] 移行計画を作成する。
+    - [x] `docs/migration-plan.md` を追加する。
+  - [x] 作業ルールを作成する。
+    - [x] `AGENTS.md` を追加する。
+  - [x] 進行状況を管理するファイルを作成する。
+    - [x] `MIGRATION_STATUS.md` を追加する。
+
+- フェーズ 2: **ビルド基盤の更新** — Node.js 24.7.0 / pnpm / Webpack 5 でビルドできる状態にする
+  - [x] Node.js のバージョンを `.node-version` に合わせる。
+    - [x] Node.js 24.7.0 を前提にする。
+  - [x] パッケージ管理を pnpm に移行する。
+    - [x] `packageManager` を pnpm にする。
+    - [x] `pnpm-lock.yaml` を追加する。
+  - [x] Webpack を更新する。
+    - [x] Webpack 5 系へ更新する。
+    - [x] `pnpm build` が通ることを確認する。
+  - [x] Sass のビルド基盤を更新する。
+    - [x] `node-sass` を削除する。
+    - [x] Dart Sass の `sass` に置き換える。
+    - [ ] Bulma 由来の Sass 非推奨警告への対応方針を決める。
+
+- フェーズ 3: **Manifest V3 対応** — Chrome 拡張を MV3 で読み込める状態にする
+  - [x] `chrome/manifest.json` を Manifest V3 向けに更新する。
+    - [x] `manifest_version` を `3` にする。
+    - [x] `browser_action` を `action` に変更する。
+    - [x] `permissions` と `host_permissions` を整理する。
+  - [x] popup の画面遷移を MV3 向けに変更する。
+    - [x] `window.open` を `chrome.tabs.create` に変更する。
+  - [x] ビルド済み拡張を Chrome に読み込む。
+    - [x] 拡張を読み込み、起動できることを確認する。
+
+- フェーズ 4: **React / TypeScript 移行** — Vue の履歴画面を React に置き換える
+  - [x] React の土台を作成する。
+    - [x] React / React DOM を追加する。
+    - [x] TSX の最小構成を追加する。
+    - [x] `pnpm check-types` と `pnpm build` が通ることを確認する。
+  - [x] 履歴画面を React に置き換える。
+    - [x] Vue の entry を React の entry に変更する。
+    - [x] Vue 関連のソースと依存を削除する。
+    - [x] `pnpm check-types` と `pnpm build` が通ることを確認する。
+  - [x] React 履歴画面を整理する。
+    - [x] component / hook / utils に分割する。
+    - [x] `pnpm check-types` が通ることを確認する。
+
+- フェーズ 5: **開発環境の整理** — TypeScript / ESLint / Prettier を現在の構成に合わせる
+  - [x] 不要な Babel / Jest 関連を削除する。
+    - [x] Babel 関連の依存と設定ファイルを削除する。
+    - [x] Jest 関連の依存と設定ファイルを削除する。
+  - [x] TypeScript と ESLint を更新する。
+    - [x] TypeScript 6 系へ更新する。
+    - [x] ESLint 10 系へ更新する。
+    - [x] ESLint flat config へ移行する。
+  - [x] 不要な `jsconfig.json` を削除する。
+    - [x] TypeScript 設定へ集約する。
+  - [x] Prettier を追加する。
+    - [x] Prettier 本体を追加する。
+    - [x] Prettier 設定と ignore 設定を追加する。
+    - [x] format 用 script を追加する。
+  - [x] 既存ファイルを Prettier で整形する。
+    - [x] HTML / JSON / SCSS / TypeScript ファイルを整形する。
+
+- フェーズ 6: **テストとドキュメント整備** — 移行後の保守性を上げる
+  - [ ] テスト方針を決める。
+    - [ ] Vitest を追加するか決める。
+    - [ ] まずテストする純粋関数を選ぶ。
+  - [ ] テストを追加する。
+    - [ ] keyword / historyCard などの utils から着手する。
+  - [ ] README を更新する。
+    - [ ] Node.js / pnpm / build 手順を更新する。
+    - [ ] Manifest V3 と React 構成に合わせて説明を更新する。
 
 ## 直近でやること
 
 1. Sass の非推奨警告をどこまでこの段階で抑えるか決める
-2. React 化前に必要な最小テストを検討する
-3. TypeScript と lint 設定を整理する
+2. Vitest を追加するか決める
+3. README を現在の構成に合わせて更新する
 
 ## 課題・注意点
 
-- `node-sass@^4.9.0` は古く、Node.js 24.7.0 環境でそのまま扱いにくい
 - Dart Sass への移行後、Bulma 由来の非推奨警告が出ている
-- Manifest V2 はすでに使い続けにくい状態なので、MV3 対応を先に進める必要がある
-- テストが未整備なので、移行時の壊れ方に気づきにくい
-
-## 完了ログ
-
-### 2026-05-22
-
-- 現状構成を確認
-- 移行計画書を追加
-- AGENTS.md を追加
-- 進行状況管理ファイルを追加
-- Node.js 24.7.0 前提で `node-sass` を `sass` に置き換え
-- npm から pnpm へ移行
-- Webpack 5 系へ更新し、`pnpm build` が通ることを確認
-- `pnpm check-types` が通ることを確認
-- Manifest V3 へ移行
-- popup の履歴画面遷移を `chrome.tabs.create` に変更
-- ビルド済み拡張を Chrome に読み込み、起動できることを確認
-- React / TSX の最小構成を追加
-- `pnpm check-types` と `pnpm build` が通ることを確認
-- 履歴画面を React に置き換え
-- Vue 関連のソースと依存を削除
-- `pnpm check-types` が通ることを確認
-- `pnpm build` が通ることを確認
-- React 履歴画面を component / hook / utils に分割
-- Babel / Jest 関連の依存と設定ファイルを削除
+- テストが未整備なので、変更時の壊れ方に気づきにくい
 
 ## メモ
 
