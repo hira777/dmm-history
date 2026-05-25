@@ -85,20 +85,22 @@
     - [x] HTML / JSON / SCSS / TypeScript ファイルを整形する。
 
 - フェーズ 6: **テストとドキュメント整備** — 移行後の保守性を上げる
-  - [ ] テスト方針を決める。
-    - [ ] Vitest を追加するか決める。
-    - [ ] まずテストする純粋関数を選ぶ。
+  - [x] テスト方針を決める。
+    - [x] Vitest を追加する。
+    - [x] まずテストする純粋関数を選ぶ。
   - [ ] テストを追加する。
-    - [ ] keyword / historyCard などの utils から着手する。
+    - [x] keyword の utils から着手する。
+    - [x] 既存の utils テストを `chrome/src/utils` 配下へ移動する。
+    - [ ] historyCard など他の utils へテストを追加する。
   - [ ] README を更新する。
-    - [ ] Node.js / pnpm / build 手順を更新する。
+    - [x] Node.js / pnpm / build / test 手順を更新する。
     - [ ] Manifest V3 と React 構成に合わせて説明を更新する。
 
 ## 直近でやること
 
 1. Sass の非推奨警告をどこまでこの段階で抑えるか決める
-2. Vitest を追加するか決める
-3. README を現在の構成に合わせて更新する
+2. historyCard など他の utils へテストを追加する
+3. README を Manifest V3 と React 構成に合わせて更新する
 
 ## 課題・注意点
 

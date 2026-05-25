@@ -1,7 +1,10 @@
-import matchAllKeywords from '@/utils/matchAllKeywords';
+import { describe, expect, it } from 'vitest';
+
+import matchAllKeywords from './matchAllKeywords';
 
 describe('matchAllKeywords', () => {
   const target = '新 センズリ見てたら興奮しちゃった素人娘 VOL.16';
+
   it('キーワードが一致する', () => {
     expect(matchAllKeywords({ keywords: ['素人'], target })).toBe(true);
     expect(matchAllKeywords({ keywords: ['素人', 'センズリ'], target })).toBe(

@@ -1,4 +1,6 @@
-import itemPage from '@/utils/itemPage';
+import { describe, expect, it } from 'vitest';
+
+import itemPage from './itemPage';
 
 describe('itemPage', () => {
   describe('getCid', () => {

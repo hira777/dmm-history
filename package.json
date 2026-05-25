@@ -13,7 +13,9 @@
     "release": "node release.js && pnpm run build && pnpm run zip",
     "lint": "eslint chrome/src --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "author": "soarflat",
   "license": "MIT",
@@ -35,6 +37,7 @@
     "ts-loader": "^9.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.56.1",
+    "vitest": "^4.1.7",
     "webpack": "^5.107.1",
     "webpack-cli": "^7.0.2"
   },
