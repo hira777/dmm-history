@@ -1,9 +1,9 @@
-# MIGRATION_STATUS.md
+# migration-status-v1.2.0.md
 
 ## 目的
 
-このファイルは、React・TypeScript・Manifest V3 への移行作業の進行状況を管理するためのものです。
-作業中に、今どこまで終わったか、次に何をやるか、何が課題かをすぐ確認できるようにします。
+このファイルは、React・TypeScript・Manifest V3 への移行作業の履歴を残すためのものです。
+移行作業は完了済みのため、現在は archive として保管しています。
 
 ## 現在の全体状況
 
