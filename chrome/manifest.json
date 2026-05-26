@@ -12,11 +12,18 @@
     "default_popup": "popup.html"
   },
   "permissions": ["storage"],
-  "host_permissions": ["https://video.dmm.co.jp/av/content/*"],
+  "host_permissions": ["https://video.dmm.co.jp/av/*"],
   "content_scripts": [
     {
-      "matches": ["https://video.dmm.co.jp/av/content/*"],
-      "js": ["build/historySaver.js"]
+      "matches": ["https://video.dmm.co.jp/av/*"],
+      "js": ["build/historyWatcher.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://video.dmm.co.jp/av/*"],
+      "js": ["build/historySaver.js"],
+      "run_at": "document_start"
     }
   ]
 }

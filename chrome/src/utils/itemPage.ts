@@ -10,6 +10,11 @@ import { Prices } from '@/models/history';
 const TITLE_SUFFIX = '｜エロ動画・アダルトビデオ｜FANZA動画';
 const WAIT_TIMEOUT_MS = 10000;
 
+type WaitForItemPageDataOptions = {
+  previousTitle?: string;
+  timeoutMs?: number;
+};
+
 /**
  * URLから商品IDを取得
  */
@@ -135,9 +140,12 @@ export const getProductInfoValue = (
 /**
  * 商品ページから必要な情報を取得できる状態か判定する
  */
-const hasItemPageData = (): boolean => {
+const hasItemPageData = (previousTitle: string = ''): boolean => {
+  const title = normalizeTitle(document.title);
+
   return (
-    normalizeTitle(document.title) !== '' &&
+    title !== '' &&
+    title !== previousTitle &&
     getPriceOptionItems().length > 0 &&
     hasProductInfoRows()
   );
@@ -146,10 +154,11 @@ const hasItemPageData = (): boolean => {
 /**
  * 商品ページの必要な情報が読み込まれるまで待つ
  */
-export const waitForItemPageData = (
-  timeoutMs: number = WAIT_TIMEOUT_MS
-): Promise<boolean> => {
-  if (hasItemPageData()) {
+export const waitForItemPageData = ({
+  previousTitle = '',
+  timeoutMs = WAIT_TIMEOUT_MS
+}: WaitForItemPageDataOptions = {}): Promise<boolean> => {
+  if (hasItemPageData(previousTitle)) {
     return Promise.resolve(true);
   }
 
@@ -157,7 +166,7 @@ export const waitForItemPageData = (
     let settled = false;
 
     const observer = new MutationObserver(() => {
-      if (hasItemPageData()) {
+      if (hasItemPageData(previousTitle)) {
         finish(true);
       }
     });

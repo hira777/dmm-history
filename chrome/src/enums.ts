@@ -4,3 +4,4 @@ export const KEYS = {
 } as const;
 export const MAX_HISTORIES = 300;
 export const AFFILIATE_ID = 'hira777-004';
+export const URL_CHANGE_EVENT = 'dmm-history:urlchange';
