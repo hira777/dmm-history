@@ -15,30 +15,33 @@ export default function HistoryCard({
   const sale = isSale(item);
 
   return (
-    <div className="card card-equal-height history-card">
-      <div className="card-image">
+    <div className="history-card">
+      <div className="history-card__image">
         <button
           type="button"
-          className="delete card-delete-button"
+          className="history-card__delete-button"
+          aria-label="履歴を削除"
           onClick={() => onDelete(item.id)}
         />
-        <figure className="image">
+        <figure className="history-card__figure">
           <a href={item.href} target="_blank" rel="noreferrer">
             <img src={item.imageUrl} alt={item.title} />
           </a>
         </figure>
       </div>
 
-      <div className="card-content">
-        <p className="card-content-title">
+      <div className="history-card__content">
+        <p className="history-card__title">
           <a href={item.href} target="_blank" rel="noreferrer">
             {item.title}
           </a>
         </p>
-        <p className={`card-content-price${sale ? ' is-sale' : ''}`}>
+        <p className={`history-card__price${sale ? ' is-sale' : ''}`}>
           {getPrice(item)}
           {sale && (
-            <span className="tag is-danger">{getSalePercent(item)}%OFF</span>
+            <span className="history-card__sale-tag">
+              {getSalePercent(item)}%OFF
+            </span>
           )}
         </p>
       </div>

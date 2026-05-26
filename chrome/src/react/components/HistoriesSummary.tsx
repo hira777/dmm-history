@@ -16,23 +16,16 @@ export default function HistoriesSummary({
   const itemsExist = allItems.length > 0;
 
   return (
-    <nav className="level">
-      <div className="level-left">
-        <div className="level-item">
-          <p className="subtitle is-5">
-            {!itemsExist && <strong>履歴が存在しません</strong>}
-            {itemsExist && searchInput === '' && (
-              <strong>{numberOfItems} タイトル</strong>
-            )}
-            {itemsExist && searchInput !== '' && (
-              <strong>
-                「{searchInput}」に対して{numberOfItems}{' '}
-                タイトルが見つかりました
-              </strong>
-            )}
-          </p>
-        </div>
-      </div>
-    </nav>
+    <p className="history-summary">
+      {!itemsExist && <strong>履歴が存在しません</strong>}
+      {itemsExist && searchInput === '' && (
+        <strong>{numberOfItems} タイトル</strong>
+      )}
+      {itemsExist && searchInput !== '' && (
+        <strong>
+          「{searchInput}」に対して{numberOfItems} タイトルが見つかりました
+        </strong>
+      )}
+    </p>
   );
 }

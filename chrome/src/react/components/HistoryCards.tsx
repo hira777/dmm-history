@@ -13,9 +13,9 @@ export default function HistoryCards({
   onDelete
 }: HistoryCardsProps): ReactElement {
   return (
-    <div className="columns is-multiline">
+    <div className="history-grid">
       {items.map((item) => (
-        <div className="column is-2 history-card-column" key={item.id}>
+        <div className="history-grid__item" key={item.id}>
           <HistoryCard item={item} onDelete={onDelete} />
         </div>
       ))}

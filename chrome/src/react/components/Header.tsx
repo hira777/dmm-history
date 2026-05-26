@@ -12,29 +12,19 @@ export default function Header({
   onSearchInputChange
 }: HeaderProps): ReactElement {
   return (
-    <nav className="navbar is-transparent is-fixed-top">
-      <div className="container">
-        <div className="navbar-brand">
-          <div className="navbar-item has-text-weight-bold">DMM History</div>
+    <nav className="history-header">
+      <div className="history-header__container">
+        <div className="history-header__brand">
+          <div className="history-header__title">DMM History</div>
         </div>
-        <div className="navbar-menu">
-          <div className="navbar-start">
-            <div className="navbar-item">
-              <div className="field">
-                <div className="control">
-                  <input
-                    className="input is-small history-search-input"
-                    placeholder={itemsExist ? '検索' : '履歴が存在しません'}
-                    disabled={!itemsExist}
-                    value={searchInput}
-                    onChange={(event) =>
-                      onSearchInputChange(event.currentTarget.value)
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="history-header__search">
+          <input
+            className="history-search-input"
+            placeholder={itemsExist ? '検索' : '履歴が存在しません'}
+            disabled={!itemsExist}
+            value={searchInput}
+            onChange={(event) => onSearchInputChange(event.currentTarget.value)}
+          />
         </div>
       </div>
     </nav>

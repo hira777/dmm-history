@@ -17,8 +17,8 @@ export default function App(): ReactElement {
         searchInput={searchInput}
         onSearchInputChange={setSearchInput}
       />
-      <section className="section">
-        <div id="histories" className="container">
+      <main className="history-main">
+        <div id="histories" className="history-container">
           <HistoriesSummary
             allItems={allItems}
             numberOfItems={items.length}
@@ -26,7 +26,7 @@ export default function App(): ReactElement {
           />
           <HistoryCards items={items} onDelete={removeItem} />
         </div>
-      </section>
+      </main>
     </>
   );
 }
