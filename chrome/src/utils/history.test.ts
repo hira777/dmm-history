@@ -10,6 +10,8 @@ describe('history', () => {
     title,
     href: `https://example.com/${id}`,
     imageUrl: `https://example.com/${id}.jpg`,
+    maker: 'メーカー',
+    label: 'レーベル',
     prices: [1000],
     salePrices: null,
     saleLimitTime: null

@@ -1,4 +1,4 @@
-import { AFFILIATE_ID, MAX_HISTORIES } from '@/enums';
+import { MAX_HISTORIES } from '@/enums';
 import { keys, ChromeStorageSchema } from '@/models/chromeStorageSchema';
 import { History } from '@/models/history';
 import history from '@/utils/history';
@@ -6,14 +6,26 @@ import chromeStorage from '@/utils/chromeStorage';
 import itemPage from '@/utils/itemPage';
 
 async function saveNewHistory(): Promise<void> {
+  const ready = await itemPage.waitForItemPageData();
+  if (!ready) return;
+
+  const itemId = itemPage.getItemId(location.href);
+  const salePrices = itemPage.getSalePrices();
+  const saleLimitTime = salePrices
+    ? await itemPage.waitForSaleLimitTime().then((ready) => {
+        return ready ? itemPage.getSaleLimitTime() : null;
+      })
+    : null;
   const newHistory: History = {
-    id: itemPage.getCid(location.href),
+    id: itemId,
     title: itemPage.getTitle(),
-    href: `${location.protocol}//${location.host}${location.pathname}${AFFILIATE_ID}`,
-    imageUrl: itemPage.getImageUrl(),
+    href: itemPage.getAffiliateUrl(itemId),
+    imageUrl: itemPage.getImageUrl(itemId),
+    maker: itemPage.getMaker(),
+    label: itemPage.getLabel(),
     prices: itemPage.getPrices(),
-    salePrices: itemPage.getSalePrices(),
-    saleLimitTime: itemPage.getSaleLimitTime()
+    salePrices,
+    saleLimitTime
   };
   const obj = await chromeStorage.get({ keys: keys.dmmHistory });
   const histories = history

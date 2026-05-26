@@ -12,10 +12,10 @@
     "default_popup": "popup.html"
   },
   "permissions": ["storage"],
-  "host_permissions": ["https://www.dmm.co.jp/digital/videoa/-/detail/=/*"],
+  "host_permissions": ["https://video.dmm.co.jp/av/content/*"],
   "content_scripts": [
     {
-      "matches": ["https://www.dmm.co.jp/digital/videoa/-/detail/=/*"],
+      "matches": ["https://video.dmm.co.jp/av/content/*"],
       "js": ["build/historySaver.js"]
     }
   ]
