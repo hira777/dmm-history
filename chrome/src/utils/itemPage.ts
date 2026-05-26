@@ -1,5 +1,5 @@
 /**
- * @file DMMの商品ページのデータを取得するメソッド群
+ * @file FANZAの商品ページのデータを取得するメソッド群
  */
 
 import orderBy from 'lodash.orderby';

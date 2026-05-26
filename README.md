@@ -1,6 +1,6 @@
-# DMM History
+# FANZA History
 
-Fanza（DMM.R18）の商品閲覧履歴を保存・表示する拡張機能。
+FANZAの商品閲覧履歴を保存・表示する拡張機能。
 
 現在、拡張機能はChrome Web Store上にホストされていなければインストールできない。
 
@@ -10,7 +10,7 @@ Fanza（DMM.R18）の商品閲覧履歴を保存・表示する拡張機能。
 
 ## インストール方法
 
-1. DMM Historyの実行ファイルである[chrome.zip](https://github.com/hira777/dmm-history/releases/download/v1.0.6/chrome.zip)をダウンロード。
+1. FANZA Historyの実行ファイルである[chrome.zip](https://github.com/hira777/dmm-history/releases/download/v1.0.6/chrome.zip)をダウンロード。
 2. ダウンロードした`chrome.zip`を任意の場所に解凍する。
 3. 以下のように「パッケージ化されていない拡張機能を読み込む」を選択し、解凍したディレクトリを選択すれば拡張が読み込まれる。
 

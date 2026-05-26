@@ -15,7 +15,7 @@ export default function Header({
     <nav className="history-header">
       <div className="history-header__container">
         <div className="history-header__brand">
-          <div className="history-header__title">DMM History</div>
+          <div className="history-header__title">FANZA History</div>
         </div>
         <div className="history-header__search">
           <input
