@@ -8,6 +8,7 @@
   "scripts": {
     "check-types": "tsc -p ./chrome/tsconfig.json --noEmit",
     "dev": "cd chrome && webpack --mode development --watch",
+    "dev:history": "cd chrome && webpack serve --mode development --env historyDevServer=true",
     "build": "cd chrome && webpack --mode production --progress",
     "zip": "zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
     "release": "node release.js && pnpm run build && pnpm run zip",
@@ -39,7 +40,8 @@
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.1.7",
     "webpack": "^5.107.1",
-    "webpack-cli": "^7.0.2"
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.4"
   },
   "dependencies": {
     "bulma": "^0.7.0",
