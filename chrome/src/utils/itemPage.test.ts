@@ -1,12 +1,22 @@
 import { describe, expect, it } from 'vitest';
 
-import itemPage from './itemPage';
+import {
+  getAffiliateUrl,
+  getImageUrl,
+  getItemId,
+  getProductInfoValue,
+  getSaleLimitTimeText,
+  normalizeProductInfoValue,
+  normalizeTitle,
+  parsePriceText,
+  parseSaleLimitTimeText
+} from './itemPage';
 
 describe('itemPage', () => {
   describe('getItemId', () => {
     it('商品IDを取得する', () => {
       expect(
-        itemPage.getItemId('https://video.dmm.co.jp/av/content/?id=prvr00087')
+        getItemId('https://video.dmm.co.jp/av/content/?id=prvr00087')
       ).toBe('prvr00087');
     });
   });
@@ -14,16 +24,14 @@ describe('itemPage', () => {
   describe('normalizeTitle', () => {
     it('商品タイトルからFANZA動画の接尾辞を削除する', () => {
       expect(
-        itemPage.normalizeTitle(
-          'サンプルタイトル｜エロ動画・アダルトビデオ｜FANZA動画'
-        )
+        normalizeTitle('サンプルタイトル｜エロ動画・アダルトビデオ｜FANZA動画')
       ).toBe('サンプルタイトル');
     });
   });
 
   describe('getImageUrl', () => {
     it('商品IDから商品画像URLを取得する', () => {
-      expect(itemPage.getImageUrl('nqtd00022')).toBe(
+      expect(getImageUrl('nqtd00022')).toBe(
         'https://awsimgsrc.dmm.co.jp/pics_dig/digital/video/nqtd00022/nqtd00022ps.jpg?w=200&h=272&t=margin'
       );
     });
@@ -31,7 +39,7 @@ describe('itemPage', () => {
 
   describe('getAffiliateUrl', () => {
     it('商品IDからアフィリエイトURLを取得する', () => {
-      expect(itemPage.getAffiliateUrl('sone00682')).toBe(
+      expect(getAffiliateUrl('sone00682')).toBe(
         'https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsone00682&af_id=hira777-004'
       );
     });
@@ -39,16 +47,16 @@ describe('itemPage', () => {
 
   describe('parsePriceText', () => {
     it('価格文字列を数値に変換する', () => {
-      expect(itemPage.parsePriceText('1,780円')).toBe(1780);
-      expect(itemPage.parsePriceText('580円')).toBe(580);
+      expect(parsePriceText('1,780円')).toBe(1780);
+      expect(parsePriceText('580円')).toBe(580);
     });
   });
 
   describe('parseSaleLimitTimeText', () => {
     it('セール期限の文字列を日時に変換する', () => {
-      expect(
-        itemPage.parseSaleLimitTimeText('5月26日(火) 23:59 まで', 2026)
-      ).toBe(new Date(2026, 4, 26, 23, 59).toString());
+      expect(parseSaleLimitTimeText('5月26日(火) 23:59 まで', 2026)).toBe(
+        new Date(2026, 4, 26, 23, 59).toString()
+      );
     });
   });
 
@@ -65,16 +73,14 @@ describe('itemPage', () => {
         ]
       } as unknown as ParentNode;
 
-      expect(itemPage.getSaleLimitTimeText(root)).toContain(
-        '5月26日(火) 23:59 まで'
-      );
+      expect(getSaleLimitTimeText(root)).toContain('5月26日(火) 23:59 まで');
     });
   });
 
   describe('normalizeProductInfoValue', () => {
     it('商品情報の未設定値を空文字に変換する', () => {
-      expect(itemPage.normalizeProductInfoValue('----')).toBe('');
-      expect(itemPage.normalizeProductInfoValue(' キチックス/妄想族 ')).toBe(
+      expect(normalizeProductInfoValue('----')).toBe('');
+      expect(normalizeProductInfoValue(' キチックス/妄想族 ')).toBe(
         'キチックス/妄想族'
       );
     });
@@ -98,10 +104,8 @@ describe('itemPage', () => {
         ]
       } as unknown as ParentNode;
 
-      expect(itemPage.getProductInfoValue('メーカー', root)).toBe(
-        'キチックス/妄想族'
-      );
-      expect(itemPage.getProductInfoValue('レーベル', root)).toBe('炉利');
+      expect(getProductInfoValue('メーカー', root)).toBe('キチックス/妄想族');
+      expect(getProductInfoValue('レーベル', root)).toBe('炉利');
     });
   });
 });

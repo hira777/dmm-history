@@ -3,27 +3,39 @@ import { keys, ChromeStorageSchema } from '@/models/chromeStorageSchema';
 import { History } from '@/models/history';
 import history from '@/utils/history';
 import chromeStorage from '@/utils/chromeStorage';
-import itemPage from '@/utils/itemPage';
+import {
+  getAffiliateUrl,
+  getImageUrl,
+  getItemId,
+  getLabel,
+  getMaker,
+  getPrices,
+  getSaleLimitTime,
+  getSalePrices,
+  getTitle,
+  waitForItemPageData,
+  waitForSaleLimitTime
+} from '@/utils/itemPage';
 
 async function saveNewHistory(): Promise<void> {
-  const ready = await itemPage.waitForItemPageData();
+  const ready = await waitForItemPageData();
   if (!ready) return;
 
-  const itemId = itemPage.getItemId(location.href);
-  const salePrices = itemPage.getSalePrices();
+  const itemId = getItemId(location.href);
+  const salePrices = getSalePrices();
   const saleLimitTime = salePrices
-    ? await itemPage.waitForSaleLimitTime().then((ready) => {
-        return ready ? itemPage.getSaleLimitTime() : null;
+    ? await waitForSaleLimitTime().then((ready) => {
+        return ready ? getSaleLimitTime() : null;
       })
     : null;
   const newHistory: History = {
     id: itemId,
-    title: itemPage.getTitle(),
-    href: itemPage.getAffiliateUrl(itemId),
-    imageUrl: itemPage.getImageUrl(itemId),
-    maker: itemPage.getMaker(),
-    label: itemPage.getLabel(),
-    prices: itemPage.getPrices(),
+    title: getTitle(),
+    href: getAffiliateUrl(itemId),
+    imageUrl: getImageUrl(itemId),
+    maker: getMaker(),
+    label: getLabel(),
+    prices: getPrices(),
     salePrices,
     saleLimitTime
   };
