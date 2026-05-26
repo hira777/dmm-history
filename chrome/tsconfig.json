@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
+    // 最新のJavaScript構文をそのまま扱う
     "target": "ESNext",
-    "module": "es2015", // ESM は webpack が変形する
-    "moduleResolution": "node", // node_modules から モジュールをインポートするために必要
-    "baseUrl": "./",
+    // ESMはwebpack側で変換する
+    "module": "ESNext",
+    // React 17以降のJSX変換を使う
+    "jsx": "react-jsx",
+    // webpackなどのbundler前提でモジュール解決する
+    "moduleResolution": "bundler",
+    // @/xxx を chrome/src/xxx として扱う
     "paths": {
-      "@/*": ["src/*"] // 例: src/utils/history -> @/utils/history
+      "@/*": ["./src/*"]
     },
+    // CommonJS形式で作られたパッケージのimportの書き方を簡単にする
     "esModuleInterop": true,
+    // 依存パッケージの型エラーはこのプロジェクトのチェック対象外にする
     "skipLibCheck": true,
+    // 暗黙のanyなどを厳しくチェックする
     "strict": true,
-    "experimentalDecorators": true, // vue-property-decorator を利用するのに必要
+    // Chrome拡張APIの型を使う
+    "types": ["chrome"]
   },
+  // Chrome拡張のソースだけを型チェック対象にする
   "include": ["src/**/*"]
 }

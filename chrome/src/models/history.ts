@@ -4,6 +4,8 @@ export type History = Readonly<{
   title: string;
   href: string;
   imageUrl: string;
+  maker: string;
+  label: string;
   prices: Prices;
   salePrices: Prices | null;
   saleLimitTime: string | null;

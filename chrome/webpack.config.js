@@ -1,43 +1,37 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
+const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = (env, argv) => {
+  const historyDevServer = Boolean(env.historyDevServer);
+
   return {
+    context: __dirname,
+
     entry: {
       historySaver: './src/chrome/historySaver.ts',
-      histories: './src/vue/histories.ts',
+      histories: './src/react/histories.tsx',
       popup: './src/chrome/popup.ts'
     },
 
     output: {
       path: path.join(__dirname, 'build'),
-      filename: '[name].js'
+      filename: '[name].js',
+      publicPath: historyDevServer ? '/build/' : 'auto'
     },
 
     module: {
       rules: [
         {
-          test: /\.pug$/,
-          loader: 'pug-plain-loader'
-        },
-        {
           test: /\.scss$/,
-          use: ['vue-style-loader', 'css-loader', 'sass-loader']
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
-          test: /\.vue/,
-          exclude: /node_modules/,
-          loader: 'vue-loader'
-        },
-        {
-          test: /\.ts$/,
+          test: /\.tsx?$/,
           loader: 'ts-loader',
           options: {
-            // transpileOnly: true, // 型チェックしない
-            appendTsSuffixTo: [/\.vue$/],
             configFile: 'tsconfig.json'
           }
         }
@@ -46,10 +40,9 @@ module.exports = (env, argv) => {
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src/'),
-        vue$: 'vue/dist/vue.esm.js'
+        '@': path.resolve(__dirname, 'src/')
       },
-      extensions: ['.ts', '.js', '.vue']
+      extensions: ['.tsx', '.ts', '.js']
     },
 
     optimization: {
@@ -69,6 +62,22 @@ module.exports = (env, argv) => {
     devtool:
       argv.mode === 'development' ? 'inline-cheap-module-source-map' : false,
 
-    plugins: [new VueLoaderPlugin()]
+    devServer: {
+      static: {
+        directory: __dirname
+      },
+      devMiddleware: {
+        publicPath: '/build/'
+      },
+      open: ['/history.html'],
+      host: '127.0.0.1',
+      port: 8080
+    },
+
+    plugins: [
+      new webpack.DefinePlugin({
+        __DMM_HISTORY_USE_MOCK__: JSON.stringify(historyDevServer)
+      })
+    ]
   };
 };

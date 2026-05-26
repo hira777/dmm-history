@@ -1,27 +1,22 @@
 {
-  "name": "DMM History",
-  "description": "DMM.R18の商品閲覧履歴を保存・表示する拡張機能",
-  "version": "1.1.1",
-  "manifest_version": 2,
+  "name": "FANZA History",
+  "description": "FANZAの商品閲覧履歴を保存・表示する拡張機能",
+  "version": "1.2.0",
+  "manifest_version": 3,
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.dmm.co.jp/digital/videoa/-/detail/=/*"
-      ],
-      "js": [
-        "build/historySaver.js"
-      ]
-    }
-  ],
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage"
+  "permissions": ["storage"],
+  "host_permissions": ["https://video.dmm.co.jp/av/content/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://video.dmm.co.jp/av/content/*"],
+      "js": ["build/historySaver.js"]
+    }
   ]
 }

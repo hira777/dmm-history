@@ -12,7 +12,7 @@ const matchAllKeywords = ({ keywords, target }: Props): boolean => {
   if (keywords === undefined || keywords.length === 0 || keywords[0] === '')
     return false;
 
-  return keywords.every(keyword => {
+  return keywords.every((keyword) => {
     const re = new RegExp(`.*${keyword}.*`, 'i');
     return re.test(target);
   });
