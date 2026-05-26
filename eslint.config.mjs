@@ -1,8 +1,8 @@
-const js = require('@eslint/js');
-const tseslint = require('typescript-eslint');
-const eslintConfigPrettier = require('eslint-config-prettier');
+import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
 
-module.exports = [
+export default [
   {
     // 生成物と依存パッケージはチェック対象から外す
     ignores: ['chrome/build/**', 'dist/**', 'node_modules/**']
@@ -13,6 +13,18 @@ module.exports = [
   ...tseslint.configs.recommended,
   // Prettierと競合する整形ルールを無効にする
   eslintConfigPrettier,
+  {
+    // ESM形式のNode.js補助スクリプトをチェックする
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly'
+      }
+    }
+  },
   {
     // Chrome拡張のTypeScript/Reactコードをチェックする
     files: ['chrome/src/**/*.{ts,tsx}'],

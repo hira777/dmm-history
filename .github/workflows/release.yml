@@ -1,0 +1,57 @@
+# GitHub Releaseを自動作成するワークフロー
+name: Release
+
+on:
+  # v1.2.3 のようなタグがpushされた時だけ実行する
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  # GitHub Releaseの作成とzipファイルの添付に必要
+  contents: write
+
+jobs:
+  release:
+    # GitHubが用意しているUbuntu環境で実行する
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリのファイルをGitHub Actionsの実行環境に取得する
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      # tagがmainブランチに含まれるcommitを指しているか確認する
+      - name: Ensure tag is on main
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor "${GITHUB_SHA}" origin/main
+
+      # packageManagerに合わせてpnpmを使えるようにする
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      # .node-versionに書かれたNode.jsを使う
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          # pnpmの依存キャッシュを使い、インストールを速くする
+          cache: pnpm
+
+      # lockfile通りに依存パッケージをインストールする
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # version同期、型チェック、テスト、ビルド、zip作成をまとめて実行する
+      - name: Prepare release asset
+        run: pnpm release:prepare
+
+      # GitHub Releaseを作り、生成したchrome.zipを添付する
+      - name: Create GitHub Release
+        # --generate-notesでGitHubのリリースノートを自動生成する
+        # --verify-tagで実行元のタグが存在することを確認する
+        run: gh release create "${GITHUB_REF_NAME}" ./dist/chrome.zip --generate-notes --verify-tag
+        env:
+          # GitHub Actionsが自動で用意するトークンを使う
+          GH_TOKEN: ${{ github.token }}
