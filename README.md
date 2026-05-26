@@ -27,7 +27,17 @@ FANZAの商品閲覧履歴を保存・表示する拡張機能。
 
 ## 開発
 
-このプロジェクトは Node.js と pnpm を使って開発します。
+技術スタック:
+
+- React
+- TypeScript
+- Manifest V3
+
+開発環境:
+
+- Node.js
+- pnpm
+
 Node.js のバージョンは `.node-version` に書かれているものに合わせてください。
 
 初回は依存パッケージをインストールします。
@@ -47,6 +57,8 @@ pnpm build
 - `pnpm check-types`: TypeScript の型エラーがないか確認します。
 - `pnpm test`: Vitest でテストを実行します。
 - `pnpm build`: Chrome 拡張として読み込むためのファイルを `chrome/build` に出力します。
+
+`pnpm build` 後は、Chrome の拡張機能ページから `chrome` ディレクトリを「パッケージ化されていない拡張機能」として読み込めます。
 
 履歴画面の見た目だけを確認したい場合は、開発サーバーを起動します。
 

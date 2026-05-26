@@ -8,8 +8,8 @@
 ## 現在の全体状況
 
 - 状態: React / TypeScript / Manifest V3 への主要移行は完了
-- 優先度が高い作業: テスト追加と README 更新
-- 現在の大きな課題: Bulma と Sass まわりで非推奨警告が出ている
+- 優先度が高い作業: 残タスクの整理とリリース前確認
+- 現在の大きな課題: 実サイトの DOM 変更に備えた取得処理の保守性を上げる
 
 ## 進行ルール
 
@@ -42,7 +42,8 @@
   - [x] Sass のビルド基盤を更新する。
     - [x] `node-sass` を削除する。
     - [x] Dart Sass の `sass` に置き換える。
-    - [ ] Bulma 由来の Sass 非推奨警告への対応方針を決める。
+    - [x] Bulma を削除し、自前 SCSS に置き換える。
+    - [x] Sass 関連のビルド警告を解消する。
 
 - フェーズ 3: **Manifest V3 対応** — Chrome 拡張を MV3 で読み込める状態にする
   - [x] `chrome/manifest.json` を Manifest V3 向けに更新する。
@@ -88,24 +89,31 @@
   - [x] テスト方針を決める。
     - [x] Vitest を追加する。
     - [x] まずテストする純粋関数を選ぶ。
-  - [ ] テストを追加する。
+  - [x] テストを追加する。
     - [x] keyword の utils から着手する。
     - [x] 既存の utils テストを `chrome/src/utils` 配下へ移動する。
-    - [ ] historyCard など他の utils へテストを追加する。
-  - [ ] README を更新する。
+    - [x] historyCard の utils へテストを追加する。
+  - [x] README を更新する。
     - [x] Node.js / pnpm / build / test 手順を更新する。
-    - [ ] Manifest V3 と React 構成に合わせて説明を更新する。
+    - [x] Manifest V3 と React 構成に合わせて説明を更新する。
+
+- フェーズ 7: **手動動作確認** — Chrome 拡張として最低限の動作を確認する
+  - [x] ビルド済み拡張を Chrome に読み込む。
+    - [x] 拡張を起動できることを確認する。
+  - [x] 履歴画面の基本動作を確認する。
+    - [x] 履歴保存・一覧表示・検索・削除を確認する。
+    - [x] popup から履歴画面へ遷移できることを確認する。
 
 ## 直近でやること
 
-1. Sass の非推奨警告をどこまでこの段階で抑えるか決める
-2. historyCard など他の utils へテストを追加する
-3. README を Manifest V3 と React 構成に合わせて更新する
+1. 残っている DMM / FANZA 表記の扱いを確認する
+2. 必要であればアイコンやリリース名を FANZA History に合わせる
+3. `itemPage` の DOM 取得処理にテストや補助関数を追加する
 
 ## 課題・注意点
 
-- Dart Sass への移行後、Bulma 由来の非推奨警告が出ている
-- テストが未整備なので、変更時の壊れ方に気づきにくい
+- Chrome 拡張としての一通りの手動確認は完了済み
+- 実サイトの DOM 変更があると `itemPage` の取得処理が壊れる可能性がある
 
 ## メモ
 
