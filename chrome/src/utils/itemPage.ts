@@ -8,12 +8,6 @@ import { AFFILIATE_ID } from '@/enums';
 import { Prices } from '@/models/history';
 
 const TITLE_SUFFIX = '｜エロ動画・アダルトビデオ｜FANZA動画';
-const WAIT_TIMEOUT_MS = 10000;
-
-type WaitForItemPageDataOptions = {
-  previousTitle?: string;
-  timeoutMs?: number;
-};
 
 /**
  * URLから商品IDを取得
@@ -71,7 +65,7 @@ export const getSaleLimitTimeText = (root: ParentNode = document): string => {
 /**
  * 価格表示の候補になる要素を取得する
  */
-const getPriceOptionItems = (): HTMLElement[] => {
+export const getPriceOptionItems = (): HTMLElement[] => {
   const priceList = Array.from(
     document.querySelectorAll<HTMLElement>('ul.flex.flex-col')
   ).find((element) => {
@@ -115,7 +109,7 @@ const getProductInfoRows = (root: ParentNode = document): HTMLElement[] => {
 /**
  * 商品情報テーブルが読み込まれているか判定する
  */
-const hasProductInfoRows = (): boolean => {
+export const hasProductInfoRows = (): boolean => {
   const labels = getProductInfoRows().map((row) => {
     return row.querySelector('th')?.textContent?.trim();
   });
@@ -135,101 +129,6 @@ export const getProductInfoValue = (
   });
 
   return normalizeProductInfoValue(row?.querySelector('td')?.textContent || '');
-};
-
-/**
- * 商品ページから必要な情報を取得できる状態か判定する
- */
-const hasItemPageData = (previousTitle: string = ''): boolean => {
-  const title = normalizeTitle(document.title);
-
-  return (
-    title !== '' &&
-    title !== previousTitle &&
-    getPriceOptionItems().length > 0 &&
-    hasProductInfoRows()
-  );
-};
-
-/**
- * 商品ページの必要な情報が読み込まれるまで待つ
- */
-export const waitForItemPageData = ({
-  previousTitle = '',
-  timeoutMs = WAIT_TIMEOUT_MS
-}: WaitForItemPageDataOptions = {}): Promise<boolean> => {
-  if (hasItemPageData(previousTitle)) {
-    return Promise.resolve(true);
-  }
-
-  return new Promise((resolve) => {
-    let settled = false;
-
-    const observer = new MutationObserver(() => {
-      if (hasItemPageData(previousTitle)) {
-        finish(true);
-      }
-    });
-
-    const timeoutId = window.setTimeout(() => {
-      finish(false);
-    }, timeoutMs);
-
-    const finish = (result: boolean): void => {
-      if (settled) return;
-
-      settled = true;
-      window.clearTimeout(timeoutId);
-      observer.disconnect();
-      resolve(result);
-    };
-
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-  });
-};
-
-/**
- * セール終了日時が読み込まれるまで待つ
- */
-export const waitForSaleLimitTime = (
-  timeoutMs: number = WAIT_TIMEOUT_MS
-): Promise<boolean> => {
-  if (getSaleLimitTime()) {
-    return Promise.resolve(true);
-  }
-
-  return new Promise((resolve) => {
-    let settled = false;
-
-    const observer = new MutationObserver(() => {
-      if (getSaleLimitTime()) {
-        finish(true);
-      }
-    });
-
-    const timeoutId = window.setTimeout(() => {
-      finish(false);
-    }, timeoutMs);
-
-    const finish = (result: boolean): void => {
-      if (settled) return;
-
-      settled = true;
-      window.clearTimeout(timeoutId);
-      observer.disconnect();
-      resolve(result);
-    };
-
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-  });
 };
 
 /**

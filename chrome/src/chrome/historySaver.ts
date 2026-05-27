@@ -12,10 +12,12 @@ import {
   getPrices,
   getSaleLimitTime,
   getSalePrices,
-  getTitle,
+  getTitle
+} from '@/utils/itemPage';
+import {
   waitForItemPageData,
   waitForSaleLimitTime
-} from '@/utils/itemPage';
+} from '@/utils/itemPageWaiter';
 
 const CONTENT_PATH = '/av/content/';
 
