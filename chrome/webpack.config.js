@@ -11,6 +11,7 @@ module.exports = (env, argv) => {
     context: __dirname,
 
     entry: {
+      historyWatcher: './src/chrome/historyWatcher.ts',
       historySaver: './src/chrome/historySaver.ts',
       histories: './src/react/histories.tsx',
       popup: './src/chrome/popup.ts'
