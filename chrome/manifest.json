@@ -1,7 +1,7 @@
 {
   "name": "FANZA History",
   "description": "FANZAの商品閲覧履歴を保存・表示する拡張機能",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "manifest_version": 3,
   "icons": {
     "16": "icons/icon16.png",
@@ -11,18 +11,30 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["storage"],
-  "host_permissions": ["https://video.dmm.co.jp/av/*"],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://video.dmm.co.jp/av/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://video.dmm.co.jp/av/*"],
-      "js": ["build/historyWatcher.js"],
+      "matches": [
+        "https://video.dmm.co.jp/av/*"
+      ],
+      "js": [
+        "build/historyWatcher.js"
+      ],
       "run_at": "document_start",
       "world": "MAIN"
     },
     {
-      "matches": ["https://video.dmm.co.jp/av/*"],
-      "js": ["build/historySaver.js"],
+      "matches": [
+        "https://video.dmm.co.jp/av/*"
+      ],
+      "js": [
+        "build/historySaver.js"
+      ],
       "run_at": "document_start"
     }
   ]
