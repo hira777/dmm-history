@@ -6,10 +6,16 @@ import { getSampleVideoPlayCount } from '@/utils/itemPage';
 
 const WAIT_TIMEOUT_MS = 5000;
 
+/**
+ * サンプル動画iframeのURLから商品IDを取得する。
+ */
 const getSampleVideoItemId = (url: string): string => {
   return new URL(url).pathname.match(/\/cid=([^/]+)/)?.[1] || '';
 };
 
+/**
+ * サンプル動画の再生回数を親の商品ページへ送る。
+ */
 const sendSampleVideoInfo = (): void => {
   const itemId = getSampleVideoItemId(location.href);
   if (itemId === '') return;
@@ -23,6 +29,9 @@ const sendSampleVideoInfo = (): void => {
   window.parent.postMessage(message, 'https://video.dmm.co.jp');
 };
 
+/**
+ * サンプル動画の再生回数が読み取れるまで待つ。
+ */
 const waitForSampleVideoInfo = (): void => {
   if (getSampleVideoPlayCount() !== null) {
     sendSampleVideoInfo();
