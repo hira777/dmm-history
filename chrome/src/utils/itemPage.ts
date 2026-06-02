@@ -31,6 +31,17 @@ export const parsePriceText = (text: string): number => {
 };
 
 /**
+ * 件数のテキストを数値に変換する
+ */
+export const parseCountText = (text: string): number | null => {
+  const normalized = text.trim().replace(/,/g, '');
+  if (normalized === '') return null;
+
+  const count = Number(normalized);
+  return Number.isNaN(count) ? null : count;
+};
+
+/**
  * セール終了日時のテキストをDate文字列に変換する
  */
 export const parseSaleLimitTimeText = (
@@ -152,6 +163,44 @@ export const getAffiliateUrl = (itemId: string): string => {
   const itemUrl = `https://video.dmm.co.jp/av/content/?id=${itemId}`;
 
   return `https://al.fanza.co.jp/?lurl=${encodeURIComponent(itemUrl)}&af_id=${AFFILIATE_ID}`;
+};
+
+/**
+ * サンプル動画プレイヤーのiframeがあるか判定する
+ */
+export const hasSampleVideo = (root: ParentNode = document): boolean => {
+  return (
+    root.querySelector('iframe[title="サンプル動画プレイヤー"]') !== null
+  );
+};
+
+/**
+ * サンプル動画の再生回数を取得する
+ */
+export const getSampleVideoPlayCount = (
+  root: ParentNode = document
+): number | null => {
+  const countElement = root.querySelector<HTMLElement>(
+    '.box-sampleInfo .view-count em'
+  );
+
+  return parseCountText(countElement?.textContent || '');
+};
+
+/**
+ * お気に入り登録数を取得する
+ */
+export const getFavoriteCount = (root: ParentNode = document): number | null => {
+  const favoriteElement = Array.from(
+    root.querySelectorAll<HTMLElement>('div')
+  ).find((element) => {
+    return element.textContent?.includes('お気に入り登録数');
+  });
+  const countElement = favoriteElement?.querySelector<HTMLElement>(
+    'div.font-bold'
+  );
+
+  return parseCountText(countElement?.textContent || '');
 };
 
 /**

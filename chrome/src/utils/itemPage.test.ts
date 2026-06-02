@@ -2,10 +2,14 @@ import { describe, expect, it } from 'vitest';
 
 import {
   getAffiliateUrl,
+  getFavoriteCount,
   getImageUrl,
   getItemId,
   getProductInfoValue,
   getSaleLimitTimeText,
+  getSampleVideoPlayCount,
+  hasSampleVideo,
+  parseCountText,
   normalizeProductInfoValue,
   normalizeTitle,
   parsePriceText,
@@ -49,6 +53,14 @@ describe('itemPage', () => {
     it('価格文字列を数値に変換する', () => {
       expect(parsePriceText('1,780円')).toBe(1780);
       expect(parsePriceText('580円')).toBe(580);
+    });
+  });
+
+  describe('parseCountText', () => {
+    it('件数の文字列を数値に変換する', () => {
+      expect(parseCountText('58,014')).toBe(58014);
+      expect(parseCountText('4555')).toBe(4555);
+      expect(parseCountText('')).toBe(null);
     });
   });
 
@@ -106,6 +118,54 @@ describe('itemPage', () => {
 
       expect(getProductInfoValue('メーカー', root)).toBe('キチックス/妄想族');
       expect(getProductInfoValue('レーベル', root)).toBe('炉利');
+    });
+  });
+
+  describe('hasSampleVideo', () => {
+    it('サンプル動画プレイヤーのiframeがある場合はtrueを返す', () => {
+      const root = {
+        querySelector: (selector: string) => {
+          if (selector === 'iframe[title="サンプル動画プレイヤー"]') return {};
+          return null;
+        }
+      } as unknown as ParentNode;
+
+      expect(hasSampleVideo(root)).toBe(true);
+    });
+  });
+
+  describe('getSampleVideoPlayCount', () => {
+    it('サンプル動画の再生回数を取得する', () => {
+      const root = {
+        querySelector: (selector: string) => {
+          if (selector === '.box-sampleInfo .view-count em') {
+            return { textContent: '58,014' };
+          }
+          return null;
+        }
+      } as unknown as ParentNode;
+
+      expect(getSampleVideoPlayCount(root)).toBe(58014);
+    });
+  });
+
+  describe('getFavoriteCount', () => {
+    it('お気に入り登録数を取得する', () => {
+      const root = {
+        querySelectorAll: () => [
+          {
+            textContent: 'お気に入り登録数 4555',
+            querySelector: (selector: string) => {
+              if (selector === 'div.font-bold') {
+                return { textContent: '4555' };
+              }
+              return null;
+            }
+          }
+        ]
+      } as unknown as ParentNode;
+
+      expect(getFavoriteCount(root)).toBe(4555);
     });
   });
 });

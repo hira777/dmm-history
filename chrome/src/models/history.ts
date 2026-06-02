@@ -9,5 +9,8 @@ export type History = Readonly<{
   prices: Prices;
   salePrices: Prices | null;
   saleLimitTime: string | null;
+  hasSampleVideo: boolean;
+  sampleVideoPlayCount: number | null;
+  favoriteCount: number | null;
 }>;
 export type Histories = History[] | [];
