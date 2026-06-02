@@ -107,12 +107,12 @@ window.addEventListener('message', (event: MessageEvent) => {
 /**
  * 商品ページの情報を取得して閲覧履歴へ保存する。
  */
-async function saveNewHistory(previousTitle: string = ''): Promise<void> {
+async function saveNewHistory(): Promise<void> {
   if (!isContentPage(location.href)) return;
-  const ready = await waitForItemPageData({ previousTitle });
+  const itemId = getItemId(location.href);
+  const ready = await waitForItemPageData({ expectedItemId: itemId });
   if (!ready) return;
 
-  const itemId = getItemId(location.href);
   const salePrices = getSalePrices();
   const sampleVideoExists = hasSampleVideo();
   const sampleVideoPlayCount = sampleVideoExists
@@ -153,13 +153,11 @@ async function saveNewHistory(previousTitle: string = ''): Promise<void> {
 function checkUrlChange(): void {
   if (location.href === currentUrl) return;
 
-  const previousUrl = currentUrl;
   currentUrl = location.href;
 
   if (!isContentPage(location.href)) return;
 
-  const previousTitle = isContentPage(previousUrl) ? getTitle() : '';
-  saveNewHistory(previousTitle);
+  saveNewHistory();
 }
 
 /**

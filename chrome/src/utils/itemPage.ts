@@ -218,6 +218,13 @@ export const getLabel = (): string => {
 };
 
 /**
+ * 配信品番を取得する
+ */
+export const getDeliveryItemId = (root: ParentNode = document): string => {
+  return getProductInfoValue('配信品番', root);
+};
+
+/**
  * 商品がセール中かどうか
  */
 const isSale = (): boolean => {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   getAffiliateUrl,
+  getDeliveryItemId,
   getFavoriteCount,
   getImageUrl,
   getItemId,
@@ -118,6 +119,24 @@ describe('itemPage', () => {
 
       expect(getProductInfoValue('メーカー', root)).toBe('キチックス/妄想族');
       expect(getProductInfoValue('レーベル', root)).toBe('炉利');
+    });
+  });
+
+  describe('getDeliveryItemId', () => {
+    it('商品情報テーブルから配信品番を取得する', () => {
+      const root = {
+        querySelectorAll: () => [
+          {
+            querySelector: (selector: string) => {
+              if (selector === 'th') return { textContent: '配信品番：' };
+              if (selector === 'td') return { textContent: 'dvaj00740' };
+              return null;
+            }
+          }
+        ]
+      } as unknown as ParentNode;
+
+      expect(getDeliveryItemId(root)).toBe('dvaj00740');
     });
   });
 
