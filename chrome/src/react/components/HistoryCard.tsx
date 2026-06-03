@@ -6,13 +6,17 @@ import { getPrice, getSalePercent, isSale } from '@/react/utils/historyCard';
 type HistoryCardProps = Readonly<{
   item: History;
   onDelete: (itemId: string) => void;
+  onPlaySampleVideo: (url: string) => void;
 }>;
 
 export default function HistoryCard({
   item,
-  onDelete
+  onDelete,
+  onPlaySampleVideo
 }: HistoryCardProps): ReactElement {
   const sale = isSale(item);
+  const sampleVideoUrl = item.sampleVideoUrl;
+  const sampleVideoPlayCount = item.sampleVideoPlayCount;
 
   return (
     <div className="history-card">
@@ -44,6 +48,23 @@ export default function HistoryCard({
             </span>
           )}
         </p>
+        {sampleVideoUrl && (
+          <div className="history-card__sample-video">
+            <button
+              type="button"
+              className="history-card__play-button"
+              aria-label="サンプル動画を再生"
+              onClick={() => onPlaySampleVideo(sampleVideoUrl)}
+            >
+              再生
+            </button>
+            {sampleVideoPlayCount !== null && (
+              <span className="history-card__play-count">
+               再生回数 {sampleVideoPlayCount.toLocaleString()}回
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
