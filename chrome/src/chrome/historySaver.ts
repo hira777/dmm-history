@@ -17,6 +17,7 @@ import {
   getPrices,
   getSaleLimitTime,
   getSalePrices,
+  getSampleVideoUrl,
   hasSampleVideo,
   getTitle
 } from '@/utils/itemPage';
@@ -134,6 +135,7 @@ async function saveNewHistory(): Promise<void> {
     salePrices,
     saleLimitTime,
     hasSampleVideo: sampleVideoExists,
+    sampleVideoUrl: sampleVideoExists ? getSampleVideoUrl(itemId) : null,
     sampleVideoPlayCount,
     favoriteCount: getFavoriteCount()
   };

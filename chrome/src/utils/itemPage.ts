@@ -166,6 +166,13 @@ export const getAffiliateUrl = (itemId: string): string => {
 };
 
 /**
+ * アフィリエイトID付きのサンプル動画URLを取得する
+ */
+export const getSampleVideoUrl = (itemId: string): string => {
+  return `https://www.dmm.co.jp/litevideo/-/part/=/affi_id=${AFFILIATE_ID}/cid=${itemId}/size=1280_720/`;
+};
+
+/**
  * サンプル動画プレイヤーのiframeがあるか判定する
  */
 export const hasSampleVideo = (root: ParentNode = document): boolean => {

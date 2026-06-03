@@ -10,6 +10,7 @@ export type History = Readonly<{
   salePrices: Prices | null;
   saleLimitTime: string | null;
   hasSampleVideo: boolean;
+  sampleVideoUrl: string | null;
   sampleVideoPlayCount: number | null;
   favoriteCount: number | null;
 }>;

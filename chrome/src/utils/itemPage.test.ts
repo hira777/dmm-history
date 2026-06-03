@@ -8,6 +8,7 @@ import {
   getItemId,
   getProductInfoValue,
   getSaleLimitTimeText,
+  getSampleVideoUrl,
   getSampleVideoPlayCount,
   hasSampleVideo,
   parseCountText,
@@ -46,6 +47,14 @@ describe('itemPage', () => {
     it('商品IDからアフィリエイトURLを取得する', () => {
       expect(getAffiliateUrl('sone00682')).toBe(
         'https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsone00682&af_id=hira777-004'
+      );
+    });
+  });
+
+  describe('getSampleVideoUrl', () => {
+    it('商品IDからアフィリエイトID付きのサンプル動画URLを取得する', () => {
+      expect(getSampleVideoUrl('parathd04383')).toBe(
+        'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=hira777-004/cid=parathd04383/size=1280_720/'
       );
     });
   });

@@ -16,6 +16,7 @@ describe('history', () => {
     salePrices: null,
     saleLimitTime: null,
     hasSampleVideo: false,
+    sampleVideoUrl: null,
     sampleVideoPlayCount: null,
     favoriteCount: null
   });
