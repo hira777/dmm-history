@@ -13,7 +13,7 @@ export const mockHistories: Histories = [
     saleLimitTime: new Date(2099, 11, 31, 23, 59).toString(),
     hasSampleVideo: true,
     sampleVideoUrl:
-      'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=hira777-004/cid=ofje00512/size=1280_720/',
+      'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=ofje00512/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/',
     sampleVideoPlayCount: 58014,
     favoriteCount: 4555
   },
@@ -44,7 +44,7 @@ export const mockHistories: Histories = [
     saleLimitTime: null,
     hasSampleVideo: true,
     sampleVideoUrl:
-      'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=hira777-004/cid=mida00642/size=1280_720/',
+      'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=mida00642/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/',
     sampleVideoPlayCount: 1200,
     favoriteCount: null
   }

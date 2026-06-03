@@ -52,9 +52,9 @@ describe('itemPage', () => {
   });
 
   describe('getSampleVideoUrl', () => {
-    it('商品IDからアフィリエイトID付きのサンプル動画URLを取得する', () => {
-      expect(getSampleVideoUrl('parathd04383')).toBe(
-        'https://www.dmm.co.jp/litevideo/-/part/=/affi_id=hira777-004/cid=parathd04383/size=1280_720/'
+    it('商品IDからサンプル動画URLを取得する', () => {
+      expect(getSampleVideoUrl('ofje00512')).toBe(
+        'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=ofje00512/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/'
       );
     });
   });

@@ -166,10 +166,10 @@ export const getAffiliateUrl = (itemId: string): string => {
 };
 
 /**
- * アフィリエイトID付きのサンプル動画URLを取得する
+ * サンプル動画URLを取得する
  */
 export const getSampleVideoUrl = (itemId: string): string => {
-  return `https://www.dmm.co.jp/litevideo/-/part/=/affi_id=${AFFILIATE_ID}/cid=${itemId}/size=1280_720/`;
+  return `https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=${itemId}/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/`;
 };
 
 /**
