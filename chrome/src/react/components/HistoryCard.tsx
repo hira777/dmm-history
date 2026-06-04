@@ -60,7 +60,7 @@ export default function HistoryCard({
             </button>
             {sampleVideoPlayCount !== null && (
               <span className="history-card__play-count">
-               再生回数 {sampleVideoPlayCount.toLocaleString()}回
+                再生回数 {sampleVideoPlayCount.toLocaleString()}回
               </span>
             )}
           </div>

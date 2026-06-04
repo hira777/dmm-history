@@ -26,18 +26,17 @@ export default function SampleVideoModal({
           aria-label="サンプル動画を閉じる"
           onClick={onClose}
         />
-          <iframe
-            className="sample-video-modal__iframe"
-            title="サンプル動画"
-            src={url}
-            width="560"
-            height="360"
-            scrolling="no"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />
-
+        <iframe
+          className="sample-video-modal__iframe"
+          title="サンプル動画"
+          src={url}
+          width="560"
+          height="360"
+          scrolling="no"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+        />
       </div>
     </div>
   );

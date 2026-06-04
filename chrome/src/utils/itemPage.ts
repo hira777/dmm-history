@@ -176,9 +176,7 @@ export const getSampleVideoUrl = (itemId: string): string => {
  * サンプル動画プレイヤーのiframeがあるか判定する
  */
 export const hasSampleVideo = (root: ParentNode = document): boolean => {
-  return (
-    root.querySelector('iframe[title="サンプル動画プレイヤー"]') !== null
-  );
+  return root.querySelector('iframe[title="サンプル動画プレイヤー"]') !== null;
 };
 
 /**
@@ -197,15 +195,16 @@ export const getSampleVideoPlayCount = (
 /**
  * お気に入り登録数を取得する
  */
-export const getFavoriteCount = (root: ParentNode = document): number | null => {
+export const getFavoriteCount = (
+  root: ParentNode = document
+): number | null => {
   const favoriteElement = Array.from(
     root.querySelectorAll<HTMLElement>('div')
   ).find((element) => {
     return element.textContent?.includes('お気に入り登録数');
   });
-  const countElement = favoriteElement?.querySelector<HTMLElement>(
-    'div.font-bold'
-  );
+  const countElement =
+    favoriteElement?.querySelector<HTMLElement>('div.font-bold');
 
   return parseCountText(countElement?.textContent || '');
 };

@@ -76,10 +76,7 @@ export const waitForItemPageData = ({
   expectedItemId,
   timeoutMs = WAIT_TIMEOUT_MS
 }: WaitForItemPageDataOptions): Promise<boolean> => {
-  return waitForDomCondition(
-    () => hasItemPageData(expectedItemId),
-    timeoutMs
-  );
+  return waitForDomCondition(() => hasItemPageData(expectedItemId), timeoutMs);
 };
 
 /**

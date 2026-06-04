@@ -11,40 +11,26 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "host_permissions": [
     "https://video.dmm.co.jp/*",
     "https://www.dmm.co.jp/service/digitalapi/*"
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://video.dmm.co.jp/*"
-      ],
-      "js": [
-        "build/historyWatcher.js"
-      ],
+      "matches": ["https://video.dmm.co.jp/*"],
+      "js": ["build/historyWatcher.js"],
       "run_at": "document_start",
       "world": "MAIN"
     },
     {
-      "matches": [
-        "https://video.dmm.co.jp/*"
-      ],
-      "js": [
-        "build/historySaver.js"
-      ],
+      "matches": ["https://video.dmm.co.jp/*"],
+      "js": ["build/historySaver.js"],
       "run_at": "document_start"
     },
     {
-      "matches": [
-        "https://www.dmm.co.jp/service/digitalapi/*"
-      ],
-      "js": [
-        "build/sampleVideoReader.js"
-      ],
+      "matches": ["https://www.dmm.co.jp/service/digitalapi/*"],
+      "js": ["build/sampleVideoReader.js"],
       "run_at": "document_start",
       "all_frames": true
     }
