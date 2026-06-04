@@ -1,4 +1,5 @@
 import {
+  getDeliveryItemId,
   getPriceOptionItems,
   getSaleLimitTime,
   hasProductInfoRows,
@@ -8,19 +9,20 @@ import {
 const WAIT_TIMEOUT_MS = 10000;
 
 type WaitForItemPageDataOptions = {
-  previousTitle?: string;
+  expectedItemId: string;
   timeoutMs?: number;
 };
 
 /**
  * 商品ページから必要な情報を取得できる状態か判定する
  */
-const hasItemPageData = (previousTitle: string = ''): boolean => {
+const hasItemPageData = (expectedItemId: string): boolean => {
   const title = normalizeTitle(document.title);
+  const deliveryItemId = getDeliveryItemId();
 
   return (
     title !== '' &&
-    title !== previousTitle &&
+    deliveryItemId.toLowerCase() === expectedItemId.toLowerCase() &&
     getPriceOptionItems().length > 0 &&
     hasProductInfoRows()
   );
@@ -71,10 +73,10 @@ const waitForDomCondition = (
  * 商品ページの必要な情報が読み込まれるまで待つ
  */
 export const waitForItemPageData = ({
-  previousTitle = '',
+  expectedItemId,
   timeoutMs = WAIT_TIMEOUT_MS
-}: WaitForItemPageDataOptions = {}): Promise<boolean> => {
-  return waitForDomCondition(() => hasItemPageData(previousTitle), timeoutMs);
+}: WaitForItemPageDataOptions): Promise<boolean> => {
+  return waitForDomCondition(() => hasItemPageData(expectedItemId), timeoutMs);
 };
 
 /**

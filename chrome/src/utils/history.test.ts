@@ -14,7 +14,11 @@ describe('history', () => {
     label: 'レーベル',
     prices: [1000],
     salePrices: null,
-    saleLimitTime: null
+    saleLimitTime: null,
+    hasSampleVideo: false,
+    sampleVideoUrl: null,
+    sampleVideoPlayCount: null,
+    favoriteCount: null
   });
 
   const histories = [

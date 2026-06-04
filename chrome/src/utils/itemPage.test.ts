@@ -2,10 +2,16 @@ import { describe, expect, it } from 'vitest';
 
 import {
   getAffiliateUrl,
+  getDeliveryItemId,
+  getFavoriteCount,
   getImageUrl,
   getItemId,
   getProductInfoValue,
   getSaleLimitTimeText,
+  getSampleVideoUrl,
+  getSampleVideoPlayCount,
+  hasSampleVideo,
+  parseCountText,
   normalizeProductInfoValue,
   normalizeTitle,
   parsePriceText,
@@ -45,10 +51,26 @@ describe('itemPage', () => {
     });
   });
 
+  describe('getSampleVideoUrl', () => {
+    it('商品IDからサンプル動画URLを取得する', () => {
+      expect(getSampleVideoUrl('ofje00512')).toBe(
+        'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=ofje00512/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/'
+      );
+    });
+  });
+
   describe('parsePriceText', () => {
     it('価格文字列を数値に変換する', () => {
       expect(parsePriceText('1,780円')).toBe(1780);
       expect(parsePriceText('580円')).toBe(580);
+    });
+  });
+
+  describe('parseCountText', () => {
+    it('件数の文字列を数値に変換する', () => {
+      expect(parseCountText('58,014')).toBe(58014);
+      expect(parseCountText('4555')).toBe(4555);
+      expect(parseCountText('')).toBe(null);
     });
   });
 
@@ -106,6 +128,72 @@ describe('itemPage', () => {
 
       expect(getProductInfoValue('メーカー', root)).toBe('キチックス/妄想族');
       expect(getProductInfoValue('レーベル', root)).toBe('炉利');
+    });
+  });
+
+  describe('getDeliveryItemId', () => {
+    it('商品情報テーブルから配信品番を取得する', () => {
+      const root = {
+        querySelectorAll: () => [
+          {
+            querySelector: (selector: string) => {
+              if (selector === 'th') return { textContent: '配信品番：' };
+              if (selector === 'td') return { textContent: 'dvaj00740' };
+              return null;
+            }
+          }
+        ]
+      } as unknown as ParentNode;
+
+      expect(getDeliveryItemId(root)).toBe('dvaj00740');
+    });
+  });
+
+  describe('hasSampleVideo', () => {
+    it('サンプル動画プレイヤーのiframeがある場合はtrueを返す', () => {
+      const root = {
+        querySelector: (selector: string) => {
+          if (selector === 'iframe[title="サンプル動画プレイヤー"]') return {};
+          return null;
+        }
+      } as unknown as ParentNode;
+
+      expect(hasSampleVideo(root)).toBe(true);
+    });
+  });
+
+  describe('getSampleVideoPlayCount', () => {
+    it('サンプル動画の再生回数を取得する', () => {
+      const root = {
+        querySelector: (selector: string) => {
+          if (selector === '.box-sampleInfo .view-count em') {
+            return { textContent: '58,014' };
+          }
+          return null;
+        }
+      } as unknown as ParentNode;
+
+      expect(getSampleVideoPlayCount(root)).toBe(58014);
+    });
+  });
+
+  describe('getFavoriteCount', () => {
+    it('お気に入り登録数を取得する', () => {
+      const root = {
+        querySelectorAll: () => [
+          {
+            textContent: 'お気に入り登録数 4555',
+            querySelector: (selector: string) => {
+              if (selector === 'div.font-bold') {
+                return { textContent: '4555' };
+              }
+              return null;
+            }
+          }
+        ]
+      } as unknown as ParentNode;
+
+      expect(getFavoriteCount(root)).toBe(4555);
     });
   });
 });

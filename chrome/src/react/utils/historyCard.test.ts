@@ -13,6 +13,10 @@ const createHistory = (overrides: Partial<History> = {}): History => ({
   prices: [1000],
   salePrices: null,
   saleLimitTime: null,
+  hasSampleVideo: false,
+  sampleVideoUrl: null,
+  sampleVideoPlayCount: null,
+  favoriteCount: null,
   ...overrides
 });
 

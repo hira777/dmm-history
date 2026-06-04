@@ -10,7 +10,12 @@ export const mockHistories: Histories = [
     label: 'サンプルレーベル',
     prices: [980, 1980],
     salePrices: [490, 990],
-    saleLimitTime: new Date(2099, 11, 31, 23, 59).toString()
+    saleLimitTime: new Date(2099, 11, 31, 23, 59).toString(),
+    hasSampleVideo: true,
+    sampleVideoUrl:
+      'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=ofje00512/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/',
+    sampleVideoPlayCount: 58014,
+    favoriteCount: 4555
   },
   {
     id: 'mock002',
@@ -21,7 +26,11 @@ export const mockHistories: Histories = [
     label: 'テストレーベル',
     prices: [550],
     salePrices: null,
-    saleLimitTime: null
+    saleLimitTime: null,
+    hasSampleVideo: false,
+    sampleVideoUrl: null,
+    sampleVideoPlayCount: null,
+    favoriteCount: 120
   },
   {
     id: 'mock003',
@@ -32,6 +41,11 @@ export const mockHistories: Histories = [
     label: 'ローカルレーベル',
     prices: [300, 1200, 2500],
     salePrices: null,
-    saleLimitTime: null
+    saleLimitTime: null,
+    hasSampleVideo: true,
+    sampleVideoUrl:
+      'https://www.dmm.co.jp/service/digitalapi/-/html5_player/=/cid=mida00642/mtype=AhRVShI_/service=digital/floor=videoa/mode=list/',
+    sampleVideoPlayCount: 1200,
+    favoriteCount: null
   }
 ];

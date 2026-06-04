@@ -6,17 +6,23 @@ import HistoryCard from './HistoryCard';
 type HistoryCardsProps = Readonly<{
   items: Histories;
   onDelete: (itemId: string) => void;
+  onPlaySampleVideo: (url: string) => void;
 }>;
 
 export default function HistoryCards({
   items,
-  onDelete
+  onDelete,
+  onPlaySampleVideo
 }: HistoryCardsProps): ReactElement {
   return (
     <div className="history-grid">
       {items.map((item) => (
         <div className="history-grid__item" key={item.id}>
-          <HistoryCard item={item} onDelete={onDelete} />
+          <HistoryCard
+            item={item}
+            onDelete={onDelete}
+            onPlaySampleVideo={onPlaySampleVideo}
+          />
         </div>
       ))}
     </div>
