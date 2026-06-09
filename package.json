@@ -43,7 +43,7 @@
     "ts-loader": "^9.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.56.1",
-    "vitest": "^4.1.7",
+    "vitest": "^4.1.8",
     "webpack": "^5.107.1",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.4"
