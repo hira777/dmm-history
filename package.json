@@ -8,7 +8,9 @@
   "scripts": {
     "check-types": "tsc -p ./chrome/tsconfig.json --noEmit",
     "dev": "cd chrome && webpack --mode development --watch",
+    "dev:fixture": "node scripts/serve-fixture.mjs",
     "dev:history": "cd chrome && webpack serve --mode development --env historyDevServer=true",
+    "prepare:fixture": "node scripts/prepare-fixture.mjs",
     "build": "cd chrome && webpack --mode production --progress",
     "bump:patch": "pnpm version patch --no-git-tag-version && pnpm sync-version",
     "bump:minor": "pnpm version minor --no-git-tag-version && pnpm sync-version",
