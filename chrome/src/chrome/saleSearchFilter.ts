@@ -1,5 +1,11 @@
+import './saleSearchFilter.scss';
+
 import { URL_CHANGE_EVENT } from '@/enums';
 import { getSaleFilters } from '@/utils/saleFilter';
+import {
+  findSearchContainer,
+  setupSaleSearchFilterUi
+} from '@/utils/saleSearchFilterUi';
 
 const AV_PATH_PREFIX = '/av/';
 const WAIT_TIMEOUT_MS = 10000;
@@ -14,19 +20,19 @@ const isAvPage = (url: string): boolean => {
 };
 
 /**
- * セール情報が取得できる状態か判定する。
+ * セール検索フィルターUIを追加できる状態か判定する。
  */
-const hasSaleFilters = (): boolean => {
-  return getSaleFilters().length > 0;
+const canSetupSaleSearchFilter = (): boolean => {
+  return getSaleFilters().length > 0 && findSearchContainer() !== null;
 };
 
 /**
- * セール情報が取得できるまでDOMの変更を監視する。
+ * セール情報と検索フォームが取得できるまでDOMの変更を監視する。
  */
-const waitForSaleFilters = (
+const waitForSaleSearchFilterElements = (
   timeoutMs: number = WAIT_TIMEOUT_MS
 ): Promise<boolean> => {
-  if (hasSaleFilters()) {
+  if (canSetupSaleSearchFilter()) {
     return Promise.resolve(true);
   }
 
@@ -39,7 +45,7 @@ const waitForSaleFilters = (
     let settled = false;
 
     const observer = new MutationObserver(() => {
-      if (hasSaleFilters()) {
+      if (canSetupSaleSearchFilter()) {
         finish(true);
       }
     });
@@ -74,10 +80,10 @@ const setupSaleSearchFilter = async (): Promise<void> => {
 
   if (!isAvPage(location.href)) return;
 
-  const ready = await waitForSaleFilters();
+  const ready = await waitForSaleSearchFilterElements();
   if (!ready || currentSetupId !== setupId || !isAvPage(location.href)) return;
 
-  getSaleFilters();
+  setupSaleSearchFilterUi(getSaleFilters());
 };
 
 /**

@@ -1,0 +1,50 @@
+#dmm-history-sale-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: 48px;
+  margin: 3px;
+  white-space: nowrap;
+  vertical-align: top;
+  font-size: 12px;
+
+  label {
+    color: #333;
+    font-weight: bold;
+    line-height: 30px;
+  }
+
+  select {
+    appearance: none;
+    box-sizing: border-box;
+    width: 120px;
+    height: 30px;
+    padding: 0 28px 0 10px;
+    border: 1px solid #e4e4e4;
+    border-radius: 15px;
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #666 50%),
+      linear-gradient(135deg, #666 50%, transparent 50%);
+    background-position:
+      calc(100% - 15px) 50%,
+      calc(100% - 10px) 50%;
+    background-repeat: no-repeat;
+    background-size:
+      5px 5px,
+      5px 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 12px;
+
+    &:hover {
+      border-color: #ccc;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #e65c5c;
+    }
+  }
+}
