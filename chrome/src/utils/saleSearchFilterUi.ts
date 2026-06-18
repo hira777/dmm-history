@@ -1,4 +1,5 @@
 import { SaleFilter } from './saleFilter';
+import { findSearchForm } from './saleSearchFilterForm';
 
 export const SALE_FILTER_CONTAINER_ID = 'dmm-history-sale-filter';
 
@@ -15,7 +16,7 @@ type SaleSearchFilterUiOptions = {
 export const findSearchContainer = (
   root: ParentNode = document
 ): HTMLElement | null => {
-  const form = root.querySelector<HTMLFormElement>('form#frmSearch');
+  const form = findSearchForm(root);
 
   return form?.closest<HTMLElement>('._n4v1-search') || null;
 };
