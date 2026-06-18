@@ -6,6 +6,11 @@ import {
   findSearchContainer,
   setupSaleSearchFilterUi
 } from '@/utils/saleSearchFilterUi';
+import {
+  hasSaleFilter,
+  restoreSelectedSaleFilter,
+  saveSelectedSaleFilter
+} from '@/utils/saleSearchFilterStorage';
 
 const AV_PATH_PREFIX = '/av/';
 const WAIT_TIMEOUT_MS = 10000;
@@ -83,7 +88,25 @@ const setupSaleSearchFilter = async (): Promise<void> => {
   const ready = await waitForSaleSearchFilterElements();
   if (!ready || currentSetupId !== setupId || !isAvPage(location.href)) return;
 
-  setupSaleSearchFilterUi(getSaleFilters());
+  const saleFilters = getSaleFilters();
+  const savedSaleFilter = await restoreSelectedSaleFilter();
+  if (currentSetupId !== setupId || !isAvPage(location.href)) return;
+
+  const selectedSaleFilter =
+    savedSaleFilter && hasSaleFilter(saleFilters, savedSaleFilter)
+      ? savedSaleFilter
+      : null;
+
+  if (savedSaleFilter && !selectedSaleFilter) {
+    await saveSelectedSaleFilter(null);
+  }
+
+  setupSaleSearchFilterUi(saleFilters, {
+    selectedSaleFilter,
+    onChange: (saleFilter) => {
+      void saveSelectedSaleFilter(saleFilter);
+    }
+  });
 };
 
 /**

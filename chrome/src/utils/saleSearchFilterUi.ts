@@ -4,6 +4,11 @@ export const SALE_FILTER_CONTAINER_ID = 'dmm-history-sale-filter';
 
 const SALE_FILTER_SELECT_ID = 'dmm-history-sale-filter-select';
 
+type SaleSearchFilterUiOptions = {
+  selectedSaleFilter?: SaleFilter | null;
+  onChange?: (saleFilter: SaleFilter | null) => void;
+};
+
 /**
  * 検索フォームを囲む要素を取得する
  */
@@ -42,7 +47,8 @@ const createSaleFilterContainer = (document: Document): HTMLElement => {
  */
 const updateSaleFilterOptions = (
   select: HTMLSelectElement,
-  saleFilters: SaleFilter[]
+  saleFilters: SaleFilter[],
+  selectedSaleFilter: SaleFilter | null = null
 ): void => {
   const document = select.ownerDocument;
 
@@ -61,6 +67,33 @@ const updateSaleFilterOptions = (
     option.dataset.paramValue = saleFilter.paramValue;
     select.appendChild(option);
   });
+
+  select.value = selectedSaleFilter
+    ? `${selectedSaleFilter.paramName}:${selectedSaleFilter.paramValue}`
+    : '';
+};
+
+/**
+ * セール選択UIで選ばれているセール条件を取得する
+ */
+const getSelectedSaleFilter = (
+  select: HTMLSelectElement,
+  saleFilters: SaleFilter[]
+): SaleFilter | null => {
+  const option = select.selectedOptions.item(0);
+  const paramName = option?.dataset.paramName;
+  const paramValue = option?.dataset.paramValue;
+
+  if (paramName !== 'campaign' || !paramValue) return null;
+
+  return (
+    saleFilters.find((saleFilter) => {
+      return (
+        saleFilter.paramName === paramName &&
+        saleFilter.paramValue === paramValue
+      );
+    }) || null
+  );
 };
 
 /**
@@ -68,6 +101,7 @@ const updateSaleFilterOptions = (
  */
 export const setupSaleSearchFilterUi = (
   saleFilters: SaleFilter[],
+  options: SaleSearchFilterUiOptions = {},
   root: ParentNode = document
 ): boolean => {
   const searchContainer = findSearchContainer(root);
@@ -87,7 +121,15 @@ export const setupSaleSearchFilterUi = (
   );
   if (!select) return false;
 
-  updateSaleFilterOptions(select, saleFilters);
+  updateSaleFilterOptions(
+    select,
+    saleFilters,
+    options.selectedSaleFilter || null
+  );
+
+  select.onchange = (): void => {
+    options.onChange?.(getSelectedSaleFilter(select, saleFilters));
+  };
 
   return true;
 };
