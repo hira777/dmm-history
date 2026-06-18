@@ -35,33 +35,40 @@
   - [x] 重複するセール条件を除外する
   - [x] セール情報取得処理のテストを追加する
 
-- フェーズ 3: **UI 追加** - 検索窓付近にプルダウンを表示する
+- フェーズ 3: **スクリプトの土台作成** - 拡張機能として読み込む準備をする
+  - [x] content script の入口ファイルを `chrome/src/chrome` に追加する
+  - [x] `chrome/webpack.config.js` に新しい entry を追加する
+  - [x] `chrome/manifest.json` の `content_scripts` に出力JSを追加する
+  - [x] 対象URLの `matches` を `/av/` 配下にする
+  - [x] 既存の `historyWatcher.ts` と同じページで動く場合の役割分担を確認する
+
+- フェーズ 4: **UI 追加** - 検索窓付近にプルダウンを表示する
   - [ ] 検索窓を見つける処理を作る
   - [ ] セール選択用プルダウンを作る
   - [ ] 「指定なし」を選択肢に含める
   - [ ] 既存レイアウトを大きく崩さない位置に差し込む
   - [ ] DOM 再描画時に二重追加されないようにする
 
-- フェーズ 4: **選択状態の保存** - ページ移動後も選択したセールを維持する
+- フェーズ 5: **選択状態の保存** - ページ移動後も選択したセールを維持する
   - [ ] 選択中のセール条件を `chrome.storage` に保存する
   - [ ] 保存済みのセール条件を読み込んで選択状態に戻す
   - [ ] 保存済みのセール条件が現在のセール一覧に存在するか確認する
   - [ ] 存在しない場合は「指定なし」に戻す
   - [ ] 存在しない保存値を削除する
 
-- フェーズ 5: **URL 補正** - 検索時にセール条件を維持する
+- フェーズ 6: **URL 補正** - 検索時にセール条件を維持する
   - [ ] 選択中のセール条件を URL に付ける処理を作る
   - [ ] キーワード検索後に `campaign` が消えた場合に復元する
   - [ ] 「指定なし」の場合はセール条件を付けない
 
-- フェーズ 6: **SPA 対応** - URL 変更と DOM 再描画に追従する
+- フェーズ 7: **SPA 対応** - URL 変更と DOM 再描画に追従する
   - [ ] `MutationObserver` で検索窓とセールリンクの出現を監視する
   - [ ] `history.pushState` / `history.replaceState` の変更に追従する
   - [ ] `popstate` に追従する
   - [ ] 既存の `historyWatcher.ts` との役割分担を確認する
   - [ ] 監視処理が重くなりすぎないようにする
 
-- フェーズ 7: **確認** - 自動確認と手動確認を行う
+- フェーズ 8: **確認** - 自動確認と手動確認を行う
   - [ ] `pnpm format:check` を実行する
   - [ ] `pnpm check-types` を実行する
   - [ ] `pnpm test` を実行する
@@ -94,11 +101,19 @@
 - 同じ `campaign` は `uniqueSaleFilters` で最初の1件だけ残す
 - `chrome/src/utils/saleFilter.test.ts` に抽出、対象外リンク、重複除外、DOM 取得のテストを追加した
 
+## フェーズ 3 実装メモ
+
+- `chrome/src/chrome/saleSearchFilter.ts` を追加した
+- `chrome/webpack.config.js` に `saleSearchFilter` の entry を追加した
+- `chrome/manifest.json` に `build/saleSearchFilter.js` を追加した
+- 対象URLは `https://video.dmm.co.jp/av/*` にした
+- `historyWatcher.ts` は URL 変更イベントを投げる役、`saleSearchFilter.ts` は通常の content script として UI 追加や保存処理を担当する役に分ける
+
 ## 直近でやること
 
-1. 実サイトまたは保存済み HTML で、検索窓とセールリンク一覧の DOM 構造を確認する
-2. セールリンクから `SaleFilter` を作る純粋関数を設計する
-3. プルダウンを追加する content script の構成を決める
+1. 検索窓を見つける処理を作る
+2. セール選択用プルダウンを作る
+3. 「指定なし」を選択肢に含める
 
 ## 課題・注意点
 

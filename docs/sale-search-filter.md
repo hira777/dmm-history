@@ -53,7 +53,9 @@ FANZA の検索窓からキーワード検索をした時に、選択したセ�
 ページにアクセスする都度、以下のようなリンクからセール名とパラメータを取得する。
 
 ```html
-<a href="/av/list/?campaign=ideapocketcp&key=...">アイポケキャンペーン30％OFF第9弾</a>
+<a href="/av/list/?campaign=ideapocketcp&key=..."
+  >アイポケキャンペーン30％OFF第9弾</a
+>
 ```
 
 内部では、以下のような形で持つ。

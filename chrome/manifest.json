@@ -29,6 +29,11 @@
       "run_at": "document_start"
     },
     {
+      "matches": ["https://video.dmm.co.jp/av/*"],
+      "js": ["build/saleSearchFilter.js"],
+      "run_at": "document_idle"
+    },
+    {
       "matches": ["https://www.dmm.co.jp/service/digitalapi/*"],
       "js": ["build/sampleVideoReader.js"],
       "run_at": "document_start",

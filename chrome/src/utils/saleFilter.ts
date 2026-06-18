@@ -28,9 +28,7 @@ const normalizeLabel = (label: string): string => {
 /**
  * リンク1件からセール検索フィルターを作る
  */
-export const createSaleFilter = (
-  link: SaleFilterLink
-): SaleFilter | null => {
+export const createSaleFilter = (link: SaleFilterLink): SaleFilter | null => {
   const label = normalizeLabel(link.textContent || '');
   if (label === '') return null;
 
