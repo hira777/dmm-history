@@ -24,16 +24,16 @@ export const findSearchContainer = (
 /**
  * セール選択UIの外枠を作る
  */
-const createSaleFilterContainer = (document: Document): HTMLElement => {
-  const container = document.createElement('div');
+const createSaleFilterContainer = (ownerDocument: Document): HTMLElement => {
+  const container = ownerDocument.createElement('div');
   container.id = SALE_FILTER_CONTAINER_ID;
   container.className = '_n4v1-header-parts';
 
-  const label = document.createElement('label');
+  const label = ownerDocument.createElement('label');
   label.htmlFor = SALE_FILTER_SELECT_ID;
   label.textContent = 'セール';
 
-  const select = document.createElement('select');
+  const select = ownerDocument.createElement('select');
   select.id = SALE_FILTER_SELECT_ID;
   select.name = 'dmmHistorySaleFilter';
   select.setAttribute('aria-label', 'セール条件');
@@ -51,7 +51,7 @@ const updateSaleFilterOptions = (
   saleFilters: SaleFilter[],
   selectedSaleFilter: SaleFilter | null = null
 ): void => {
-  const document = select.ownerDocument;
+  const ownerDocument = select.ownerDocument;
   const nextOptions = [
     {
       value: '',
@@ -95,7 +95,7 @@ const updateSaleFilterOptions = (
   select.replaceChildren();
 
   nextOptions.forEach((nextOption) => {
-    const option = document.createElement('option');
+    const option = ownerDocument.createElement('option');
     option.value = nextOption.value;
     option.textContent = nextOption.label;
     option.dataset.paramName = nextOption.paramName;
@@ -141,11 +141,11 @@ export const setupSaleSearchFilterUi = (
   const parent = searchContainer?.parentElement;
   if (!searchContainer || !parent) return false;
 
-  const document = searchContainer.ownerDocument;
+  const ownerDocument = searchContainer.ownerDocument;
 
-  let container = document.getElementById(SALE_FILTER_CONTAINER_ID);
+  let container = ownerDocument.getElementById(SALE_FILTER_CONTAINER_ID);
   if (!container) {
-    container = createSaleFilterContainer(document);
+    container = createSaleFilterContainer(ownerDocument);
     parent.insertBefore(container, searchContainer);
   }
 

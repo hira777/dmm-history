@@ -26,8 +26,9 @@ export const syncSaleFilterFormParam = (
   const form = findSearchForm(root);
   if (!form) return false;
 
-  const currentInput =
-    form.querySelector<HTMLInputElement>(`#${SALE_FILTER_INPUT_ID}`);
+  const currentInput = form.querySelector<HTMLInputElement>(
+    `#${SALE_FILTER_INPUT_ID}`
+  );
 
   if (!saleFilter) {
     currentInput?.remove();

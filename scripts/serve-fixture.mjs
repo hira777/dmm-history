@@ -10,17 +10,14 @@ const contentTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml',
+  '.svg': 'image/svg+xml'
 };
 
 const server = createServer((request, response) => {
   const requestUrl = new URL(request.url ?? '/', `http://localhost:${port}`);
   const pathname =
     requestUrl.pathname === '/' ? '/fanza-list-page.html' : requestUrl.pathname;
-  const filePath = resolve(
-    fixtureRoot,
-    `.${decodeURIComponent(pathname)}`,
-  );
+  const filePath = resolve(fixtureRoot, `.${decodeURIComponent(pathname)}`);
   const relativePath = relative(fixtureRoot, filePath);
 
   if (
@@ -41,7 +38,7 @@ const server = createServer((request, response) => {
 
   response.writeHead(200, {
     'Content-Type':
-      contentTypes[extname(filePath)] ?? 'application/octet-stream',
+      contentTypes[extname(filePath)] ?? 'application/octet-stream'
   });
   createReadStream(filePath).pipe(response);
 });

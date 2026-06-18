@@ -46,9 +46,7 @@ describe('saleSearchFilterUrl', () => {
           new URL('https://video.dmm.co.jp/av/list/?key=test'),
           saleFilter
         ).href
-      ).toBe(
-        'https://video.dmm.co.jp/av/list/?key=test&campaign=ideapocketcp'
-      );
+      ).toBe('https://video.dmm.co.jp/av/list/?key=test&campaign=ideapocketcp');
     });
 
     it('セール条件がない場合はURLを変更しない', () => {
@@ -68,9 +66,7 @@ describe('saleSearchFilterUrl', () => {
           new URL('https://video.dmm.co.jp/av/list/?key=test'),
           saleFilter
         )?.href
-      ).toBe(
-        'https://video.dmm.co.jp/av/list/?key=test&campaign=ideapocketcp'
-      );
+      ).toBe('https://video.dmm.co.jp/av/list/?key=test&campaign=ideapocketcp');
     });
 
     it('セール条件がすでに付いている場合は補正しない', () => {
@@ -102,9 +98,7 @@ describe('saleSearchFilterUrl', () => {
           saleFilter,
           'test'
         )?.href
-      ).toBe(
-        'https://video.dmm.co.jp/av/list/?campaign=ideapocketcp&key=test'
-      );
+      ).toBe('https://video.dmm.co.jp/av/list/?campaign=ideapocketcp&key=test');
     });
 
     it('指定なしへ切り替えた場合はセール条件を外す', () => {

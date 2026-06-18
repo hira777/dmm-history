@@ -12,7 +12,7 @@ const trackingImageHosts = [
   'analytics.twitter.com',
   'dmp.dsp.bance.jp',
   'sync.shinobi.jp',
-  't.co',
+  't.co'
 ];
 
 const removeTag = (html, tagName) =>
@@ -22,8 +22,11 @@ const removeTrackingImages = (html) => {
   return trackingImageHosts.reduce((currentHtml, host) => {
     const escapedHost = host.replaceAll('.', '\\.');
     return currentHtml.replace(
-      new RegExp(`<img\\b[^>]*src=["'][^"']*${escapedHost}[^"']*["'][^>]*>`, 'gi'),
-      '',
+      new RegExp(
+        `<img\\b[^>]*src=["'][^"']*${escapedHost}[^"']*["'][^>]*>`,
+        'gi'
+      ),
+      ''
     );
   }, html);
 };
@@ -36,7 +39,7 @@ const removeEmptyHiddenBlocks = (html) => {
     previousHtml = currentHtml;
     currentHtml = currentHtml.replace(
       /<div\b[^>]*style=["'][^"']*(?:display:\s*none|visibility:\s*hidden)[^"']*["'][^>]*>\s*<\/div>/gi,
-      '',
+      ''
     );
   } while (currentHtml !== previousHtml);
 
@@ -84,7 +87,7 @@ const downloadStylesheets = async (stylesheetUrls) => {
 
     if (!response.ok) {
       throw new Error(
-        `Failed to download CSS: ${stylesheetUrl} (${response.status})`,
+        `Failed to download CSS: ${stylesheetUrl} (${response.status})`
       );
     }
 
@@ -110,14 +113,14 @@ const cleanHtml = (html) => {
 
   cleanedHtml = cleanedHtml.replace(
     /<div\s+id=["']tracking_area["'][\s\S]*?<\/div>/i,
-    '',
+    ''
   );
   cleanedHtml = removeTag(cleanedHtml, 'script');
   cleanedHtml = removeTag(cleanedHtml, 'iframe');
   cleanedHtml = removeTag(cleanedHtml, 'noscript');
   cleanedHtml = cleanedHtml.replace(
     /<link\b(?=[^>]*\brel=["']preload["'])(?=[^>]*\bas=["']script["'])[^>]*>/gi,
-    '',
+    ''
   );
   cleanedHtml = cleanedHtml.replace(/\sdata-tracking-[\w-]+=(["']).*?\1/gi, '');
   cleanedHtml = removeTrackingImages(cleanedHtml);
@@ -130,7 +133,7 @@ const sourceHtml = await readFile(sourcePath, 'utf8');
 const stylesheetMap = await downloadStylesheets(getStylesheetUrls(sourceHtml));
 const cleanedHtml = replaceStylesheetUrls(cleanHtml(sourceHtml), stylesheetMap);
 const formattedHtml = await prettier.format(cleanedHtml, {
-  parser: 'html',
+  parser: 'html'
 });
 
 await mkdir(fixtureRootPath, { recursive: true });

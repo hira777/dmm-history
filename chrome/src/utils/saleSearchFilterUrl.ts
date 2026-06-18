@@ -8,7 +8,9 @@ const SALE_FILTER_PARAM = 'campaign';
  * キーワード検索結果のURLか判定する
  */
 export const isSaleSearchResultUrl = (url: URL): boolean => {
-  return url.pathname === AV_LIST_PATH && url.searchParams.has(SEARCH_KEY_PARAM);
+  return (
+    url.pathname === AV_LIST_PATH && url.searchParams.has(SEARCH_KEY_PARAM)
+  );
 };
 
 /**

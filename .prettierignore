@@ -3,3 +3,4 @@ dist
 chrome/build
 pnpm-lock.yaml
 MIGRATION_STATUS.md
+dev
