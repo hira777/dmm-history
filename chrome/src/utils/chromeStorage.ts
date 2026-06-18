@@ -38,8 +38,21 @@ const clear = ({
   );
 };
 
+const remove = ({
+  storageArea = 'local',
+  keys
+}: {
+  storageArea?: StorageArea;
+  keys: string | string[];
+}): Promise<void> => {
+  return new Promise((resolve) =>
+    chrome.storage[storageArea].remove(keys, () => resolve())
+  );
+};
+
 export default {
   get,
   set,
-  clear
+  clear,
+  remove
 };

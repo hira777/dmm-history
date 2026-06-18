@@ -13,6 +13,7 @@ module.exports = (env, argv) => {
     entry: {
       historyWatcher: './src/chrome/historyWatcher.ts',
       historySaver: './src/chrome/historySaver.ts',
+      saleSearchFilter: './src/chrome/saleSearchFilter.ts',
       sampleVideoReader: './src/chrome/sampleVideoReader.ts',
       histories: './src/react/histories.tsx',
       popup: './src/chrome/popup.ts'

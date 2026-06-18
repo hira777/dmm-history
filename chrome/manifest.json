@@ -1,7 +1,7 @@
 {
   "name": "FANZA History",
   "description": "FANZAの商品閲覧履歴を保存・表示する拡張機能",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "manifest_version": 3,
   "icons": {
     "16": "icons/icon16.png",
@@ -27,6 +27,11 @@
       "matches": ["https://video.dmm.co.jp/*"],
       "js": ["build/historySaver.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["https://video.dmm.co.jp/av/*"],
+      "js": ["build/saleSearchFilter.js"],
+      "run_at": "document_idle"
     },
     {
       "matches": ["https://www.dmm.co.jp/service/digitalapi/*"],

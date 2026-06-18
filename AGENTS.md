@@ -92,6 +92,9 @@ Chrome 拡張の保守、改善、リリース作業を安全に進めること�
 
 変更後は、可能な範囲で次を確認すること。
 
+ただし、Codex の実行環境では Node.js が `Assertion failed: ncrypto::CSPRNG(nullptr, 0)` で落ちるため、Codex は `node` / `pnpm` を使う確認コマンドを実行しないこと。
+必要な確認コマンドは作業報告に記載し、ユーザー側で実行してもらう。
+
 ```bash
 pnpm format:check
 pnpm check-types
@@ -138,4 +141,6 @@ pnpm exec eslint chrome/src eslint.config.mjs scripts/sync-version.mjs
 
 - 移行計画: `docs/migration-plan.md`
 - 移行作業の履歴: `docs/archive/migration-status-v1.2.0.md`
+- セール検索フィルター要件: `docs/sale-search-filter.md`
+- セール検索フィルター進捗: `docs/sale-search-filter-status.md`
 - リリース手順: `README.md`
