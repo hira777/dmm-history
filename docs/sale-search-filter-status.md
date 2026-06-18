@@ -30,10 +30,10 @@
   - [x] プルダウンを差し込む場所を決める
 
 - フェーズ 2: **セール情報の取得** - ページ内リンクからセール選択肢を作る
-  - [ ] セールリンクから `label` / `paramValue` を抽出する関数を作る
-  - [ ] `campaign` を持つリンクを取得できるようにする
-  - [ ] 重複するセール条件を除外する
-  - [ ] セール情報取得処理のテストを追加する
+  - [x] セールリンクから `label` / `paramValue` を抽出する関数を作る
+  - [x] `campaign` を持つリンクを取得できるようにする
+  - [x] 重複するセール条件を除外する
+  - [x] セール情報取得処理のテストを追加する
 
 - フェーズ 3: **UI 追加** - 検索窓付近にプルダウンを表示する
   - [ ] 検索窓を見つける処理を作る
@@ -84,6 +84,15 @@
 - セール名はリンクの `textContent` から取得し、空白を整理する
 - キーワード検索時、`campaign=all`、特定 `campaign`、`campaign` と `key` がある状態の再検索はいずれも検索後 URL から `campaign` が消える
 - 検索時に `campaign` が消える前提で、拡張側で復元する
+
+## フェーズ 2 実装メモ
+
+- `chrome/src/utils/saleFilter.ts` にセール情報取得用の純粋関数を追加した
+- `createSaleFilter` はリンクの `textContent` を `label` にし、URL の `campaign` を `paramValue` にする
+- フェーズ 1 の方針どおり、今回は `/av/list/` の `campaign` のみ対象にした
+- `point_campaign` と `/amateur/list/` などは対象外にした
+- 同じ `campaign` は `uniqueSaleFilters` で最初の1件だけ残す
+- `chrome/src/utils/saleFilter.test.ts` に抽出、対象外リンク、重複除外、DOM 取得のテストを追加した
 
 ## 直近でやること
 
