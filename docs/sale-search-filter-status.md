@@ -8,9 +8,9 @@
 
 ## 現在の全体状況
 
-- 状態: フェーズ6まで実装済み
-- 優先度が高い作業: SPA 対応
-- 現在の大きな課題: FANZA 側の SPA 遷移と DOM 再描画に安定して追従すること
+- 状態: フェーズ7まで実装済み
+- 優先度が高い作業: 確認
+- 現在の大きな課題: 実サイトで SPA 遷移と DOM 再描画への追従を確認すること
 
 ## 進行ルール
 
@@ -62,11 +62,11 @@
   - [x] 「指定なし」の場合はセール条件を付けない
 
 - フェーズ 7: **SPA 対応** - URL 変更と DOM 再描画に追従する
-  - [ ] `MutationObserver` で検索窓とセールリンクの出現を監視する
-  - [ ] `history.pushState` / `history.replaceState` の変更に追従する
-  - [ ] `popstate` に追従する
-  - [ ] 既存の `historyWatcher.ts` との役割分担を確認する
-  - [ ] 監視処理が重くなりすぎないようにする
+  - [x] `MutationObserver` で検索窓とセールリンクの出現を監視する
+  - [x] `history.pushState` / `history.replaceState` の変更に追従する
+  - [x] `popstate` に追従する
+  - [x] 既存の `historyWatcher.ts` との役割分担を確認する
+  - [x] 監視処理が重くなりすぎないようにする
 
 - フェーズ 8: **確認** - 自動確認と手動確認を行う
   - [ ] `pnpm format:check` を実行する
@@ -144,11 +144,21 @@
 - URLに有効な `campaign` がある場合は、保存済みの選択状態よりURLを優先してプルダウンへ反映する
 - `chrome/src/utils/saleSearchFilterUrl.test.ts` にURL補正のテストを追加した
 
+## フェーズ 7 実装メモ
+
+- `chrome/src/chrome/saleSearchFilter.ts` に常時の `MutationObserver` を追加した
+- DOM 再描画で検索フォームやセールリンクが差し替わった場合に、セール検索フィルターの処理を再実行する
+- 再実行は短い遅延でまとめ、DOM変更が連続した時に処理が走りすぎないようにした
+- `history.pushState` / `history.replaceState` の検知は、既存の `historyWatcher.ts` が `URL_CHANGE_EVENT` を投げる役として担当する
+- `saleSearchFilter.ts` は `URL_CHANGE_EVENT` と `popstate` を受け取り、UI追加や保存状態の反映をやり直す役にした
+- `chrome/src/utils/saleSearchFilterUi.ts` は、選択肢が変わっていない場合に DOM を更新しないようにした
+- UI更新による DOM 変更で監視処理が余計に動き続けないようにした
+
 ## 直近でやること
 
-1. SPA遷移とDOM再描画への追従を確認する
-2. `MutationObserver` とURL変更監視の責務を整理する
-3. 監視処理が重くなりすぎないようにする
+1. 実サイトでSPA遷移後もプルダウンが表示されることを確認する
+2. 検索結果から別ページへ移動して戻った時の選択状態を確認する
+3. フェーズ8の確認項目を進める
 
 ## 課題・注意点
 

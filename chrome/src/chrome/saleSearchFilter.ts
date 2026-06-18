@@ -25,9 +25,12 @@ import {
 
 const AV_PATH_PREFIX = '/av/';
 const WAIT_TIMEOUT_MS = 10000;
+const SETUP_SCHEDULE_DELAY_MS = 100;
 
 let setupId = 0;
 let isClearLinkClickListenerSetup = false;
+let isDomObserverSetup = false;
+let scheduledSetupId: number | null = null;
 
 /**
  * セール検索フィルターを動かす対象ページか判定する。
@@ -85,6 +88,40 @@ const waitForSaleSearchFilterElements = (
       subtree: true,
       characterData: true
     });
+  });
+};
+
+/**
+ * SPA再描画後の再実行を短い間隔でまとめて予約する。
+ */
+const scheduleSaleSearchFilterSetup = (): void => {
+  if (scheduledSetupId !== null) return;
+
+  scheduledSetupId = window.setTimeout(() => {
+    scheduledSetupId = null;
+    void setupSaleSearchFilter();
+  }, SETUP_SCHEDULE_DELAY_MS);
+};
+
+/**
+ * DOM再描画で検索フォームやセールリンクが差し替わった場合に再実行する。
+ */
+const setupSaleSearchFilterDomObserver = (): void => {
+  if (isDomObserverSetup) return;
+
+  const root = document.documentElement;
+  if (!root) return;
+
+  isDomObserverSetup = true;
+  const observer = new MutationObserver(() => {
+    if (!isAvPage(location.href)) return;
+
+    scheduleSaleSearchFilterSetup();
+  });
+
+  observer.observe(root, {
+    childList: true,
+    subtree: true
   });
 };
 
@@ -212,8 +249,10 @@ const setupSaleSearchFilter = async (): Promise<void> => {
  * SPA遷移後にセール検索フィルターの処理を再実行する。
  */
 const handleUrlChange = (): void => {
-  void setupSaleSearchFilter();
+  scheduleSaleSearchFilterSetup();
 };
+
+setupSaleSearchFilterDomObserver();
 
 window.addEventListener(URL_CHANGE_EVENT, handleUrlChange);
 window.addEventListener('popstate', handleUrlChange);

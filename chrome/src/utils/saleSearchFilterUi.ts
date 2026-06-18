@@ -52,26 +52,58 @@ const updateSaleFilterOptions = (
   selectedSaleFilter: SaleFilter | null = null
 ): void => {
   const document = select.ownerDocument;
+  const nextOptions = [
+    {
+      value: '',
+      label: '指定なし',
+      paramName: '',
+      paramValue: ''
+    },
+    ...saleFilters.map((saleFilter) => {
+      return {
+        value: `${saleFilter.paramName}:${saleFilter.paramValue}`,
+        label: saleFilter.label,
+        paramName: saleFilter.paramName,
+        paramValue: saleFilter.paramValue
+      };
+    })
+  ];
+  const currentOptions = Array.from(select.options);
+  const shouldUpdateOptions =
+    currentOptions.length !== nextOptions.length ||
+    nextOptions.some((nextOption, index) => {
+      const currentOption = currentOptions[index];
+
+      return (
+        !currentOption ||
+        currentOption.value !== nextOption.value ||
+        currentOption.textContent !== nextOption.label ||
+        (currentOption.dataset.paramName || '') !== nextOption.paramName ||
+        (currentOption.dataset.paramValue || '') !== nextOption.paramValue
+      );
+    });
+
+  const selectedValue = selectedSaleFilter
+    ? `${selectedSaleFilter.paramName}:${selectedSaleFilter.paramValue}`
+    : '';
+
+  if (!shouldUpdateOptions) {
+    select.value = selectedValue;
+    return;
+  }
 
   select.replaceChildren();
 
-  const noneOption = document.createElement('option');
-  noneOption.value = '';
-  noneOption.textContent = '指定なし';
-  select.appendChild(noneOption);
-
-  saleFilters.forEach((saleFilter) => {
+  nextOptions.forEach((nextOption) => {
     const option = document.createElement('option');
-    option.value = `${saleFilter.paramName}:${saleFilter.paramValue}`;
-    option.textContent = saleFilter.label;
-    option.dataset.paramName = saleFilter.paramName;
-    option.dataset.paramValue = saleFilter.paramValue;
+    option.value = nextOption.value;
+    option.textContent = nextOption.label;
+    option.dataset.paramName = nextOption.paramName;
+    option.dataset.paramValue = nextOption.paramValue;
     select.appendChild(option);
   });
 
-  select.value = selectedSaleFilter
-    ? `${selectedSaleFilter.paramName}:${selectedSaleFilter.paramValue}`
-    : '';
+  select.value = selectedValue;
 };
 
 /**
