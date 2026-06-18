@@ -16,7 +16,7 @@
     "bump:minor": "pnpm version minor --no-git-tag-version && pnpm sync-version",
     "bump:major": "pnpm version major --no-git-tag-version && pnpm sync-version",
     "sync-version": "node scripts/sync-version.mjs",
-    "zip": "mkdir -p dist && zip -r -FS ./dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
+    "zip": "node scripts/zip-chrome.mjs",
     "release:prepare": "pnpm sync-version && pnpm check-types && pnpm test && pnpm build && pnpm zip",
     "release": "pnpm release:prepare",
     "lint": "eslint chrome/src --fix",
