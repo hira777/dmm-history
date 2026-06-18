@@ -138,4 +138,6 @@ pnpm exec eslint chrome/src eslint.config.mjs scripts/sync-version.mjs
 
 - 移行計画: `docs/migration-plan.md`
 - 移行作業の履歴: `docs/archive/migration-status-v1.2.0.md`
+- セール検索フィルター要件: `docs/sale-search-filter.md`
+- セール検索フィルター進捗: `docs/sale-search-filter-status.md`
 - リリース手順: `README.md`
